@@ -64,7 +64,7 @@
 
       <div class="mt-6 flex flex-col px-4 sm:px-0 lg:mt-10">
         <div
-          class="grid grid-cols-1 items-start gap-x-8 gap-y-8 lg:grid-cols-12"
+          class="grid grid-cols-1 items-start gap-x-8 gap-y-12 lg:grid-cols-12"
         >
           <div class="flex flex-col items-start lg:col-span-8">
             <h1 class="section-title">{{ experience.title }}</h1>
@@ -112,17 +112,38 @@
               v-if="experience.included?.length"
               class="mt-8 flex flex-col gap-y-2 tracking-tight"
             >
-              <span class="text-muted-foreground">Sudah termasuk:</span>
+              <span class="font-semibold">Sudah termasuk:</span>
 
               <div class="flex flex-col gap-y-2">
                 <div
                   v-for="(item, index) in experience.included"
                   :key="index"
-                  class="flex gap-x-2"
+                  class="flex gap-x-1.5"
                 >
                   <Icon
-                    name="material-symbols:check"
-                    class="size-5 shrink-0 text-green-500"
+                    name="lucide:check"
+                    class="size-[1lh] shrink-0 scale-80 text-green-500"
+                  />
+                  <span>{{ item }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              v-if="experience.excluded?.length"
+              class="mt-8 flex flex-col gap-y-2 tracking-tight"
+            >
+              <span class="font-semibold">Belum termasuk:</span>
+
+              <div class="flex flex-col gap-y-2">
+                <div
+                  v-for="(item, index) in experience.excluded"
+                  :key="index"
+                  class="flex gap-x-1.5"
+                >
+                  <Icon
+                    name="lucide:x"
+                    class="size-[1lh] shrink-0 scale-80 text-red-500"
                   />
                   <span>{{ item }}</span>
                 </div>

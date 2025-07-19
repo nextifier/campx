@@ -66,6 +66,11 @@ export const useExperienceStore = defineStore("experiences", {
           "Air keran di kavling",
           "Fasilitas umum lainnya seperti toilet, musholla, dan lainnya",
         ],
+        excluded: [
+          "Tenda camping",
+          "Matras",
+          "Perlengkapan camping pribadi lainnya",
+        ],
         pricing: [
           {
             label: "Senin-Kamis",
@@ -80,9 +85,6 @@ export const useExperienceStore = defineStore("experiences", {
         ],
         pricingNotes: [
           "Lebih dari 2 orang? Cukup tambah Rp75rb / malam / orang.",
-          "Belum termasuk asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas",
-
-          "Belum termasuk asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas",
         ],
         bookingLink: [
           {
