@@ -133,56 +133,60 @@
           <div class="flex flex-col lg:col-span-4">
             <div
               v-if="experience.pricing?.length"
-              class="divide-border grid divide-y"
+              class="shadow-wrapper rounded-2xl"
             >
-              <div
-                v-for="(pricing, index) in experience.pricing"
-                :key="index"
-                class="flex flex-col items-start gap-y-1.5 py-4 tracking-tight"
-              >
-                <span v-if="pricing.label">{{ pricing.label }}</span>
-                <div class="">
-                  <span
-                    v-if="pricing.value"
-                    class="text-xl font-bold tracking-tighter"
-                    >{{ format(pricing.value) }}</span
-                  >
-                  <span
-                    v-if="pricing.unit"
-                    class="text-muted-foreground text-sm"
-                  >
-                    / {{ pricing.unit }}</span
-                  >
-                </div>
-              </div>
-
-              <ul v-if="experience.pricingNotes?.length" class="py-4">
-                <li
-                  v-for="(item, index) in experience.pricingNotes"
+              <div class="grid gap-y-5 px-4 py-8">
+                <div
+                  v-for="(pricing, index) in experience.pricing"
                   :key="index"
-                  class="text-muted-foreground text-sm tracking-tight"
+                  class="flex flex-col items-start gap-y-1.5 tracking-tight"
                 >
-                  {{ item }}
-                </li>
-              </ul>
+                  <span v-if="pricing.label" class="text-sm">{{
+                    pricing.label
+                  }}</span>
+                  <div class="">
+                    <span
+                      v-if="pricing.value"
+                      class="text-xl font-bold tracking-tighter"
+                      >{{ format(pricing.value) }}</span
+                    >
+                    <span
+                      v-if="pricing.unit"
+                      class="text-muted-foreground text-sm"
+                    >
+                      / {{ pricing.unit }}</span
+                    >
+                  </div>
+                </div>
 
-              <div class="flex flex-col items-start py-4">
-                <nuxt-link
-                  :to="`https://api.whatsapp.com/send?phone=${store.whatsapp}&text=Hai, CampX! Saya mau reservasi untuk paket ${experience.title}`"
-                  target="_blank"
-                  class="bg-primary text-primary-foreground items-cente hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-semibold tracking-tight transition active:scale-95"
-                >
-                  <span>Pesan sekarang</span>
-                  <NuxtImg
-                    src="/img/etc/3d-wa-logo.webp"
-                    class="pointer-events-none size-6 select-none"
-                    width="44"
-                    height="44"
-                    sizes="40px"
-                    alt="WhatsApp"
-                    format="webp"
-                  />
-                </nuxt-link>
+                <ul v-if="experience.pricingNotes?.length" class="space-y-2">
+                  <li
+                    v-for="(item, index) in experience.pricingNotes"
+                    :key="index"
+                    class="text-muted-foreground text-sm tracking-tight"
+                  >
+                    {{ item }}
+                  </li>
+                </ul>
+
+                <div class="mt-2 flex flex-col items-start">
+                  <nuxt-link
+                    :to="`https://api.whatsapp.com/send?phone=${store.whatsapp}&text=Hai, CampX! Saya mau reservasi untuk paket ${experience.title}`"
+                    target="_blank"
+                    class="bg-primary text-primary-foreground items-cente hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-semibold tracking-tight transition active:scale-95"
+                  >
+                    <span>Pesan sekarang</span>
+                    <NuxtImg
+                      src="/img/etc/3d-wa-logo.webp"
+                      class="pointer-events-none size-6 select-none"
+                      width="44"
+                      height="44"
+                      sizes="40px"
+                      alt="WhatsApp"
+                      format="webp"
+                    />
+                  </nuxt-link>
+                </div>
               </div>
             </div>
           </div>

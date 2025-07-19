@@ -21,12 +21,12 @@ export const useExperienceStore = defineStore("experiences", {
         ],
         pricing: [
           {
-            label: "",
+            label: "Senin-Minggu",
             value: 100000,
             unit: "orang",
           },
         ],
-        pricingNotes: [""],
+        pricingNotes: [],
         bookingLink: [
           {
             name: "",
@@ -80,6 +80,9 @@ export const useExperienceStore = defineStore("experiences", {
         ],
         pricingNotes: [
           "Lebih dari 2 orang? Cukup tambah Rp75rb / malam / orang.",
+          "Belum termasuk asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas",
+
+          "Belum termasuk asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas asdasd sf asasdas",
         ],
         bookingLink: [
           {
