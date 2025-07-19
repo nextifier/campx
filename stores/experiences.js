@@ -5,7 +5,9 @@ export const useExperienceStore = defineStore("experiences", {
         title: "Day Trip di CampX Jatiluhur",
         slug: "day-trip",
         categories: ["Day Trip"],
-        description: `Paket ini cocok untuk kamu yang mau berkunjung ke CampX dan bermain-main di area CampX tanpa menginap. Kamu bisa datang mulai dari pukul 7 pagi sampai paket Day Trip tutup di jam 7 malam. Cuman dengan 100rb, kamu sudah dapet tiket masuk, bisa foto-foto di tempat yang Instagramable, bisa gratis main sepeda, mancing, dan main stand-up paddle board (mendayung sambil berdiri di atas papan).`,
+        description: `
+            <p>Paket ini cocok untuk kamu yang mau berkunjung ke CampX dan bermain-main di area CampX tanpa menginap. Kamu bisa datang mulai dari pukul 7 pagi sampai paket Day Trip tutup di jam 7 malam. Cuman dengan 100rb, kamu sudah dapet tiket masuk, bisa foto-foto di tempat yang Instagramable, bisa gratis main sepeda, mancing, dan main stand-up paddle board (mendayung sambil berdiri di atas papan).</p>
+        `,
         coverImage: "",
         checkInOut: {
           in: "07:00",
@@ -66,12 +68,12 @@ export const useExperienceStore = defineStore("experiences", {
         ],
         pricing: [
           {
-            label: "Weekday",
+            label: "Senin-Kamis",
             value: 250000,
             unit: "malam / orang",
           },
           {
-            label: "Weekend",
+            label: "Jumat-Minggu",
             value: 350000,
             unit: "malam / orang",
           },

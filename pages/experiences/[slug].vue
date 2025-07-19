@@ -3,16 +3,8 @@
     <div class="sm:container">
       <div class="grid grid-cols-1 gap-y-4 lg:gap-y-8">
         <div class="relative">
-          <GallerySlider
-            v-if="experience.photos?.length"
-            :item="experience"
-            class="lg:hidden"
-          />
-          <GalleryBentoGrid
-            v-if="experience.photos?.length"
-            :item="experience"
-            class="hidden lg:grid"
-          />
+          <GallerySlider :item="experience" class="lg:hidden" />
+          <GalleryBentoGrid :item="experience" class="hidden lg:grid" />
 
           <DialogResponsive
             v-if="experience.photos?.length"
@@ -66,7 +58,6 @@
           class="flex items-center justify-between px-4 sm:px-0 lg:order-first"
         >
           <BackButton />
-
           <DialogShare :pageTitle="title" />
         </div>
       </div>
@@ -75,46 +66,126 @@
         <div
           class="grid grid-cols-1 items-start gap-x-8 gap-y-8 lg:grid-cols-12"
         >
-          <div class="flex flex-col items-start gap-y-4 lg:col-span-8">
+          <div class="flex flex-col items-start lg:col-span-8">
             <h1 class="section-title">{{ experience.title }}</h1>
 
             <div
               v-if="experience.categories?.length"
-              class="no-scrollbar text-primary/70 line-clamp-1 overflow-x-auto text-xs"
+              class="text-primary/70 mt-4"
             >
               {{ experience.categories.join(", ") }}
             </div>
+
+            <div
+              v-if="experience.description"
+              class="format-html"
+              v-html="experience.description"
+            ></div>
+
+            <div v-if="experience.checkInOut" class="mt-4 flex gap-x-8">
+              <div
+                v-if="experience.checkInOut.in"
+                class="flex flex-col gap-y-1.5"
+              >
+                <span class="text-muted-foreground text-sm tracking-tight"
+                  >Check-in</span
+                >
+                <span class="text-base font-semibold tracking-tight">{{
+                  experience.checkInOut.in
+                }}</span>
+              </div>
+
+              <div
+                v-if="experience.checkInOut.out"
+                class="flex flex-col gap-y-1.5"
+              >
+                <span class="text-muted-foreground text-sm tracking-tight"
+                  >Check-out</span
+                >
+                <span class="text-base font-semibold tracking-tight">{{
+                  experience.checkInOut.out
+                }}</span>
+              </div>
+            </div>
+
+            <div
+              v-if="experience.included?.length"
+              class="mt-8 flex flex-col gap-y-2 tracking-tight"
+            >
+              <span class="text-muted-foreground">Sudah termasuk:</span>
+
+              <div class="flex flex-col gap-y-2">
+                <div
+                  v-for="(item, index) in experience.included"
+                  :key="index"
+                  class="flex gap-x-2"
+                >
+                  <Icon
+                    name="material-symbols:check"
+                    class="size-5 shrink-0 text-green-500"
+                  />
+                  <span>{{ item }}</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <pre
-            class="max-w-xl overflow-scroll rounded-xl bg-gray-950 p-4 text-sm text-gray-300 sm:p-6"
-            >{{ experiences }}</pre
-          >
-
-          <!-- <div class="grid grid-cols-2 gap-2 lg:col-span-4">
-            <template
-              v-for="(item, index) in [
-                { label: 'Date', value: event.date },
-                { label: 'Venue', value: event.venue },
-                { label: 'Total Participants', value: event.totalParticipants },
-                { label: 'Client', value: event.client.name },
-              ]"
-              :key="index"
+          <div class="flex flex-col lg:col-span-4">
+            <div
+              v-if="experience.pricing?.length"
+              class="divide-border grid divide-y"
             >
               <div
-                v-if="item.value"
-                class="bg-muted flex flex-col items-start gap-y-1 rounded-xl p-6"
+                v-for="(pricing, index) in experience.pricing"
+                :key="index"
+                class="flex flex-col items-start gap-y-1.5 py-4 tracking-tight"
               >
-                <span class="text-primary/70 text-sm tracking-tight">{{
-                  item.label
-                }}</span>
-                <span
-                  class="text-primary text-base font-semibold tracking-tighter sm:text-lg"
-                  >{{ item.value }}</span
-                >
+                <span v-if="pricing.label">{{ pricing.label }}</span>
+                <div class="">
+                  <span
+                    v-if="pricing.value"
+                    class="text-xl font-bold tracking-tighter"
+                    >{{ format(pricing.value) }}</span
+                  >
+                  <span
+                    v-if="pricing.unit"
+                    class="text-muted-foreground text-sm"
+                  >
+                    / {{ pricing.unit }}</span
+                  >
+                </div>
               </div>
-            </template>
-          </div> -->
+
+              <ul v-if="experience.pricingNotes?.length" class="py-4">
+                <li
+                  v-for="(item, index) in experience.pricingNotes"
+                  :key="index"
+                  class="text-muted-foreground text-sm tracking-tight"
+                >
+                  {{ item }}
+                </li>
+              </ul>
+
+              <div class="flex flex-col items-start py-4">
+                <nuxt-link
+                  :to="`https://api.whatsapp.com/send?phone=${store.whatsapp}&text=Hai, CampX! Saya mau reservasi untuk paket ${experience.title}`"
+                  target="_blank"
+                  class="bg-primary text-primary-foreground items-cente hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-semibold tracking-tight transition active:scale-95"
+                >
+                  <span>Pesan sekarang</span>
+                  <NuxtImg
+                    src="/img/etc/3d-wa-logo.webp"
+                    class="pointer-events-none size-6 select-none"
+                    width="44"
+                    height="44"
+                    sizes="40px"
+                    alt="WhatsApp"
+                    format="webp"
+                  />
+                </nuxt-link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -132,6 +203,7 @@ const route = useRoute();
 const store = useRootStore();
 const config = useRuntimeConfig();
 const { $dayjs } = useNuxtApp();
+const { format } = useCurrencyFormat();
 
 const experiences = useExperienceStore();
 const experience = experiences.getItemBySlug(route.params.slug);
@@ -147,8 +219,8 @@ if (!experience) {
   });
 }
 
-const title = experience.title ?? "";
-const description = experience.description ?? "";
+const title = experience?.title ?? "";
+const description = experience?.description ?? "";
 
 useSeoMeta({
   title: title,

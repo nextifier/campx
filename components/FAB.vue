@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed bottom-8 right-3 z-50 xs:right-4 sm:bottom-5 sm:right-6 lg:bottom-12 xl:right-12"
+    class="xs:right-4 fixed right-3 bottom-8 z-50 sm:right-6 sm:bottom-5 lg:bottom-12 xl:right-12"
   >
     <NuxtLink
       :to="`https://api.whatsapp.com/send?phone=${store.whatsapp}&text=${store.whatsappText}`"
@@ -11,9 +11,10 @@
     >
       <NuxtImg
         src="/img/etc/3d-wa-logo.webp"
-        class="pointer-events-none aspect-square h-[40px] w-auto select-none"
-        width="44"
-        height="44"
+        class="pointer-events-none size-10 select-none"
+        width="40"
+        height="40"
+        sizes="40px"
         alt="WhatsApp"
         format="webp"
       />
