@@ -8,7 +8,7 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
             <p>Paket ini cocok untuk kamu yang mau berkunjung ke CampX dan bermain-main di area CampX tanpa menginap. Kamu bisa datang mulai dari pukul 7 pagi sampai paket Day Trip tutup di jam 7 malam. Cuman dengan 100rb, kamu sudah dapet tiket masuk, bisa foto-foto di tempat yang Instagramable, bisa gratis main sepeda, mancing, dan main stand-up paddle board (mendayung sambil berdiri di atas papan).</p>
         `,
-        coverImage: "",
+        coverImage: "/img/experiences/cover-1.jpg",
         checkInOut: {
           in: "07:00",
           out: "19:00",
@@ -51,7 +51,7 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
             <p>Paket camping ini hanya kavling / lahan camping-nya aja ya, travelers! Untuk tenda, matras, dan perlengkapan lainnya, kamu bisa bawa sendiri, atau bisa juga sewa di CampX dengan biaya sewa peralatan yang terpisah dari paket ini.</p>
         `,
-        coverImage: "",
+        coverImage: "/img/experiences/cover-2.jpg",
         checkInOut: {
           in: "14:00-23:59",
           out: "12:00",
@@ -74,16 +74,17 @@ export const useExperienceStore = defineStore("experiences", {
         pricing: [
           {
             label: "Senin-Kamis",
-            value: 250000,
+            value: 125000,
             unit: "malam / orang",
           },
           {
             label: "Jumat-Minggu",
-            value: 350000,
+            value: 175000,
             unit: "malam / orang",
           },
         ],
         pricingNotes: [
+          "Pemesanan minimal 2 orang.",
           "Lebih dari 2 orang? Cukup tambah Rp75rb / malam / orang.",
         ],
         bookingLink: [

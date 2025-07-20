@@ -27,16 +27,21 @@
 
       <div
         v-if="item.categories?.length"
-        class="no-scrollbar text-primary/70 line-clamp-1 overflow-x-auto text-xs"
+        class="no-scrollbar text-primary/70 line-clamp-1 overflow-x-auto text-sm tracking-tight"
       >
         {{ item.categories.join(", ") }}
       </div>
 
       <div v-if="item.pricing?.length">
-        <span class="text-sm tracking-tight"
-          ><span v-if="item.pricing.length > 1">Mulai dari&nbsp;</span
-          >{{ format(item.pricing[0].value) }}</span
-        >
+        <span class="text-primary/70 text-sm tracking-tight">
+          <span v-if="item.pricing.length > 1">Mulai dari&nbsp;</span>
+          <span class="text-primary text-base font-semibold">
+            {{ format(item.pricing[0].value) }}
+          </span>
+          <span v-if="item.pricing[0].unit">
+            / {{ item.pricing[0].unit }}
+          </span>
+        </span>
       </div>
     </div>
   </div>

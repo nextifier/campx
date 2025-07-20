@@ -8,7 +8,7 @@
         !isMenuOpen,
     }"
   >
-    <nav class="container-wider flex h-full items-center">
+    <nav class="container flex h-full items-center">
       <nuxt-link
         to="/"
         aria-label="Home"
@@ -19,9 +19,9 @@
       </nuxt-link>
 
       <div class="ml-auto flex h-full items-center gap-x-6">
-        <HeaderNav
+        <!-- <HeaderNav
           class="hidden xl:absolute xl:left-1/2 xl:flex xl:-translate-x-1/2"
-        />
+        /> -->
 
         <div class="flex h-full shrink-0 items-center gap-x-2">
           <!-- <nuxt-link
@@ -33,13 +33,13 @@
             <span>Contact</span>
           </nuxt-link> -->
 
-          <nuxt-link
+          <!-- <nuxt-link
             to="/"
             class="hover:bg-primary/80 bg-primary text-primary-foreground hidden items-center justify-center rounded-xl px-3 py-2 font-semibold tracking-tight transition select-none active:scale-95 sm:flex"
             @click="$scrollToTopIfCurrentPageIs('ticket')"
             v-ripple
             >Reservasi Camping</nuxt-link
-          >
+          > -->
 
           <Tippy>
             <ColorModeToggle />
@@ -60,17 +60,6 @@
               </span>
             </template>
           </Tippy>
-
-          <button
-            v-if="['winner'].includes(route.name)"
-            @click="toggleFullScreen"
-            type="button"
-            v-tippy="'Toggle Fullscreen'"
-            aria-label="Toggle Fullscreen"
-            class="text-primary hover:bg-muted flex size-9 items-center justify-center rounded-xl"
-          >
-            <Icon name="lucide:fullscreen" class="text-primary size-4" />
-          </button>
         </div>
       </div>
     </nav>

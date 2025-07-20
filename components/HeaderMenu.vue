@@ -179,16 +179,6 @@ const menuLinks = ref([
     routeName: "experiences",
   },
   {
-    label: "Promo",
-    to: "/promo",
-    routeName: "promo",
-  },
-  {
-    label: "FAQ",
-    to: "/faq",
-    routeName: "faq",
-  },
-  {
     label: "Contact",
     to: "/contact",
     routeName: "contact",
