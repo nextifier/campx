@@ -2,7 +2,7 @@
   <div v-if="experience" class="pb-14 lg:pt-4 lg:pb-20">
     <div class="sm:container">
       <div class="grid grid-cols-1 gap-y-4 lg:gap-y-8">
-        <div class="relative">
+        <!-- <div class="relative">
           <GallerySlider :item="experience" class="lg:hidden" />
           <GalleryBentoGrid :item="experience" class="hidden lg:grid" />
 
@@ -52,7 +52,7 @@
               </div>
             </template>
           </DialogResponsive>
-        </div>
+        </div> -->
 
         <div
           class="flex items-center justify-between px-4 sm:px-0 lg:order-first"
@@ -66,11 +66,34 @@
         <div
           class="grid grid-cols-1 items-start gap-x-8 gap-y-12 lg:grid-cols-12"
         >
-          <div class="flex flex-col items-start lg:col-span-8">
+          <div class="lg:col-span-4">
+            <div class="bg-muted aspect-4/5 overflow-hidden rounded-xl">
+              <NuxtImg
+                :src="experience.coverImage"
+                :alt="experience.title"
+                class="size-full object-cover select-none"
+                width="1080"
+                height="1350"
+                sizes="100vw lg:600px"
+                loading="lazy"
+                format="webp"
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col items-start lg:col-span-5">
             <h1 class="section-title">{{ experience.title }}</h1>
 
-            <div v-if="experience.categories?.length" class="mt-4">
-              {{ experience.categories.join(", ") }}
+            <div
+              v-if="experience.categories?.length"
+              class="mt-4 flex flex-wrap gap-2"
+            >
+              <span
+                v-for="(item, index) in experience.categories"
+                :key="index"
+                class="text-primary bg-muted rounded-lg px-3 py-1.5 text-sm tracking-tight"
+                >{{ item }}</span
+              >
             </div>
 
             <div
@@ -85,7 +108,7 @@
             >
               <div
                 v-if="experience.checkInOut.in"
-                class="text-muted-foreground flex items-start gap-x-2"
+                class="flex items-start gap-x-2"
               >
                 <Icon
                   name="hugeicons:calendar-check-in-01"
@@ -102,7 +125,7 @@
 
               <div
                 v-if="experience.checkInOut.out"
-                class="text-muted-foreground flex items-start gap-x-2"
+                class="flex items-start gap-x-2"
               >
                 <Icon
                   name="hugeicons:calendar-check-out-01"
@@ -159,9 +182,34 @@
                 </div>
               </div>
             </div>
+
+            <NuxtLink
+              to="https://maps.app.goo.gl/1uhAWnpqFdcH6Au66"
+              target="_blank"
+              class="mt-8 flex w-full flex-col"
+            >
+              <span class="font-semibold tracking-tight">Lokasi</span>
+
+              <p class="mt-2 tracking-tight">
+                Jl. Waduk Jatiluhur, Jatimekar, Kec. Jatiluhur, Kabupaten
+                Purwakarta, Jawa Barat 41152
+              </p>
+
+              <div
+                class="bg-muted mt-4 aspect-4/5 w-full max-w-xl overflow-hidden rounded-xl lg:aspect-16/9"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.950156367725!2d107.39153497499031!3d-6.52797976381809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e690f120bf9c52f%3A0x5c35615e66748e40!2sCampX%20Jatiluhur!5e0!3m2!1sen!2sid!4v1753072109648!5m2!1sen!2sid"
+                  class="size-full border-0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </NuxtLink>
           </div>
 
-          <div class="flex flex-col lg:col-span-4">
+          <div class="flex flex-col lg:col-span-3">
             <div
               v-if="experience.pricing?.length"
               class="shadow-wrapper rounded-2xl"
@@ -194,7 +242,7 @@
                   <li
                     v-for="(item, index) in experience.pricingNotes"
                     :key="index"
-                    class="text-muted-foreground text-sm tracking-tight"
+                    class="text-sm tracking-tight"
                   >
                     {{ item }}
                   </li>
@@ -219,6 +267,17 @@
                   </nuxt-link>
                 </div>
               </div>
+            </div>
+
+            <div class="mt-8 flex flex-col items-start">
+              <nuxt-link
+                to="/files/campx-sitemap.pdf"
+                target="_blank"
+                class="bg-muted hover:bg-border text-primary flex items-center justify-center gap-x-2 rounded-xl px-5 py-3 tracking-tight"
+              >
+                <Icon name="hugeicons:maps" class="size-5 shrink-0" />
+                <span>Denah CampX</span>
+              </nuxt-link>
             </div>
           </div>
         </div>
