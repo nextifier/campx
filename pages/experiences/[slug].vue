@@ -69,10 +69,7 @@
           <div class="flex flex-col items-start lg:col-span-8">
             <h1 class="section-title">{{ experience.title }}</h1>
 
-            <div
-              v-if="experience.categories?.length"
-              class="text-primary/70 mt-4"
-            >
+            <div v-if="experience.categories?.length" class="mt-4">
               {{ experience.categories.join(", ") }}
             </div>
 
@@ -82,29 +79,42 @@
               v-html="experience.description"
             ></div>
 
-            <div v-if="experience.checkInOut" class="mt-4 flex gap-x-8">
+            <div
+              v-if="experience.checkInOut"
+              class="mt-4 grid w-full max-w-sm grid-cols-2 gap-x-4"
+            >
               <div
                 v-if="experience.checkInOut.in"
-                class="flex flex-col gap-y-1.5"
+                class="text-muted-foreground flex items-start gap-x-2"
               >
-                <span class="text-muted-foreground text-sm tracking-tight"
-                  >Check-in</span
-                >
-                <span class="text-base font-semibold tracking-tight">{{
-                  experience.checkInOut.in
-                }}</span>
+                <Icon
+                  name="hugeicons:calendar-check-in-01"
+                  class="size-5 shrink-0"
+                />
+                <div class="flex flex-col gap-y-1.5">
+                  <span class="text-sm tracking-tight">Check-in</span>
+                  <span
+                    class="text-primary text-base font-semibold tracking-tight"
+                    >{{ experience.checkInOut.in }}</span
+                  >
+                </div>
               </div>
 
               <div
                 v-if="experience.checkInOut.out"
-                class="flex flex-col gap-y-1.5"
+                class="text-muted-foreground flex items-start gap-x-2"
               >
-                <span class="text-muted-foreground text-sm tracking-tight"
-                  >Check-out</span
-                >
-                <span class="text-base font-semibold tracking-tight">{{
-                  experience.checkInOut.out
-                }}</span>
+                <Icon
+                  name="hugeicons:calendar-check-out-01"
+                  class="size-5 shrink-0"
+                />
+                <div class="flex flex-col gap-y-1.5">
+                  <span class="text-sm tracking-tight">Check-out</span>
+                  <span
+                    class="text-primary text-base font-semibold tracking-tight"
+                    >{{ experience.checkInOut.out }}</span
+                  >
+                </div>
               </div>
             </div>
 
@@ -165,10 +175,10 @@
                   <span v-if="pricing.label" class="text-sm">{{
                     pricing.label
                   }}</span>
-                  <div class="">
+                  <div>
                     <span
                       v-if="pricing.value"
-                      class="text-xl font-bold tracking-tighter"
+                      class="text-primary text-xl font-bold tracking-tighter"
                       >{{ format(pricing.value) }}</span
                     >
                     <span
@@ -194,7 +204,7 @@
                   <nuxt-link
                     :to="`https://api.whatsapp.com/send?phone=${store.whatsapp}&text=Hai, CampX! Saya mau reservasi untuk paket ${experience.title}`"
                     target="_blank"
-                    class="bg-primary text-primary-foreground items-cente hover:bg-accent hover:text-accent-foreground flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-semibold tracking-tight transition active:scale-95"
+                    class="bg-primary text-primary-foreground items-cente hover:bg-primary/80 flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-semibold tracking-tight transition active:scale-95"
                   >
                     <span>Pesan sekarang</span>
                     <NuxtImg

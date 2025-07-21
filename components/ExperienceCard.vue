@@ -1,9 +1,6 @@
 <template>
-  <div class="grid gap-y-2">
-    <NuxtLink
-      :to="`/experiences/${item.slug}`"
-      class="bg-muted aspect-4/5 overflow-hidden rounded-xl"
-    >
+  <NuxtLink :to="`/experiences/${item.slug}`" class="grid gap-y-2">
+    <div class="bg-muted aspect-4/5 overflow-hidden rounded-xl">
       <NuxtImg
         v-if="item.coverImage"
         :src="item.coverImage"
@@ -15,25 +12,26 @@
         loading="lazy"
         format="webp"
       />
-    </NuxtLink>
+    </div>
 
     <div class="grid gap-y-1.5">
-      <NuxtLink
-        :to="`/experiences/${item.slug}`"
-        class="text-primary text-base font-semibold tracking-tight"
-      >
+      <div class="text-primary text-base font-semibold tracking-tight">
         {{ item.title }}
-      </NuxtLink>
+      </div>
 
       <div
         v-if="item.categories?.length"
-        class="no-scrollbar text-primary/70 line-clamp-1 overflow-x-auto text-sm tracking-tight"
+        class="no-scrollbar line-clamp-1 overflow-x-auto text-sm tracking-tight"
       >
         {{ item.categories.join(", ") }}
       </div>
 
+      <div v-if="item.shortDescription" class="text-sm tracking-tight">
+        <span>{{ item.shortDescription }}</span>
+      </div>
+
       <div v-if="item.pricing?.length">
-        <span class="text-primary/70 text-sm tracking-tight">
+        <span class="text-sm tracking-tight">
           <span v-if="item.pricing.length > 1">Mulai dari&nbsp;</span>
           <span class="text-primary text-base font-semibold">
             {{ format(item.pricing[0].value) }}
@@ -44,7 +42,7 @@
         </span>
       </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <script setup>

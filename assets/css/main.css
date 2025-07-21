@@ -103,7 +103,7 @@
 @layer base {
   :root {
     --background: var(--color-white);
-    --foreground: var(--color-gray-950);
+    --foreground: var(--color-gray-700);
     --border: var(--color-gray-200);
     --input: var(--color-gray-100);
     --ring: var(--color-black);
@@ -141,7 +141,7 @@
 
   .dark {
     --background: var(--color-gray-950);
-    --foreground: var(--color-gray-50);
+    --foreground: var(--color-gray-300);
     --border: var(--color-gray-800);
     --input: var(--color-gray-900);
     --ring: var(--color-white);
