@@ -5,7 +5,7 @@ export const useExperienceStore = defineStore("experiences", {
         title: "Day Trip di CampX Jatiluhur",
         slug: "day-trip",
         status: "Available",
-        categories: ["Day Trip"],
+        categories: ["Day Trip", "Paket Personal"],
         shortDescription:
           "Mau main seharian, tapi gak nginap? Paket ini cocok untukmu!",
         description: `
@@ -30,28 +30,13 @@ export const useExperienceStore = defineStore("experiences", {
           },
         ],
         pricingNotes: [],
-        bookingLink: [
-          {
-            name: "",
-            platformLogo: "",
-            to: "",
-          },
-        ],
-        photos: [
-          //   {
-          //     src: "/img/events/pm-kickoff-2024/photos/15.jpg",
-          //     thumbnail: "/img/events/pm-kickoff-2024/photos-thumb/15.jpg",
-          //     w: 1600,
-          //     h: 1067,
-          //   },
-        ],
       },
 
       {
         title: "Camping di CampX Jatiluhur - Kavling only",
         slug: "camping-kavling-only",
         status: "Available",
-        categories: ["Camping"],
+        categories: ["Camping", "Paket Personal"],
         shortDescription:
           "Bawa perlengkapan camping-mu sendiri ya! Paket ini menyediakan lahannya aja.",
         description: `
@@ -97,28 +82,13 @@ export const useExperienceStore = defineStore("experiences", {
           "Pemesanan minimal 2 orang.",
           "Lebih dari 2 orang? Cukup tambah Rp75rb / malam / orang.",
         ],
-        bookingLink: [
-          {
-            name: "",
-            platformLogo: "",
-            to: "",
-          },
-        ],
-        photos: [
-          //   {
-          //     src: "/img/events/pm-kickoff-2024/photos/15.jpg",
-          //     thumbnail: "/img/events/pm-kickoff-2024/photos-thumb/15.jpg",
-          //     w: 1600,
-          //     h: 1067,
-          //   },
-        ],
       },
 
       {
         title: "Camping di CampX Jatiluhur - Camping Tent Included",
         slug: "camping-tent-included",
         status: "Available",
-        categories: ["Camping"],
+        categories: ["Camping", "Paket Personal"],
         shortDescription:
           "Gak punya tenda, alas tenda, dan sleeping bag? Sudah kami siapin ya!",
         description: `
@@ -162,28 +132,13 @@ export const useExperienceStore = defineStore("experiences", {
           "Pemesanan minimal 2 orang.",
           "Lebih dari 2 orang? Cukup tambah Rp75rb / malam / orang.",
         ],
-        bookingLink: [
-          {
-            name: "",
-            platformLogo: "",
-            to: "",
-          },
-        ],
-        photos: [
-          //   {
-          //     src: "/img/events/pm-kickoff-2024/photos/15.jpg",
-          //     thumbnail: "/img/events/pm-kickoff-2024/photos-thumb/15.jpg",
-          //     w: 1600,
-          //     h: 1067,
-          //   },
-        ],
       },
 
       {
         title: "Cabin CampX Jatiluhur",
         slug: "cabin",
         status: "Available",
-        categories: ["Camping", "Cabin"],
+        categories: ["Camping", "Cabin", "Paket Personal"],
         shortDescription:
           "Cobain pengalaman bermalam di Cabin X dengan pemandangan yang spektakuler!",
         description: `
@@ -224,21 +179,6 @@ export const useExperienceStore = defineStore("experiences", {
           "Pemesanan minimal 2 orang.",
           "Lebih dari 2 orang? Cukup tambah Rp75rb / malam / orang.",
         ],
-        bookingLink: [
-          {
-            name: "",
-            platformLogo: "",
-            to: "",
-          },
-        ],
-        photos: [
-          //   {
-          //     src: "/img/events/pm-kickoff-2024/photos/15.jpg",
-          //     thumbnail: "/img/events/pm-kickoff-2024/photos-thumb/15.jpg",
-          //     w: 1600,
-          //     h: 1067,
-          //   },
-        ],
       },
 
       {
@@ -250,10 +190,6 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
         `,
         coverImage: "/img/experiences/paddle/cover-stand-up-paddle.jpg",
-        // checkInOut: {
-        //   in: "14:00-23:59",
-        //   out: "12:00",
-        // },
         included: [
           "Tiket masuk CampX Jatiluhur",
           "Main stand-up paddle board (mendayung sambil berdiri di atas papan)",
@@ -271,25 +207,6 @@ export const useExperienceStore = defineStore("experiences", {
             unit: "jam",
           },
         ],
-        // pricingNotes: [
-        //   "Pemesanan minimal 2 orang.",
-        //   "Lebih dari 2 orang? Cukup tambah Rp75rb / malam / orang.",
-        // ],
-        bookingLink: [
-          {
-            name: "",
-            platformLogo: "",
-            to: "",
-          },
-        ],
-        photos: [
-          //   {
-          //     src: "/img/events/pm-kickoff-2024/photos/15.jpg",
-          //     thumbnail: "/img/events/pm-kickoff-2024/photos-thumb/15.jpg",
-          //     w: 1600,
-          //     h: 1067,
-          //   },
-        ],
       },
 
       {
@@ -301,10 +218,6 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
         `,
         coverImage: "/img/experiences/canoeing/cover-canoeing.jpg",
-        // checkInOut: {
-        //   in: "14:00-23:59",
-        //   out: "12:00",
-        // },
         included: [
           "Tiket masuk CampX Jatiluhur",
           "Main canoe (mendayung di dalam perahu)",
@@ -317,25 +230,6 @@ export const useExperienceStore = defineStore("experiences", {
             unit: "perahu",
           },
         ],
-        // pricingNotes: [
-        //   "Pemesanan minimal 2 orang.",
-        //   "Lebih dari 2 orang? Cukup tambah Rp75rb / malam / orang.",
-        // ],
-        bookingLink: [
-          {
-            name: "",
-            platformLogo: "",
-            to: "",
-          },
-        ],
-        photos: [
-          //   {
-          //     src: "/img/events/pm-kickoff-2024/photos/15.jpg",
-          //     thumbnail: "/img/events/pm-kickoff-2024/photos-thumb/15.jpg",
-          //     w: 1600,
-          //     h: 1067,
-          //   },
-        ],
       },
 
       {
@@ -347,10 +241,6 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
         `,
         coverImage: "/img/experiences/mancing/cover-mancing.jpg",
-        // checkInOut: {
-        //   in: "14:00-23:59",
-        //   out: "12:00",
-        // },
         included: ["Tiket masuk CampX Jatiluhur", "Memancing di danau."],
         excluded: [],
         pricing: [
@@ -359,25 +249,6 @@ export const useExperienceStore = defineStore("experiences", {
             value: 50000,
             unit: "hari",
           },
-        ],
-        // pricingNotes: [
-        //   "Pemesanan minimal 2 orang.",
-        //   "Lebih dari 2 orang? Cukup tambah Rp75rb / malam / orang.",
-        // ],
-        bookingLink: [
-          {
-            name: "",
-            platformLogo: "",
-            to: "",
-          },
-        ],
-        photos: [
-          //   {
-          //     src: "/img/events/pm-kickoff-2024/photos/15.jpg",
-          //     thumbnail: "/img/events/pm-kickoff-2024/photos-thumb/15.jpg",
-          //     w: 1600,
-          //     h: 1067,
-          //   },
         ],
       },
 
@@ -391,10 +262,6 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
         `,
         coverImage: "/img/experiences/boat/cover-boat.jpg",
-        // checkInOut: {
-        //   in: "14:00-23:59",
-        //   out: "12:00",
-        // },
         included: [
           "Tiket masuk CampX Jatiluhur",
           "Bermain perahu mengelilingi waduk Jatiluhur..",
@@ -407,54 +274,7 @@ export const useExperienceStore = defineStore("experiences", {
             unit: "perahu",
           },
         ],
-        // pricingNotes: [
-        //   "Pemesanan minimal 2 orang.",
-        //   "Lebih dari 2 orang? Cukup tambah Rp75rb / malam / orang.",
-        // ],
-        bookingLink: [
-          {
-            name: "",
-            platformLogo: "",
-            to: "",
-          },
-        ],
-        photos: [
-          //   {
-          //     src: "/img/events/pm-kickoff-2024/photos/15.jpg",
-          //     thumbnail: "/img/events/pm-kickoff-2024/photos-thumb/15.jpg",
-          //     w: 1600,
-          //     h: 1067,
-          //   },
-        ],
       },
-      //   {
-      //     title: "",
-      //     slug: "",
-      //     categories: [""],
-      //     description: ``,
-      //     coverImage: "",
-      //     openingHours: {
-      //       open: "",
-      //       close: "",
-      //     },
-      //     included: [""],
-      //     pricing: [
-      //       {
-      //         label: "",
-      //         value: "",
-      //         unit: "",
-      //       },
-      //     ],
-      //     bookingLink: [
-      //       {
-      //         label: "",
-      //         platformLogo: "",
-      //         to: "",
-      //       },
-      //     ],
-      //     pricingNotes: [""],
-      //     galleryPhotos: [""],
-      //   },
     ],
   }),
 
