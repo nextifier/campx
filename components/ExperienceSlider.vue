@@ -15,13 +15,16 @@
       <CarouselItem
         v-for="(item, index) in items"
         :key="index"
-        class="carousel-item basis-[280px] pl-2 lg:basis-[320px]"
+        class="carousel-item max-w-[400px] basis-[280px] pl-2 lg:basis-[320px] 2xl:basis-[20%]"
       >
         <ExperienceCard :item="item" />
       </CarouselItem>
     </CarouselContent>
 
-    <div class="container mt-6 flex justify-end gap-2">
+    <div
+      v-if="canScrollPrev || canScrollNext"
+      class="container mt-6 flex justify-end gap-2"
+    >
       <button
         @click="scrollPrev"
         :disabled="!canScrollPrev"

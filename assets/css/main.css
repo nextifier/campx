@@ -84,17 +84,17 @@
   --color-gray-900: oklch(0.216 0.006 56.043);
   --color-gray-950: oklch(0.147 0.004 49.25); */
 
-  --color-green-50: oklch(0.9794 0.0132 152.61);
-  --color-green-100: oklch(0.9551 0.0332 150.85);
-  --color-green-200: oklch(0.9108 0.0614 152.25);
-  --color-green-300: oklch(0.841 0.106 151.36);
-  --color-green-400: oklch(0.7512 0.1481 149.72);
-  --color-green-500: oklch(0.6631 0.161 148.34);
-  --color-green-600: oklch(0.6013 0.1503 148.14);
-  --color-green-700: oklch(0.4846 0.1144 148.6);
-  --color-green-800: oklch(0.4159 0.088 149.89);
-  --color-green-900: oklch(0.368 0.074 150.67);
-  --color-green-950: oklch(0.2483 0.0514 151.07);
+  --color-kv-green-50: oklch(0.9794 0.0132 152.61);
+  --color-kv-green-100: oklch(0.9551 0.0332 150.85);
+  --color-kv-green-200: oklch(0.9108 0.0614 152.25);
+  --color-kv-green-300: oklch(0.841 0.106 151.36);
+  --color-kv-green-400: oklch(0.7512 0.1481 149.72);
+  --color-kv-green-500: oklch(0.6631 0.161 148.34);
+  --color-kv-green-600: oklch(0.6013 0.1503 148.14);
+  --color-kv-green-700: oklch(0.4846 0.1144 148.6);
+  --color-kv-green-800: oklch(0.4159 0.088 149.89);
+  --color-kv-green-900: oklch(0.368 0.074 150.67);
+  --color-kv-green-950: oklch(0.2483 0.0514 151.07);
 
   --navbar-height-mobile: 3.5rem;
   --navbar-height-desktop: 3.5rem;
@@ -118,7 +118,7 @@
     --muted: var(--color-gray-100);
     --muted-foreground: var(--color-gray-600);
 
-    --accent: var(--color-green-600);
+    --accent: var(--color-kv-green-600);
     --accent-foreground: var(--color-white);
 
     --card: var(--color-white);
@@ -156,7 +156,7 @@
     --muted: var(--color-gray-900);
     --muted-foreground: var(--color-gray-400);
 
-    --accent: var(--color-green-600);
+    --accent: var(--color-kv-green-600);
     --accent-foreground: var(--color-white);
 
     --card: var(--color-gray-950);
@@ -586,7 +586,7 @@ img.pswp__img {
 }
 
 .gradient-accent {
-  @apply from-green-500 to-green-600;
+  @apply from-kv-green-500 to-kv-green-600;
 }
 
 .gradient-gold {

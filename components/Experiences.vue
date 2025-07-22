@@ -1,18 +1,36 @@
 <template>
-  <section id="experiences">
-    <div class="container">
-      <h1 class="section-title">Experiences</h1>
+  <section id="experiences" class="space-y-8 lg:space-y-16">
+    <div v-for="(category, index) in categories" :key="index">
+      <div class="container">
+        <h1 class="section-title">{{ category.title }}</h1>
+        <p v-if="category.description" class="section-description">
+          {{ category.description }}
+        </p>
+      </div>
+
+      <ExperienceSlider class="mt-4 lg:mt-6" :items="category.list" />
     </div>
-
-    <ExperienceSlider class="mt-4 lg:mt-6" :items="experiences" />
-
-    <!-- <pre
-      class="container overflow-scroll rounded-xl bg-gray-950 p-4 text-sm text-gray-300 sm:p-6"
-      >{{ experiences }}</pre
-    > -->
   </section>
 </template>
 
 <script setup>
-const experiences = useExperienceStore().list;
+const experiences = useExperienceStore();
+
+const categories = [
+  {
+    title: "Paket Personal",
+    description: "",
+    list: experiences.getItemsByCategories("Paket Personal"),
+  },
+  {
+    title: "Aktivitas",
+    description: "",
+    list: experiences.getItemsByCategories("Activity"),
+  },
+  {
+    title: "Paket Grup",
+    description: "",
+    list: experiences.getItemsByCategories("Paket Grup"),
+  },
+];
 </script>

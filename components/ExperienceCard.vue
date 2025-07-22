@@ -8,7 +8,7 @@
         class="pointer-events-none size-full object-cover select-none"
         width="1080"
         height="1350"
-        sizes="280px lg:320px"
+        sizes="280px lg:320px 2xl:400px"
         loading="lazy"
         format="webp"
       />

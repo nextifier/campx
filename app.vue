@@ -3,7 +3,7 @@
     <div class="font-sans text-sm antialiased sm:text-base">
       <NuxtLoadingIndicator color="#4eb362" />
       <NuxtLayout>
-        <NuxtPage :keepalive="{ include: '' }" />
+        <NuxtPage :keepalive="{ include: 'index' }" />
       </NuxtLayout>
       <Toaster class="pointer-events-auto" />
     </div>

@@ -81,8 +81,39 @@
             </div>
           </div>
 
-          <div class="flex flex-col items-start lg:col-span-5">
-            <h1 class="section-title">{{ experience.title }}</h1>
+          <div class="flex flex-col items-start lg:col-span-5 lg:pt-2">
+            <div
+              v-if="experience.status"
+              class="flex items-center gap-x-2 tracking-tight"
+            >
+              <span class="relative flex size-2">
+                <span
+                  class="animate-ping-slow absolute inline-flex size-full rounded-full opacity-75"
+                  :class="{
+                    'bg-green-500':
+                      experience.status.toLocaleLowerCase() == 'available',
+                    'bg-yellow-400':
+                      experience.status.toLocaleLowerCase() == 'coming soon',
+                    'bg-red-500':
+                      experience.status.toLocaleLowerCase() == 'sold out',
+                  }"
+                ></span>
+                <span
+                  class="relative inline-flex size-2 rounded-full"
+                  :class="{
+                    'bg-green-500':
+                      experience.status.toLocaleLowerCase() == 'available',
+                    'bg-yellow-400':
+                      experience.status.toLocaleLowerCase() == 'coming soon',
+                    'bg-red-500':
+                      experience.status.toLocaleLowerCase() == 'sold out',
+                  }"
+                ></span>
+              </span>
+              <span>{{ experience.status }}</span>
+            </div>
+
+            <h1 class="section-title mt-2">{{ experience.title }}</h1>
 
             <div
               v-if="experience.categories?.length"
@@ -270,14 +301,14 @@
             </div>
 
             <div class="mt-8 flex flex-col items-start">
-              <nuxt-link
-                to="/files/campx-sitemap.pdf"
+              <a
+                href="/files/campx-sitemap.pdf"
                 target="_blank"
                 class="bg-muted hover:bg-border text-primary flex items-center justify-center gap-x-2 rounded-xl px-5 py-3 tracking-tight"
               >
                 <Icon name="hugeicons:maps" class="size-5 shrink-0" />
                 <span>Denah CampX</span>
-              </nuxt-link>
+              </a>
             </div>
           </div>
         </div>

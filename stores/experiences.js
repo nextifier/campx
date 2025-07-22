@@ -277,6 +277,48 @@ export const useExperienceStore = defineStore("experiences", {
       },
 
       {
+        title: "Day Trip Group Package",
+        slug: "day-trip-group-package",
+        status: "Available",
+        categories: ["Paket Grup"],
+        shortDescription: "Paket day trip untuk grup minimal 20 orang.",
+        description: `
+        `,
+        coverImage:
+          "/img/experiences/day-trip-group-package/cover-day-trip-group-package.jpg",
+        included: ["Tiket masuk CampX Jatiluhur"],
+        excluded: [],
+        pricing: [
+          {
+            label: "Paket Grup Day Trip",
+            value: 150000,
+            unit: "orang",
+          },
+        ],
+      },
+
+      {
+        title: "Camping Group Package",
+        slug: "camping-group-package",
+        status: "Available",
+        categories: ["Paket Grup"],
+        shortDescription: "Paket camping untuk grup minimal 20 orang.",
+        description: `
+        `,
+        coverImage:
+          "/img/experiences/camping-group-package/cover-camping-group-package.jpg",
+        included: ["Tiket masuk CampX Jatiluhur"],
+        excluded: [],
+        pricing: [
+          {
+            label: "Paket Grup Camping 2 Days 1 Night",
+            value: 190000,
+            unit: "orang",
+          },
+        ],
+      },
+
+      {
         title: "Boyer Hill Summit Challenge Day Trip",
         slug: "boyer-hill-summit-challenge-day-trip",
         status: "Available",
@@ -392,7 +434,16 @@ export const useExperienceStore = defineStore("experiences", {
 
   getters: {
     getItemBySlug: (state) => (slug) => {
-      return state.list.find((item) => item.slug === slug);
+      return state.list.find((item) => item.slug === slug) || null;
+    },
+
+    getItemsByCategories: (state) => (category) => {
+      if (!category) {
+        return [];
+      }
+      return state.list.filter((item) => {
+        return item.categories && item.categories.includes(category);
+      });
     },
   },
 });
