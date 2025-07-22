@@ -6,5 +6,6 @@
   },
   "editor.quickSuggestions": {
     "strings": "on"
-  }
+  },
+  "scm.diffDecorationsGutterAction": "none"
 }

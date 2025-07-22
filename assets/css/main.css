@@ -577,8 +577,12 @@ img.pswp__img {
   @apply text-primary text-4xl !leading-[1.25] font-semibold tracking-[-0.06em] text-balance sm:text-5xl;
 }
 
+/* .section-subtitle {
+  @apply text-kv-green-600 dark:text-kv-green-400 font-semibold tracking-tighter text-balance;
+} */
+
 .section-subtitle {
-  @apply font-semibold tracking-tighter text-balance text-red-600 dark:text-red-400;
+  @apply bg-linear-to-r from-green-500 to-green-600 bg-clip-text font-semibold tracking-tighter text-balance text-transparent;
 }
 
 .section-description {

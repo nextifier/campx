@@ -9,6 +9,22 @@ export const useRootStore = defineStore("root", {
     instagram: "campx.id",
     facebook: "campx.id",
     tiktok: "campx.id",
+    socialProof: [
+      {
+        name: "Google",
+        rating: "4.6",
+        totalReviews: 195,
+        iconName: "devicon:google",
+        link: "https://maps.app.goo.gl/YsxHzezAu8Vpnrvx5",
+      },
+      {
+        name: "TikTok",
+        rating: "4.9",
+        totalReviews: 226,
+        iconName: "simple-icons:tiktok",
+        link: "https://www.tiktok.com/place/CAMPX-JATILUHUR-21568226297381925",
+      },
+    ],
     showModal: {
       sharePage: false,
       teaserVideo: false,

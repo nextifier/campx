@@ -6,15 +6,11 @@ export default defineNuxtConfig({
     componentInspector: false,
   },
 
-  // nitro: {
-  //   prerender: {
-  //     crawlLinks: true,
-  //     // ignore: ["/experiences/**"],
-  //   },
-  // },
-
-  routeRules: {
-    "/": { prerender: true },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      // ignore: ["/experiences/**"],
+    },
   },
 
   runtimeConfig: {
