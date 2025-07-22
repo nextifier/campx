@@ -107,7 +107,7 @@
             </video>
 
             <div
-              class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100"
+              class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity pointer-fine:group-hover:opacity-100"
               :class="{ '!opacity-100': !isPlaying }"
             >
               <div

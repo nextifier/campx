@@ -3,12 +3,12 @@
     <Hero />
     <Experiences />
     <LazyShortsSlider />
-    <!-- <TextFit
+    <TextFit
       tag="span"
-      text="Meet. Greet. Eat."
+      text="Camping. Glamping. Outing."
       :animated="true"
       text-classes="text-accent text-center font-extrabold tracking-tighter italic text-accent text-center font-extrabold tracking-tighter italic"
-    /> -->
+    />
   </div>
 </template>
 
