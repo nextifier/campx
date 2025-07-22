@@ -214,6 +214,33 @@
               </div>
             </div>
 
+            <div
+              v-if="experience.rundown?.length"
+              class="mt-8 flex flex-col gap-y-4"
+            >
+              <h6 class="font-semibold tracking-tight">Rundown</h6>
+
+              <div class="grid gap-y-8">
+                <div
+                  v-for="(rundown, index) in experience.rundown"
+                  :key="index"
+                  class="flex flex-col gap-y-2"
+                >
+                  <span class="font-semibold tracking-tight uppercase"
+                    >Day {{ rundown.day }}:</span
+                  >
+
+                  <ul
+                    class="list-outside list-disc space-y-2 pl-5 tracking-tight"
+                  >
+                    <li v-for="(item, index) in rundown.list" :key="index">
+                      {{ item }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
             <NuxtLink
               to="https://maps.app.goo.gl/1uhAWnpqFdcH6Au66"
               target="_blank"
