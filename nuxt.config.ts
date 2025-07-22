@@ -6,11 +6,11 @@ export default defineNuxtConfig({
     componentInspector: false,
   },
 
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-    },
-  },
+  // nitro: {
+  //   prerender: {
+  //     crawlLinks: true,
+  //   },
+  // },
 
   runtimeConfig: {
     public: {
@@ -98,7 +98,7 @@ export default defineNuxtConfig({
   },
 
   image: {
-    provider: "ipx",
+    provider: process.env.NODE_ENV === "production" ? "ipxStatic" : "ipx",
     quality: 85,
     format: ["webp"],
   },
