@@ -6,11 +6,15 @@ export default defineNuxtConfig({
     componentInspector: false,
   },
 
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      ignore: ["/experiences/**"],
-    },
+  // nitro: {
+  //   prerender: {
+  //     crawlLinks: true,
+  //     // ignore: ["/experiences/**"],
+  //   },
+  // },
+
+  routeRules: {
+    "/": { prerender: true },
   },
 
   runtimeConfig: {
@@ -99,8 +103,8 @@ export default defineNuxtConfig({
   },
 
   image: {
-    provider: process.env.NODE_ENV === "production" ? "ipxStatic" : "ipx",
-    // provider: "ipx",
+    // provider: process.env.NODE_ENV === "production" ? "ipxStatic" : "ipx",
+    provider: "ipx",
     quality: 85,
     format: ["webp"],
   },
