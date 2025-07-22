@@ -90,18 +90,45 @@
         <div
           class="relative order-2 h-full md:order-last md:col-span-2 xl:order-2 xl:col-span-1"
         >
-          <div class="bg-primary/5 relative aspect-9/16 size-full rounded-xl">
-            <button
-              class="absolute top-1/2 left-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/30 outline -outline-offset-6 outline-white transition hover:bg-white/60 active:scale-95"
+          <div
+            @click="togglePlayPause"
+            class="bg-primary/5 group relative aspect-9/16 size-full cursor-pointer overflow-hidden rounded-xl"
+          >
+            <video
+              ref="videoRef"
+              autoplay
+              loop
+              muted
+              playsinline
+              poster="/video/hero-video-poster.jpg"
+              class="size-full object-cover"
             >
-              <IconPlay class="size-5 text-white" />
-            </button>
+              <source src="/video/hero-video.mp4" type="video/mp4" />
+            </video>
+
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100"
+              :class="{ '!opacity-100': !isPlaying }"
+            >
+              <div
+                class="flex size-16 items-center justify-center rounded-full bg-white/30 text-white outline -outline-offset-6 outline-white transition hover:bg-white/60 active:scale-95"
+              >
+                <Icon
+                  :name="
+                    isPlaying
+                      ? 'material-symbols:pause-rounded'
+                      : 'material-symbols:play-arrow-rounded'
+                  "
+                  class="size-8"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="order-3 h-full md:order-2 md:pt-10 xl:order-last">
           <div class="relative ml-auto flex size-full flex-col gap-y-6">
-            <!-- <BannerHero class="relative z-20 w-full" /> -->
+            <BannerHero class="relative z-20 w-full" />
           </div>
         </div>
       </div>
@@ -111,4 +138,60 @@
 
 <script setup>
 const store = useRootStore();
+const videoRef = ref(null);
+
+const isPlaying = ref(true);
+const isManuallyPaused = ref(false);
+
+let observer = null;
+
+const togglePlayPause = () => {
+  const video = videoRef.value;
+  if (!video) return;
+
+  if (video.paused) {
+    video.play();
+    isPlaying.value = true;
+    isManuallyPaused.value = false;
+  } else {
+    video.pause();
+    isPlaying.value = false;
+    isManuallyPaused.value = true;
+  }
+};
+
+onMounted(() => {
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  };
+
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const video = videoRef.value;
+      if (!video) return;
+
+      if (entry.isIntersecting) {
+        if (!isManuallyPaused.value) {
+          video.play().catch((e) => console.error("Video play failed:", e));
+          isPlaying.value = true;
+        }
+      } else {
+        video.pause();
+        isPlaying.value = false;
+      }
+    });
+  }, options);
+
+  if (videoRef.value) {
+    observer.observe(videoRef.value);
+  }
+});
+
+onUnmounted(() => {
+  if (observer && videoRef.value) {
+    observer.unobserve(videoRef.value);
+  }
+});
 </script>

@@ -1,5 +1,6 @@
 <template>
   <Carousel
+    v-if="items?.length"
     @init-api="setApi"
     v-slot="{ scrollPrev, scrollNext, canScrollPrev, canScrollNext }"
     class="focusable relative overflow-hidden"
@@ -150,114 +151,21 @@ onUnmounted(() => {
 });
 
 const items = [
-  {
-    subHeadline: "Exhibitor Registration Is Open!",
-    content: `
-      <p>Showcase your brand to over 30,000+ buyers, distributors, and F&B professionals. This is your chance to shine in one of Southeast Asia's biggest food markets.</p>
-    `,
-    img: {
-      src: "/img/banners/cover-1.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: {
-      label: "Book Your Space Now",
-      link: "/book-space",
-      openInNewTab: false,
-    },
-  },
-  {
-    subHeadline: "Three Expos, One Ticket!",
-    content: `
-      <p>Your pass also gets you into the <strong>Franchise & License Expo (FLEI)</strong>. Discover even more business models and opportunities, all in one place.</p>
-    `,
-    img: {
-      src: "/img/banners/flei-poster.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: {
-      label: "Discover FLEI",
-      link: "https://franchise-expo.co.id",
-      openInNewTab: true,
-    },
-  },
-  {
-    subHeadline: "For the Love of Coffee",
-    content: `
-      <p>Your ticket includes full access to the <strong>Cafe & Brasserie Expo</strong>. Explore the latest in coffee, pastry, and cutting-edge cafe tech. A must-visit for cafe owners!</p>
-    `,
-    img: {
-      src: "/img/banners/cafe-poster.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: {
-      label: "Explore Cafe & Brasserie Expo",
-      link: "https://cafebrasserieexpo.com/",
-      openInNewTab: true,
-    },
-  },
-  {
-    subHeadline: "Put Your Brand in the Spotlight",
-    content: `
-      <p>Become a sponsor and connect with key decision-makers. Maximize your visibility at the industry's most anticipated event. Let's discuss a partnership.</p>
-    `,
-    img: {
-      src: "/img/banners/cover-2.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: {
-      label: "Become a Sponsor",
-      link: `https://api.whatsapp.com/send?phone=${store.whatsapp}&text=Hello, ${store.appName}! I'm interested in sponsoring More Food Expo.`,
-      openInNewTab: true,
-    },
-  },
-
-  {
-    subHeadline: "Did You Know?",
-    content: `
-      <p>Indonesia is the world's largest Halal food consumption market! It's a multi-billion dollar opportunity waiting for the right products. Are you ready?</p>
-    `,
-    img: {
-      src: "/img/banners/cover-3.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: null,
-  },
-  {
-    subHeadline: "Pro Tip for Visitors",
-    content: `
-      <p>Wear your most comfortable shoes! With over 20,000m² of space and 1,200+ exhibitors to explore, you'll be doing a lot of walking (and even more tasting!).</p>
-    `,
-    img: {
-      src: "/img/banners/cover-4.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: {
-      label: "See Who's Exhibiting",
-      link: "/brands",
-      openInNewTab: false,
-    },
-  },
-  {
-    subHeadline: "Early Bird Tickets Are Coming!",
-    content: `
-      <p>Want to get the best price for your ticket? Follow us on social media to be the first to know when our Early Bird promo launches. Don't miss out!</p>
-    `,
-    img: {
-      src: "/img/banners/cover-5.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: {
-      label: "Follow Us on Instagram",
-      link: "https://www.instagram.com/morefoodexpo.id",
-      openInNewTab: true,
-    },
-  },
+  // {
+  //   subHeadline: "Exhibitor Registration Is Open!",
+  //   content: `
+  //     <p>Showcase your brand to over 30,000+ buyers, distributors, and F&B professionals. This is your chance to shine in one of Southeast Asia's biggest food markets.</p>
+  //   `,
+  //   img: {
+  //     src: "/img/banners/cover-1.jpg",
+  //     w: 400,
+  //     h: 500,
+  //   },
+  //   cta: {
+  //     label: "Book Your Space Now",
+  //     link: "/book-space",
+  //     openInNewTab: false,
+  //   },
+  // },
 ];
 </script>
