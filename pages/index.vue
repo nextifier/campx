@@ -1,7 +1,8 @@
 <template>
   <div class="relative space-y-16 overflow-hidden pb-10 lg:space-y-24 lg:pb-16">
     <Hero />
-    <Experiences class="py-6 lg:py-10" />
+    <Experiences />
+    <LazyShortsSlider />
     <!-- <TextFit
       tag="span"
       text="Meet. Greet. Eat."

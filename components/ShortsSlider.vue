@@ -1,6 +1,6 @@
 <template>
   <Carousel
-    v-if="items?.length"
+    v-if="shorts?.length"
     v-slot="{ scrollPrev, scrollNext, canScrollPrev, canScrollNext }"
     class="focusable relative overflow-hidden"
     :opts="{
@@ -13,11 +13,51 @@
   >
     <CarouselContent class="carousel-mx -ml-2 *:select-none">
       <CarouselItem
-        v-for="(item, index) in items"
+        v-for="(short, index) in shorts"
         :key="index"
-        class="carousel-item max-w-[400px] basis-[280px] pl-2 lg:basis-[320px] 2xl:basis-[20%]"
+        class="carousel-item basis-[160px] pl-2 lg:basis-[240px]"
       >
-        <ExperienceCard :item="item" />
+        <button
+          class="group flex w-full flex-col gap-y-2 text-left transition active:scale-95"
+          @click="
+            dialogs.updateDialog('embed-media', true, {
+              src: `https://www.youtube.com/embed/${short.video_id}`,
+              width: 1080,
+              height: 1920,
+              caption: short.caption,
+            })
+          "
+        >
+          <div
+            class="relative isolate aspect-[9/16] w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900"
+          >
+            <NuxtImg
+              v-if="short.thumb"
+              :src="short.thumb"
+              :alt="short.caption ?? ''"
+              class="relative z-10 h-full w-full object-cover"
+              sizes="240px lg:360px"
+              format="webp"
+              loading="lazy"
+            />
+
+            <div
+              class="absolute inset-0 z-20 hidden items-center justify-center bg-black/60 group-hover:flex"
+            >
+              <Icon
+                name="material-symbols:play-arrow-rounded"
+                class="size-12 text-white"
+              />
+            </div>
+          </div>
+
+          <p
+            v-if="short.caption"
+            class="text-sm font-medium tracking-tight text-black sm:text-base dark:text-white"
+          >
+            {{ short.caption }}
+          </p>
+        </button>
       </CarouselItem>
     </CarouselContent>
 
@@ -54,7 +94,6 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  items: Array,
-});
+const dialogs = useDialogStore();
+const shorts = useShortStore().list;
 </script>
