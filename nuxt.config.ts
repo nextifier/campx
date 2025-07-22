@@ -98,7 +98,7 @@ export default defineNuxtConfig({
   },
 
   image: {
-    provider: process.env.NODE_ENV === "production" ? "ipxStatic" : "ipx",
+    provider: "ipx",
     quality: 85,
     format: ["webp"],
   },

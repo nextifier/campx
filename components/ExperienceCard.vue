@@ -5,7 +5,7 @@
         v-if="item.coverImage"
         :src="item.coverImage"
         :alt="item.title ?? ''"
-        class="pointer-events-none size-full object-cover select-none"
+        class="size-full object-cover select-none"
         width="1080"
         height="1350"
         sizes="280px lg:320px 2xl:400px"
