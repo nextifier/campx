@@ -19,13 +19,6 @@
         {{ item.title }}
       </div>
 
-      <div
-        v-if="item.categories?.length"
-        class="no-scrollbar line-clamp-1 overflow-x-auto text-sm tracking-tight"
-      >
-        {{ item.categories.join(", ") }}
-      </div>
-
       <div v-if="item.shortDescription" class="text-sm tracking-tight">
         <span>{{ item.shortDescription }}</span>
       </div>

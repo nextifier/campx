@@ -264,7 +264,7 @@ export const useExperienceStore = defineStore("experiences", {
         coverImage: "/img/experiences/boat/cover-boat.jpg",
         included: [
           "Tiket masuk CampX Jatiluhur",
-          "Bermain perahu mengelilingi waduk Jatiluhur..",
+          "Bermain perahu mengelilingi waduk Jatiluhur",
         ],
         excluded: [],
         pricing: [
@@ -272,6 +272,118 @@ export const useExperienceStore = defineStore("experiences", {
             label: "Senin-Minggu",
             value: 350000,
             unit: "perahu",
+          },
+        ],
+      },
+
+      {
+        title: "Boyer Hill Summit Challenge Day Trip",
+        slug: "boyer-hill-summit-challenge-day-trip",
+        status: "Available",
+        categories: ["Paket Grup"],
+        shortDescription:
+          "Paket outing untuk grup minimal 20 orang dengan aktivitas menarik yang membuat timmu lebih dekat.",
+        description: `
+            <p>Paket group outing dengan aktivitas mendaki Tebing Boyer, dengan pemandangan sawah, danau, bukit.</p>
+        `,
+        coverImage:
+          "/img/experiences/boyer-hill-day-trip/cover-boyer-hill-day-trip.jpg",
+        included: [
+          "Tiket masuk CampX Jatiluhur",
+          "Hiking ke Tebing Boyer",
+          "2x snack / 1x makan siang",
+          "Team-building & fun games",
+          "Fasilitator profesional",
+          "Parkir",
+          "Aula",
+        ],
+        excluded: [],
+        rundown: [
+          {
+            day: 1,
+            list: [
+              "Kedatangan dan registrasi di CampX",
+              "Ice-breaking dan pembagian kelompok",
+              "Perjalanan ke Tebing Boyer (naik boat)",
+              "Briefing dan doa bersama",
+              "Hiking ke Tebing Boyer",
+              "Kembali ke CampX (naik boat)",
+              "Makan siang",
+              "Ice-breaking & sharing pengalaman hiking",
+              "Kegiatan selesai",
+            ],
+          },
+        ],
+        pricing: [
+          {
+            label: "Paket Grup Outing - Boyer Hill Summit Challenge - Day Trip",
+            value: 549000,
+            unit: "orang",
+          },
+        ],
+      },
+
+      {
+        title: "Boyer Hill Summit Challenge 2 Days 1 Night",
+        slug: "boyer-hill-summit-challenge-camping",
+        status: "Available",
+        categories: ["Paket Grup"],
+        shortDescription:
+          "Paket outing untuk grup minimal 20 orang dengan aktivitas menarik yang membuat timmu lebih dekat.",
+        description: `
+            <p>Paket group outing dengan aktivitas mendaki Tebing Boyer, dengan pemandangan sawah, danau, bukit. Lalu menginap di CampX, di tenda, dengan pemandangan danau di depan mata.</p>
+        `,
+        coverImage:
+          "/img/experiences/boyer-hill-camping/cover-boyer-hill-camping.jpg",
+        included: [
+          "Tiket masuk CampX Jatiluhur",
+          "Hiking ke Tebing Boyer",
+          "Tenda kapasitas 3 orang",
+          "Matras",
+          "Lampu tenda",
+          "Breakfast",
+          "Coffee-break",
+          "Dinner buffet",
+          "Bonfire malam",
+          "Team-building & fun games",
+          "Fasilitator profesional",
+          "Parkir",
+          "Aula",
+        ],
+        excluded: [],
+        rundown: [
+          {
+            day: 1,
+            list: [
+              "Kedatangan dan registrasi di CampX",
+              "Ice-breaking dan pembagian kelompok",
+              "Perjalanan ke Tebing Boyer (naik boat)",
+              "Briefing dan doa bersama",
+              "Hiking ke Tebing Boyer",
+              "Kembali ke CampX (naik boat)",
+              "Makan siang",
+              "Check-in tenda & free time",
+              "Makan malam",
+              "Bonfire & free time",
+              "Istirahat",
+            ],
+          },
+          {
+            day: 2,
+            list: [
+              "Sarapan",
+              "Ice-breaking & fun games",
+              "Free time & persiapan pulang",
+              "Kegiatan selesai",
+            ],
+          },
+        ],
+        pricing: [
+          {
+            label:
+              "Paket Grup Outing - Boyer Hill Summit Challenge - 2 Days 1 Night",
+            value: 749000,
+            unit: "orang",
           },
         ],
       },
