@@ -2,7 +2,8 @@
   <div class="relative space-y-16 overflow-hidden pb-10 lg:space-y-24 lg:pb-16">
     <Hero />
     <Experiences />
-    <LazyShortsSlider />
+    <ShortsSlider />
+    <FAQ />
     <TextFit
       tag="span"
       text="Camping. Glamping. Outing."

@@ -2,69 +2,49 @@ export const useFAQStore = defineStore("faq", {
   state: () => ({
     list: [
       {
-        q: "What is More Food Expo Indonesia?",
+        q: "Di mana lokasi persisnya CampX?",
         a: `
-          <p>More Food Expo Indonesia is a specialized trade exhibition for the entire food industry chain. It covers everything from food materials and processing machinery to finished food and beverage products.</p>
-          <p>The expo has a strong focus on connecting global enterprises with Indonesia's vast Halal market, serving as a key platform for business and networking in the F&B sector.</p>
+          <p>CampX berada di <strong>Jl. Waduk Jatiluhur, Jatimekar, Kec. Jatiluhur, Kabupaten Purwakarta, Jawa Barat.</strong></p>
+          <p>Lokasi kami persis di tepi danau, jadi pemandangannya dijamin keren! Untuk rute terbaik, kamu bisa langsung <a href="https://maps.app.goo.gl/YsxHzezAu8Vpnrvx5" target="_blank">klik link Google Maps di sini</a>.</p>
         `,
       },
       {
-        q: "When and where will the event be held?",
+        q: "Bagaimana cara reservasi atau booking di CampX?",
         a: `
-          <p>The event will take place from 7-10 May 2026 at the Jakarta International Expo (JIEXPO), Kemayoran.</p>
-          <p>We will be occupying Halls B1, B2, B3, C1, C2, and C3.</p>
+          <p>Semua reservasi untuk menginap (camping/kabin) dilakukan secara online melalui <strong>WhatsApp resmi kami</strong> untuk memastikan ketersediaan tempat. Kamu bisa klik tombol 'Pesan Sekarang' di paket yang kamu inginkan.</p>
         `,
       },
       {
-        q: "What are the opening hours?",
+        q: "Fasilitas umum apa saja yang tersedia?",
         a: `
-          <p>The exhibition is open for visitors from 10:00 AM to 8:00 PM every day from 7-10 May 2026.</p>
+          <p>Kami menyediakan fasilitas lengkap untuk kenyamananmu, termasuk toilet bersih, musholla, area parkir yang luas, colokan listrik & keran air di setiap kavling, serta beberapa warung untuk kebutuhan jajan dan makanmu.</p>
         `,
       },
       {
-        q: "Who should visit this expo?",
+        q: "Jika saya belum punya alat, apakah bisa sewa peralatan camping?",
         a: `
-          <p>More Food Expo is a B2B (Business-to-Business) event, ideal for professionals in the food and beverage industry.</p>
-          <p>This includes importers, distributors, restaurant and cafe owners, hotel managers, supermarket buyers, e-commerce merchants, and anyone looking to source new F&B products and suppliers.</p>
+          <p>Tentu saja! Kalau kamu tidak punya atau malas bawa peralatan sendiri, kami menyediakan sewa tenda, sleeping bag, matras, dan peralatan lainnya dengan biaya terpisah.</p>
+          <p>Untuk yang paling praktis, kami sarankan untuk langsung mengambil paket 'Camping Anti Ribet' karena semuanya sudah kami siapkan untukmu.</p>
         `,
       },
       {
-        q: "How do I get a ticket to visit?",
+        q: "Jam check-in dan check-out untuk tamu menginap jam berapa?",
         a: `
-          <p>You can register for your visitor pass through the 'Ticket' page on our website. We encourage pre-registration online to ensure a smooth entry process.</p>
+          <p>Waktu <strong>check-in</strong> dimulai dari pukul <strong>14:00</strong> hingga <strong>17:00</strong>.</p>
+          <p>Sementara waktu <strong>check-out</strong> adalah maksimal pukul <strong>12:00</strong> di hari berikutnya. Ini memberimu banyak waktu untuk menikmati pagi di tepi danau!</p>
         `,
       },
       {
-        q: "I want to exhibit. How can I book a space?",
+        q: "Apakah CampX cocok untuk acara grup seperti outing kantor?",
         a: `
-          <p>We'd love to have you! You can find all the details and the application form on our 'Book Space' page.</p>
-          <p>For direct inquiries, please contact our team. For local exhibitors: <strong>morefood@panoramamedia.co.id</strong>. For international exhibitors: <strong>outbound@huamogroup.com</strong>.</p>
+          <p>Sangat cocok! CampX adalah tempat yang ideal untuk berbagai acara grup, mulai dari <strong>outing kantor, team building, gathering komunitas, hingga wedding</strong>.</p>
+          <p>Kami punya paket grup yang bisa disesuaikan dengan kebutuhan acaramu. Silakan hubungi kami melalui halaman kontak untuk diskusi dan mendapatkan penawaran terbaik.</p>
         `,
       },
       {
-        q: "What kind of programs or activities are there?",
+        q: "Apakah ada batasan jam malam di CampX?",
         a: `
-          <p>The expo is more than just an exhibition. We have a range of activities including:</p>
-          <ul>
-            <li><strong>Business Matching:</strong> Pre-arranged meetings with potential partners.</li>
-            <li><strong>Conferences:</strong> Talks from industry leaders on the latest trends.</li>
-            <li><strong>Chef Tasting:</strong> Live cooking demonstrations of new and innovative products.</li>
-            <li><strong>Food KOL Live Stream:</strong> Watch popular food influencers broadcast live from the event.</li>
-          </ul>
-          <p>Please check our 'Programs' and 'Rundown' pages for the full schedule.</p>
-        `,
-      },
-      {
-        q: "Are there other events happening at the same time?",
-        a: `
-          <p>Yes! Your ticket to More Food Expo also gives you access to two other co-located events: the <strong>Franchise & License Expo Indonesia (FLEI)</strong> and the <strong>Cafe Brasserie Expo 2026</strong>.</p>
-          <p>This gives you more opportunities to explore and network across different sectors of the industry in one visit.</p>
-        `,
-      },
-      {
-        q: "Is this event open to the public or for trade only?",
-        a: `
-          <p>More Food Expo is primarily a trade exhibition for business professionals. However, we welcome anyone with a strong interest in the F&B industry to attend. Business attire is recommended.</p>
+          <p>Ya, kami memberlakukan <strong>jam tenang mulai pukul 22:00</strong>. Pada jam ini, kami meminta semua pengunjung untuk mengecilkan volume suara, meredupkan lampu, dan menghormati tetangga sekitar agar semua bisa beristirahat dengan nyaman.</p>
         `,
       },
     ],

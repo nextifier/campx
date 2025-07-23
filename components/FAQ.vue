@@ -1,8 +1,6 @@
 <template>
   <div class="container flex flex-col items-center lg:max-w-(--breakpoint-sm)">
-    <h1 class="section-title text-center font-semibold">
-      Frequently Asked Questions
-    </h1>
+    <h1 class="section-title text-center">Mungkin Kamu Nanya Ini?</h1>
 
     <div v-if="faq?.list?.length" class="mt-6 flex w-full flex-col gap-y-3">
       <Accordion type="single" collapsible>
@@ -27,17 +25,17 @@
 
     <div class="mt-10 lg:mt-16">
       <h6
-        class="text-center text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl dark:text-white"
+        class="text-primary text-center text-3xl !leading-[1.3] font-semibold tracking-tighter sm:text-5xl"
       >
-        Have any questions? Just send it to us!
+        Punya pertanyaan lain? Hubungi kami aja!
       </h6>
       <div class="mt-4 flex items-center justify-center lg:mt-6">
         <nuxt-link
           to="/contact"
-          class="flex items-center gap-1.5 rounded-full bg-black p-4 font-medium tracking-tight text-white transition duration-200 hover:bg-blue-600 hover:text-white active:scale-95 dark:bg-white dark:text-black dark:hover:bg-blue-600 dark:hover:text-white"
+          class="bg-primary text-primary-foreground hover:bg-primary/80 flex items-center justify-center rounded-xl px-4 py-3 font-semibold tracking-tight transition active:scale-95"
+          v-ripple
         >
           <span>Contact us</span>
-          <IconArrowUpRight class="h-4" />
         </nuxt-link>
       </div>
     </div>
