@@ -4,6 +4,7 @@
     <Experiences />
     <ShortsSlider />
     <FAQ />
+    <Cta />
     <TextFit
       tag="span"
       text="Camping. Glamping. Outing."

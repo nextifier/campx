@@ -23,6 +23,10 @@ export function useCurrencyFormat() {
       return "";
     }
 
+    if (isNaN(value)) {
+      return value;
+    }
+
     // Format nilai dan hapus spasi antara "Rp" dan angka.
     return formatter.format(value).replace(/\s/g, "");
   };

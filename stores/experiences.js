@@ -148,12 +148,14 @@ export const useExperienceStore = defineStore("experiences", {
         pricing: [
           {
             label: "Weekday (Senin-Kamis)",
-            value: 200000,
+            // value: 200000,
+            value: "TBA",
             unit: "orang/malam",
           },
           {
             label: "Weekend (Jumat-Minggu)",
-            value: 250000,
+            // value: 250000,
+            value: "TBA",
             unit: "orang/malam",
           },
         ],
