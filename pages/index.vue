@@ -36,13 +36,13 @@ useSeoMeta({
   twitterCard: "summary_large_image",
 });
 
-defineOgImageComponent("Page", {
-  headline: store.appName,
-  title: title,
-  description: description,
-});
-
-// defineOgImage({
-//   url: "/og/og-home.jpg",
+// defineOgImageComponent("Page", {
+//   headline: store.appName,
+//   title: title,
+//   description: description,
 // });
+
+defineOgImage({
+  url: "/og/og-home.jpg",
+});
 </script>
