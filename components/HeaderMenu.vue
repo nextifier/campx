@@ -189,11 +189,11 @@ const menuSmall = ref([
         to: `https://www.instagram.com/${store.instagram}`,
         openInNewTab: true,
       },
-      {
-        label: "Facebook",
-        to: `https://www.facebook.com/${store.facebook}`,
-        openInNewTab: true,
-      },
+      // {
+      //   label: "Facebook",
+      //   to: `https://www.facebook.com/${store.facebook}`,
+      //   openInNewTab: true,
+      // },
       {
         label: "TikTok",
         to: `https://www.tiktok.com/@${store.tiktok}`,

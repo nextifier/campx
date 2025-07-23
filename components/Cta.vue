@@ -21,39 +21,83 @@
             <div
               class="bg-muted absolute inset-x-0 bottom-0 z-0 h-[90%] rounded-4xl"
             ></div>
+
+            <div class="xs:p-4 absolute inset-x-0 bottom-0 z-30 flex">
+              <div
+                v-if="store.socialProof?.length"
+                class="xs:w-auto bg-background/50 border-border xs:p-3 grid w-full grid-cols-2 gap-x-3 rounded-3xl border p-2 backdrop-blur-xl"
+              >
+                <NuxtLink
+                  v-for="(item, index) in store.socialProof"
+                  :key="index"
+                  :to="item.link"
+                  target="_blank"
+                  class="hover:bg-primary/5 flex flex-col gap-y-1 rounded-xl px-2 py-2 transition active:scale-95 sm:px-4"
+                >
+                  <div class="flex items-center gap-x-2">
+                    <Icon
+                      :name="item.iconName"
+                      class="text-primary size-4 shrink-0"
+                    />
+                    <IconStar class="text-primary size-4 shrink-0" />
+
+                    <span
+                      class="text-primary items-center text-xs tracking-tight"
+                      ><span class="text-primary text-xl font-semibold">{{
+                        item.rating
+                      }}</span
+                      >/5</span
+                    >
+                  </div>
+
+                  <div class="inline-flex items-center gap-x-1">
+                    <span class="text-primary xs:text-sm text-xs tracking-tight"
+                      >{{ item.totalReviews }} reviews on {{ item.name }}</span
+                    >
+                  </div>
+                </NuxtLink>
+              </div>
+            </div>
           </div>
 
-          <div
-            class="flex flex-col items-center px-4 text-center sm:px-0 lg:items-start lg:text-left"
-          >
+          <div class="flex flex-col items-start text-left">
             <h2
-              class="relative isolate text-[clamp(3rem,12vw,10rem)] !leading-[1] font-extrabold tracking-tighter text-balance lg:text-[clamp(4rem,16vw,9rem)]"
+              class="text-primary relative isolate text-[clamp(3rem,15vw,7rem)] !leading-[1.1] font-extrabold tracking-tighter text-balance"
             >
               <SplitText
                 splitType="words"
                 ease="power4.out"
-                :delay="150"
-                :duration="2"
+                :delay="100"
+                :duration="1.5"
                 :text="`
-                <span class='text-outline'>Stop Scrolling.</span>
-                <span class='text-accent'>Start Tasting.</span>
+                <span>Beneran seru gak sih di CampX?</span>
               `"
                 class="pb-2 sm:pb-5"
               />
             </h2>
             <p
-              class="text-primary/70 mt-1 max-w-2xl text-base font-medium tracking-tight text-balance sm:text-lg"
+              class="text-primary/70 mt-1 max-w-2xl text-base font-medium tracking-tight text-pretty sm:text-lg"
             >
-              Your screen can't capture the taste of opportunity. Secure your
-              ticket and get ready to experience the future of the F&B industry.
+              Ratusan tamu sudah berbagi pengalaman seru mereka di CampX. Lihat
+              langsung review dan rating CampX di Google dan TikTok biar makin
+              yakin!
             </p>
 
-            <nuxt-link
-              to="/"
-              class="bg-primary text-primary-foreground hover:bg-primary/80 mt-6 flex items-center justify-center rounded-2xl px-6 py-4 text-base font-semibold tracking-tight transition active:scale-95"
-              v-ripple
-              >Get my ticket</nuxt-link
+            <div
+              v-if="store.socialProof?.length"
+              class="mt-4 flex items-center gap-2 lg:mt-6"
             >
+              <NuxtLink
+                v-for="(item, index) in store.socialProof"
+                :key="index"
+                :to="item.link"
+                target="_blank"
+                class="bg-muted hover:bg-border text-primary flex items-start gap-x-1.5 rounded-lg px-3 py-3 font-semibold tracking-tight transition active:scale-95 sm:px-5"
+              >
+                <span>{{ item.ctaLabel }}</span>
+                <Icon :name="item.iconName" class="h-[1lh] shrink-0" />
+              </NuxtLink>
+            </div>
           </div>
         </div>
 
@@ -101,10 +145,7 @@
               {{ banner.title }}
             </h6>
 
-            <p
-              v-if="banner.description"
-              class="text-primary/70 text-sm tracking-tight"
-            >
+            <p v-if="banner.description" class="text-sm tracking-tight">
               {{ banner.description }}
             </p>
 
@@ -126,38 +167,39 @@
 </template>
 
 <script setup>
+const store = useRootStore();
 const dialogs = useDialogStore();
 
 const banners = [
   {
-    image: "/img/banners/flei-poster.jpg",
-    subtitle: "Franchise & License Expo Indonesia",
-    title: "Ready to Grow Your Brand?",
+    image: "/img/banners/panorama-events-poster.jpg",
+    subtitle: "Panorama Events",
+    title: "Outing Impian, Tanpa Ribet.",
     description:
-      "Your ticket also unlocks access to Indonesia's premier franchise event. Discover proven business models and find your path to expansion.",
+      "Mau outing tapi pusing ngurusinnya? Serahin aja ke ahlinya! Panorama Events siap atur semua kebutuhan acaramu dari A-Z. Kamu & tim tinggal nikmatin keseruannya.",
+    accentColor: {
+      light: "#ea580c",
+      dark: "#f97316",
+    },
+    cta: {
+      label: "Konsultasi Outing Gratis",
+      link: "https://panoramaevents.id",
+      openInNewTab: true,
+    },
+  },
+  {
+    image: "/img/banners/indooutingexpo-2025-poster.jpg",
+    subtitle: "Indonesia Outing Expo 2025",
+    title: "Berburu Promo & Gear Impianmu.",
+    description:
+      "Siap-siap! Pameran outing terbesar se-Indonesia akan hadir di JICC Senayan, 14-16 Nov 2025. Dapatkan diskon gila-gilaan untuk alat camping & paket liburan. Jangan lupa mampir ke booth CampX ya!",
     accentColor: {
       light: "#0891b2",
       dark: "#06b6d4",
     },
     cta: {
-      label: "Explore FLEI",
-      link: "https://franchise-expo.co.id",
-      openInNewTab: true,
-    },
-  },
-  {
-    image: "/img/banners/cafe-poster.jpg",
-    subtitle: "Cafe & Brasserie Expo Indonesia",
-    title: "For the Coffee Obsessed.",
-    description:
-      "Step into the world of coffee, pastries, and cafe culture. Your pass includes full entry to this specialized expo, happening right alongside More Food Expo.",
-    accentColor: {
-      light: "#795548",
-      dark: "#a1887f",
-    },
-    cta: {
-      label: "Explore Cafe & Brasserie Expo",
-      link: "https://cafebrasserieexpo.com/", // Corrected link based on previous context
+      label: "Info Lengkap Expo",
+      link: "https://indooutingexpo.co.id",
       openInNewTab: true,
     },
   },

@@ -41,6 +41,8 @@
             >Reservasi Camping</nuxt-link
           > -->
 
+          <!-- <SocialMedia /> -->
+
           <Tippy>
             <ColorModeToggle />
             <template #content>
@@ -67,6 +69,7 @@
 </template>
 
 <script setup>
+const store = useRootStore();
 const route = useRoute();
 const { metaSymbol } = useShortcuts();
 

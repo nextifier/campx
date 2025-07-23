@@ -4,6 +4,7 @@
       v-if="store.instagram"
       :to="`https://www.instagram.com/${store.instagram}`"
       iconName="hugeicons:instagram"
+      :iconClasses="iconClasses"
       label="Instagram"
     />
 
@@ -11,6 +12,7 @@
       v-if="store.facebook"
       :to="`https://www.facebook.com/${store.facebook}`"
       iconName="hugeicons:facebook-01"
+      :iconClasses="iconClasses"
       label="Facebook"
     />
 
@@ -18,6 +20,7 @@
       v-if="store.tiktok"
       :to="`https://www.tiktok.com/@${store.tiktok}`"
       iconName="hugeicons:tiktok"
+      :iconClasses="iconClasses"
       label="TikTok"
     />
 
@@ -25,6 +28,7 @@
       v-if="store.linkedin"
       :to="`https://www.linkedin.com/company/${store.linkedin}`"
       iconName="hugeicons:linkedin-01"
+      :iconClasses="iconClasses"
       label="LinkedIn"
     />
 
@@ -32,6 +36,7 @@
       v-if="store.youtube"
       :to="`https://www.youtube.com/@${store.youtube}`"
       iconName="hugeicons:youtube"
+      :iconClasses="iconClasses"
       label="YouTube"
     />
   </div>
@@ -39,4 +44,9 @@
 
 <script setup>
 const store = new useRootStore();
+const props = defineProps({
+  iconClasses: {
+    type: String,
+  },
+});
 </script>

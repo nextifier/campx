@@ -7,7 +7,7 @@ export const useRootStore = defineStore("root", {
     whatsappText: `Hai, CampX!`,
     website: "campx.id",
     instagram: "campx.id",
-    facebook: "campx.id",
+    // facebook: "campx.id",
     tiktok: "campx.id",
     youtube: "campx-jatiluhur",
     socialProof: [
@@ -17,6 +17,7 @@ export const useRootStore = defineStore("root", {
         totalReviews: 195,
         iconName: "devicon:google",
         link: "https://maps.app.goo.gl/YsxHzezAu8Vpnrvx5",
+        ctaLabel: "Cek Google Reviews",
       },
       {
         name: "TikTok",
@@ -24,6 +25,7 @@ export const useRootStore = defineStore("root", {
         totalReviews: 226,
         iconName: "simple-icons:tiktok",
         link: "https://www.tiktok.com/place/CAMPX-JATILUHUR-21568226297381925",
+        ctaLabel: "Lihat Konten TikTok",
       },
     ],
     showModal: {
