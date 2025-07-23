@@ -441,6 +441,10 @@
     @apply bg-background text-foreground;
   }
 
+  section {
+    @apply scroll-mt-[var(--navbar-height-mobile)] lg:scroll-mt-[var(--navbar-height-desktop)];
+  }
+
   *::selection {
     @apply bg-accent text-accent-foreground;
   }

@@ -54,7 +54,7 @@
         </nuxt-link>
       </div>
 
-      <SocialMedia class="mt-10" iconClasses="size-6" />
+      <SocialMedia class="mt-10 gap-x-6" iconClasses="size-6" />
 
       <div
         class="mt-8 flex items-center justify-center gap-x-2 text-xs sm:text-sm"

@@ -76,7 +76,7 @@
               />
             </h2>
             <p
-              class="text-primary/70 mt-1 max-w-2xl text-base font-medium tracking-tight text-pretty sm:text-lg"
+              class="text-primary/80 mt-1 max-w-2xl text-base tracking-tight text-pretty sm:text-lg"
             >
               Ratusan tamu sudah berbagi pengalaman seru mereka di CampX. Lihat
               langsung review dan rating CampX di Google dan TikTok biar makin
@@ -85,14 +85,14 @@
 
             <div
               v-if="store.socialProof?.length"
-              class="mt-4 flex items-center gap-2 lg:mt-6"
+              class="mt-4 flex w-full items-center gap-2 lg:mt-6"
             >
               <NuxtLink
                 v-for="(item, index) in store.socialProof"
                 :key="index"
                 :to="item.link"
                 target="_blank"
-                class="bg-muted hover:bg-border text-primary flex items-start gap-x-1.5 rounded-lg px-3 py-3 font-semibold tracking-tight transition active:scale-95 sm:px-5"
+                class="bg-muted hover:bg-border text-primary flex grow items-center justify-center gap-x-1.5 rounded-lg px-3 py-3 font-semibold tracking-tight transition active:scale-95 sm:px-5"
               >
                 <span>{{ item.ctaLabel }}</span>
                 <Icon :name="item.iconName" class="h-[1lh] shrink-0" />
@@ -153,7 +153,7 @@
               v-if="banner.cta"
               :to="banner.cta.link"
               :target="banner.cta.openInNewTab ? '_blank' : ''"
-              class="bg-border/60 hover:bg-border/80 mt-1 flex items-center justify-center gap-x-1 rounded-lg py-2 pr-2 pl-3 text-sm font-semibold tracking-tight transition active:scale-95"
+              class="bg-border/60 text-primary hover:bg-border/80 mt-1 flex items-center justify-center gap-x-1 rounded-lg py-2 pr-2 pl-3 text-sm font-semibold tracking-tight transition active:scale-95"
               v-ripple
             >
               <span>{{ banner.cta.label }}</span>
