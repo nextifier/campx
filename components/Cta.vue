@@ -85,14 +85,14 @@
 
             <div
               v-if="store.socialProof?.length"
-              class="mt-4 flex w-full items-center gap-2 lg:mt-6"
+              class="xs:w-auto mt-4 flex w-full items-center gap-2 lg:mt-6"
             >
               <NuxtLink
                 v-for="(item, index) in store.socialProof"
                 :key="index"
                 :to="item.link"
                 target="_blank"
-                class="bg-muted hover:bg-border text-primary flex grow items-center justify-center gap-x-1.5 rounded-lg px-3 py-3 font-semibold tracking-tight transition active:scale-95 sm:px-5"
+                class="bg-muted hover:bg-border text-primary xs:grow-0 flex grow items-center justify-center gap-x-1.5 rounded-lg px-3 py-3 font-semibold tracking-tight transition active:scale-95 sm:px-5"
               >
                 <span>{{ item.ctaLabel }}</span>
                 <Icon :name="item.iconName" class="h-[1lh] shrink-0" />
