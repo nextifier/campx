@@ -90,7 +90,7 @@
         </div>
 
         <div
-          class="relative order-2 h-full md:order-last md:col-span-2 xl:order-2 xl:col-span-1"
+          class="relative order-2 h-full md:order-last md:col-span-2 md:max-w-md xl:order-2 xl:col-span-1 xl:max-w-none"
         >
           <div
             @click="togglePlayPause"
@@ -130,7 +130,30 @@
 
         <div class="order-3 h-full md:order-2 md:pt-10 xl:order-last">
           <div class="relative ml-auto flex size-full flex-col gap-y-6">
-            <BannerHero class="relative z-20 w-full" />
+            <BannerHero class="relative z-20 w-full shrink-0" />
+
+            <div
+              class="bg-muted relative isolate size-full grow overflow-hidden rounded-2xl"
+            >
+              <NuxtImg
+                src="/img/hero-img.jpeg"
+                alt=""
+                class="relative z-10 size-full object-cover"
+                width="400"
+                height="600"
+                sizes="100vw lg:600px"
+                format="webp"
+              />
+
+              <div
+                class="absolute inset-x-0 bottom-0 z-20 flex h-1/2 flex-col justify-end bg-linear-to-t from-black/60 to-transparent px-6 pb-10"
+              >
+                <span
+                  class="text-4xl !leading-[1.2] font-semibold tracking-tighter text-white text-shadow-md sm:text-5xl"
+                  >Lupain To-Do List, Ingat Lagi Caranya Bengong.</span
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>

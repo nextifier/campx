@@ -51,7 +51,7 @@
             </template>
           </Tippy>
 
-          <Tippy>
+          <!-- <Tippy>
             <HeaderMenu />
             <template #content>
               <span class="inline-flex items-center gap-x-1.5 tracking-tight">
@@ -59,7 +59,7 @@
                 <kbd class="keyboard-symbol">{{ metaSymbol }} M</kbd>
               </span>
             </template>
-          </Tippy>
+          </Tippy> -->
         </div>
       </div>
     </nav>
