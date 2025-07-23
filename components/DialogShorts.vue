@@ -5,35 +5,19 @@
         class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/80 backdrop-blur-md"
       />
       <DialogContent
-        class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-1/2 left-1/2 z-50 flex h-full w-full -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-y-2.5 px-2 py-2 duration-200"
-        :class="
-          dialogData.width > dialogData.height
-            ? 'max-w-(--breakpoint-lg)'
-            : 'max-w-max'
-        "
+        class="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 xs:h-full xs:w-auto fixed top-1/2 left-1/2 z-50 flex aspect-9/16 h-auto max-h-[calc(100%-4rem)] w-[calc(100%-8px)] -translate-x-1/2 -translate-y-1/2 flex-col rounded-2xl duration-200"
         @close-auto-focus.prevent
       >
-        <DialogTitle class="hidden">
-          <slot name="title">Media Dialog</slot>
-        </DialogTitle>
-        <DialogDescription class="hidden">
-          <slot name="description">Embedded media content</slot>
-        </DialogDescription>
+        <DialogTitle class="hidden"></DialogTitle>
+        <DialogDescription class="hidden"></DialogDescription>
 
         <div
-          :class="
-            dialogData.width > dialogData.height
-              ? 'w-full'
-              : 'h-full max-h-[75vh]'
-          "
+          class="border-border size-full overflow-hidden rounded-xl border backdrop-blur-xl sm:rounded-2xl"
         >
           <iframe
             v-if="dialogData.src"
             :src="`${dialogData.src}?autoplay=1`"
-            class="h-full w-full rounded-xl bg-white/10 backdrop-blur-xl sm:rounded-2xl"
-            :style="{
-              aspectRatio: `${dialogData.width} / ${dialogData.height}`,
-            }"
+            class="size-full border-0 bg-white/10 object-cover"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -42,18 +26,11 @@
           ></iframe>
         </div>
 
-        <div
-          v-if="dialogData.caption"
-          class="line-clamp-3 px-2 text-center text-xs leading-snug! tracking-tight text-gray-300 sm:text-sm"
-        >
-          <p>{{ dialogData.caption }}</p>
-        </div>
-
         <DialogClose
-          class="hover:bg-opacity-80 mt-2 flex size-14 items-center justify-center self-center rounded-full bg-white text-black transition lg:order-first lg:mt-0 lg:self-end"
+          class="absolute bottom-0 left-1/2 flex size-10 -translate-x-1/2 translate-y-[calc(100%+1rem)] items-center justify-center rounded-full bg-white text-black transition hover:bg-white/80 active:scale-95 sm:top-0 sm:right-0 sm:bottom-auto sm:left-auto sm:translate-x-[calc(100%+1rem)] sm:translate-y-0"
           aria-label="Close"
         >
-          <IconClose class="size-4 lg:size-5" />
+          <IconClose class="size-5" />
         </DialogClose>
       </DialogContent>
     </DialogPortal>

@@ -20,20 +20,21 @@
         <button
           class="group flex w-full flex-col gap-y-2 text-left transition active:scale-95"
           @click="
-            dialogs.updateDialog('embed-media', true, {
-              src: `https://www.youtube.com/embed/${short.video_id}`,
-              width: 1080,
-              height: 1920,
-              caption: short.caption,
+            dialogs.updateDialog('shorts', true, {
+              src: `https://www.youtube.com/embed/${short.videoId}`,
             })
           "
         >
           <div
-            class="relative isolate aspect-[9/16] w-full overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900"
+            class="bg-muted relative isolate aspect-[9/16] w-full overflow-hidden rounded-xl"
           >
             <NuxtImg
-              v-if="short.thumb"
-              :src="short.thumb"
+              v-if="short.thumb || short.thumbGenerated"
+              :src="
+                short.thumb && short.thumb != ''
+                  ? short.thumb
+                  : short.thumbGenerated
+              "
               :alt="short.caption ?? ''"
               class="relative z-10 h-full w-full object-cover"
               sizes="240px lg:360px"
@@ -42,12 +43,16 @@
             />
 
             <div
-              class="absolute inset-0 z-20 hidden items-center justify-center bg-black/60 group-hover:flex"
+              class="absolute inset-0 z-20 hidden items-center justify-center bg-black/40 group-hover:flex"
             >
-              <Icon
-                name="material-symbols:play-arrow-rounded"
-                class="size-12 text-white"
-              />
+              <div
+                class="flex size-12 items-center justify-center rounded-full bg-white/30 text-white outline -outline-offset-6 outline-white transition hover:bg-white/60 active:scale-95"
+              >
+                <Icon
+                  name="material-symbols:play-arrow-rounded"
+                  class="size-6"
+                />
+              </div>
             </div>
           </div>
 
@@ -82,13 +87,6 @@
       >
         <Icon name="lucide:arrow-right" class="size-4" />
       </button>
-
-      <!-- <nuxt-link
-        to="/experiences"
-        class="text-primary hover:bg-primary hover:text-primary-foreground flex h-8 items-center justify-center rounded-md border px-4 text-sm font-semibold tracking-tight transition active:scale-95"
-      >
-        <span>View all</span>
-      </nuxt-link> -->
     </div>
   </Carousel>
 </template>

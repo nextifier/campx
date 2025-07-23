@@ -1,9 +1,13 @@
 <template>
-  <ContactForm
-    title="Contact us"
-    description="Have questions or need assistance? Contact us for information on tickets, partnerships, and event details. We're here to help!"
-    :showBrandField="false"
-  />
+  <div class="min-h-screen-offset pt-6 pb-16">
+    <div class="container lg:max-w-(--breakpoint-xs)">
+      <ContactForm
+        title="Contact us"
+        description="Ada rencana outing atau butuh info lebih lanjut? Hubungi tim CampX di sini! Dapatkan penawaran untuk acara grup, gathering, atau sekadar tanya-tanya."
+        :showBrandField="false"
+      />
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -13,7 +17,7 @@ const config = useRuntimeConfig();
 
 const title = `Contact`;
 const description =
-  "Need to get in touch? Here are the contact details for the More Food Expo team. We're ready to help with your questions about the event.";
+  "Ada rencana outing atau butuh info lebih lanjut? Hubungi tim CampX di sini! Dapatkan penawaran untuk acara grup, gathering, atau sekadar tanya-tanya.";
 
 useSeoMeta({
   title: title,

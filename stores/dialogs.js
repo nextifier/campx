@@ -7,7 +7,12 @@ export const useDialogStore = defineStore("dialogs", {
         data: {},
       },
       {
-        name: "embed-media",
+        name: "shorts",
+        isOpen: false,
+        data: {},
+      },
+      {
+        name: "inquiry",
         isOpen: false,
         data: {},
       },

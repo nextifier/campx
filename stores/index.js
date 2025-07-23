@@ -4,11 +4,12 @@ export const useRootStore = defineStore("root", {
     darkModeEnabled: false,
     email: "hello@campx.id",
     whatsapp: "6281398885402",
-    whatsappText: `Hello, More Food Expo!`,
+    whatsappText: `Hai, CampX!`,
     website: "campx.id",
     instagram: "campx.id",
     facebook: "campx.id",
     tiktok: "campx.id",
+    youtube: "campx-jatiluhur",
     socialProof: [
       {
         name: "Google",

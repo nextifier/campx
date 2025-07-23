@@ -574,7 +574,7 @@ img.pswp__img {
 }
 
 .section-title {
-  @apply text-primary text-4xl !leading-[1.25] font-semibold tracking-[-0.06em] text-balance sm:text-5xl;
+  @apply text-primary text-4xl !leading-[1.25] font-semibold tracking-[-0.06em] text-balance sm:text-5xl xl:text-6xl;
 }
 
 /* .section-subtitle {

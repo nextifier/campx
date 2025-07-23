@@ -354,7 +354,7 @@ export const useExperienceStore = defineStore("experiences", {
         included: [
           "Perjalanan dengan perahu ke & dari titik hiking",
           "Trekking ke Tebing Boyer",
-          "1x Makan Siang & 2x Snack",
+          "1x Makan Siang / 2x Snack",
           "Sesi Team-building & Fun Games",
           "Fasilitator profesional & dokumentasi",
           "Aula untuk berkumpul & Parkir",
@@ -403,7 +403,7 @@ export const useExperienceStore = defineStore("experiences", {
           "Matras & lampu tenda",
           "Makan Malam (Buffet)",
           "Sarapan",
-          "Api Unggun & Jagung Bakar",
+          "Api Unggun",
         ],
         excluded: [],
         rundown: [

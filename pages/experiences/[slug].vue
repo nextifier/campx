@@ -372,7 +372,8 @@ if (!experience) {
 }
 
 const title = experience?.title ?? "";
-const description = experience?.description ?? "";
+const description =
+  experience?.shortDescription ?? experience?.description ?? "";
 
 useSeoMeta({
   title: title,

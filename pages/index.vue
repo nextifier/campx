@@ -17,7 +17,8 @@ const store = new useRootStore();
 const route = useRoute();
 const config = useRuntimeConfig();
 const title = `CampX Holiday Park Jatiluhur`;
-const description = "";
+const description =
+  "Lepas penat & hirup segarnya alam di CampX Jatiluhur! 🏕️ Tempat camping, glamping, & outing kekinian di tepi danau. Cek semua paket serunya di sini!";
 
 defineOptions({
   name: "index",

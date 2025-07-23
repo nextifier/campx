@@ -174,11 +174,6 @@ const menuLinks = ref([
     routeName: "index",
   },
   {
-    label: "Experiences",
-    to: "/experiences",
-    routeName: "experiences",
-  },
-  {
     label: "Contact",
     to: "/contact",
     routeName: "contact",
@@ -209,11 +204,11 @@ const menuSmall = ref([
       //   to: `https://www.linkedin.com/company/${store.$state.linkedin}`,
       //   openInNewTab: true,
       // },
-      // {
-      //   label: "YouTube",
-      //   to: `https://www.youtube.com/@${store.$state.youtube}`,
-      //   openInNewTab: true,
-      // },
+      {
+        label: "YouTube",
+        to: `https://www.youtube.com/@${store.youtube}`,
+        openInNewTab: true,
+      },
     ],
   },
   {

@@ -448,12 +448,12 @@ useHead({
   title: `Privacy Policy`,
 });
 
-const name = "More Food Expo Indonesia";
-const website = "https://morefoodexpo.com";
-const companyName = "PT Panorama Media";
+const name = "CampX";
+const website = "https://campx.id";
+const companyName = "CampX";
 const address =
   "Panorama Media Building, Jl. Tanjung Selor No.17A, RT.11/RW.6, Cideng, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10150";
-const email = "morefood@panoramamedia.co.id";
-const contactPageLink = "https://morefoodexpo.com/contact";
+const email = "hellod@campx.id";
+const contactPageLink = "https://campx.id/contact";
 const lastUpdate = "Jul 8, 2025";
 </script>

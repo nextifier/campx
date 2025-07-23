@@ -7,20 +7,16 @@
 
     <FAB
       v-if="
-        ![
-          'experiences',
-          'experiences-slug',
-          'promo',
-          'promo-slug',
-        ].includes(route.name)
+        !['experiences', 'experiences-slug', 'promo', 'promo-slug'].includes(
+          route.name,
+        )
       "
     />
 
-    <Footer
-      v-if="![].includes(route.name)"
-    />
+    <Footer v-if="![].includes(route.name)" />
 
-    <DialogEmbedMedia dialogName="embed-media" />
+    <DialogInquiry />
+    <DialogShorts dialogName="shorts" />
   </div>
 </template>
 
