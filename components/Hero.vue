@@ -23,9 +23,10 @@
             >
 
             <h1
-              class="text-primary mt-2 text-[clamp(3rem,3.5vw,6rem)] !leading-[1.2] font-semibold tracking-[-0.06em] text-balance"
+              class="text-primary 0 mt-2 text-[clamp(3rem,3.5vw,6rem)] !leading-[1.2] font-semibold tracking-[-0.06em] text-balance"
             >
               <SplitText
+                class="pb-1"
                 text="Lepasin Penatnya Kota, Hirup Lagi Segarnya Alam."
               />
             </h1>

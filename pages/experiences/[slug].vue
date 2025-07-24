@@ -82,40 +82,7 @@
           </div>
 
           <div class="flex flex-col items-start lg:col-span-5 lg:pt-2">
-            <div
-              v-if="experience.status"
-              class="flex items-center gap-x-2 tracking-tight"
-            >
-              <span class="relative flex size-2">
-                <span
-                  class="animate-ping-slow absolute inline-flex size-full rounded-full opacity-75"
-                  :class="{
-                    'bg-green-500':
-                      experience.status.toLocaleLowerCase() == 'available',
-                    'bg-yellow-400':
-                      experience.status.toLocaleLowerCase() == 'coming soon',
-                    'bg-red-500':
-                      experience.status.toLocaleLowerCase() == 'sold out',
-                    'bg-red-500':
-                      experience.status.toLocaleLowerCase() == 'unavailable',
-                  }"
-                ></span>
-                <span
-                  class="relative inline-flex size-2 rounded-full"
-                  :class="{
-                    'bg-green-500':
-                      experience.status.toLocaleLowerCase() == 'available',
-                    'bg-yellow-400':
-                      experience.status.toLocaleLowerCase() == 'coming soon',
-                    'bg-red-500':
-                      experience.status.toLocaleLowerCase() == 'sold out',
-                    'bg-red-500':
-                      experience.status.toLocaleLowerCase() == 'unavailable',
-                  }"
-                ></span>
-              </span>
-              <span>{{ experience.status }}</span>
-            </div>
+            <StatusIndicator :status="experience.status" />
 
             <h1 class="section-title mt-2">{{ experience.title }}</h1>
 
@@ -312,6 +279,7 @@
 
                 <div class="mt-2 flex flex-col items-start">
                   <nuxt-link
+                    v-if="experience.status.toLocaleLowerCase() === 'available'"
                     :to="`https://api.whatsapp.com/send?phone=${store.whatsapp}&text=Hai, CampX! Saya mau reservasi untuk paket ${experience.title}`"
                     target="_blank"
                     class="bg-primary text-primary-foreground items-cente hover:bg-primary/80 flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-semibold tracking-tight transition active:scale-95"
@@ -327,6 +295,11 @@
                       format="webp"
                     />
                   </nuxt-link>
+
+                  <span v-else class="tracking-tight"
+                    >Hai, Traveler! Maaf, paket ini sekarang lagi belum bisa
+                    diorder. Kunjungi lagi halaman ini kapan-kapan ya!</span
+                  >
                 </div>
               </div>
             </div>

@@ -141,7 +141,7 @@ export const useExperienceStore = defineStore("experiences", {
           out: "12:00",
         },
         included: [
-          "Cabin eksklusif dengan view danau",
+          "Kabin eksklusif dengan view danau",
           "Luas kabin 7m²",
           "Kasur untuk 2 orang",
           "Akses listrik & air bersih di kavling",
@@ -205,7 +205,7 @@ export const useExperienceStore = defineStore("experiences", {
       {
         title: "Canoeing Seru di Jatiluhur",
         slug: "canoeing-experience",
-        status: "Unavailable",
+        status: "Maintenance",
         categories: ["Activity"],
         shortDescription:
           "Dayung santai bareng temen atau pasangan sambil keliling danau. Perfect for chilling!",

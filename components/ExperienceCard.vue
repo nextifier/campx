@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="`/experiences/${item.slug}`" class="grid gap-y-2">
+  <NuxtLink :to="`/experiences/${item.slug}`" class="grid gap-y-3">
     <div class="bg-muted aspect-4/5 overflow-hidden rounded-xl">
       <NuxtImg
         v-if="item.coverImage"
@@ -15,6 +15,8 @@
     </div>
 
     <div class="grid gap-y-1.5">
+      <StatusIndicator :status="item.status" />
+
       <div class="text-primary text-base font-semibold tracking-tight">
         {{ item.title }}
       </div>
