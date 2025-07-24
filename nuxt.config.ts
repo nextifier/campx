@@ -100,7 +100,10 @@ export default defineNuxtConfig({
 
   image: {
     // provider: process.env.NODE_ENV === "production" ? "ipxStatic" : "ipx",
-    provider: "ipx",
+    provider: process.env.NODE_ENV === "production" ? "cloudflare" : "ipx",
+    cloudflare: {
+      baseURL: "https://campx.id",
+    },
     quality: 85,
     format: ["webp"],
   },
