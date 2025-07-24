@@ -11,7 +11,7 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
           <p>Pengen <strong>healing</strong> tapi waktu mepet? <strong>Gas keun</strong> aja Day Trip ke CampX! Cuma modal cepek, kamu udah bisa nikmatin pemandangan danau, foto-foto di spot <i>aesthetic</i>, plus bebas main sepeda, mancing, sampe <i>stand-up paddle board</i>. Kurang asik apa coba?</p>
         `,
-        coverImage: "/img/experiences/day-trip/cover-day-trip.jpg",
+        coverImage: "/img/experiences/cover-day-trip.jpg",
         checkInOut: {
           in: "07:00",
           out: "19:00",
@@ -43,8 +43,7 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
           <p>Buat kamu para <strong>pro camper</strong> yang udah punya <i>gear</i> lengkap, paket ini pas banget. Cukup sewa lahannya yang strategis, view langsung ke danau. Fasilitas pendukung kayak listrik, air bersih, sampe WiFi udah kita siapin. Tinggal pasang tenda, nyalain api unggun, <i>and enjoy the vibe!</i></p>
         `,
-        coverImage:
-          "/img/experiences/camping-kavling-only/cover-camping-kavling-only.jpg",
+        coverImage: "/img/experiences/cover-camping-kavling-only.jpg",
         checkInOut: {
           in: "14:00",
           out: "12:00",
@@ -89,8 +88,7 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
           <p>Stop wacana camping gara-gara gak punya tenda! Di paket ini, semua perlengkapan dari tenda, <i>sleeping bag</i>, sampe lampu udah kita <strong>set up</strong>-in cantik di kavling pilihanmu. Kamu tinggal bawa baju ganti sama <i>good vibes</i> aja. <i>Simple as that!</i></p>
         `,
-        coverImage:
-          "/img/experiences/camping-tent-included/cover-camping-tent-included.jpg",
+        coverImage: "/img/experiences/cover-camping-tent-included.jpg",
         checkInOut: {
           in: "14:00",
           out: "12:00",
@@ -131,11 +129,11 @@ export const useExperienceStore = defineStore("experiences", {
         status: "Available",
         categories: ["Camping", "Cabin", "Paket Personal"],
         shortDescription:
-          "Ngerasain camping dengan nyaman? Cabin is the answer! Tidur enak, bangun-bangun langsung liat view danau.",
+          "Mau ngerasain camping dengan suasana yang lebih eksklusif? Cabin is the answer! Tidur enak, bangun-bangun langsung liat view danau.",
         description: `
           <p>Bosen sama tenda? Waktunya <i>upgrade</i> ke <strong>Cabin X</strong>! Nikmatin indahnya nginep di alam tanpa perlu repot bawa dan pasang tenda. Pintu dibuka, eh, langsung disapa pemandangan Waduk Jatiluhur yang <i>spectacular</i>. Cocok buat <i>romantic getaway</i> atau <i>chill</i> bareng <i>bestie</i>.</p>
         `,
-        coverImage: "/img/experiences/cabin/cover-cabin.jpg",
+        coverImage: "/img/experiences/cover-cabin.jpg",
         checkInOut: {
           in: "14:00",
           out: "12:00",
@@ -179,7 +177,7 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
           <p>Pernah liat orang dayung sambil berdiri di atas papan? Yes, itu <strong>Stand-Up Paddle Boarding (SUP)</strong>! Di sini kamu bisa cobain sendiri. Gak usah takut, nanti ada tim kami yang ngajarin. Dijamin jadi pengalaman baru yang gak terlupakan.</p>
         `,
-        coverImage: "/img/experiences/paddle/cover-stand-up-paddle.jpg",
+        coverImage: "/img/experiences/cover-stand-up-paddle.jpg",
         included: [
           "Sewa Stand-Up Paddle Board (SUP)",
           "Pelampung",
@@ -212,7 +210,7 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
           <p>Mau aktivitas air yang lebih santai? Cobain <strong>canoeing</strong>, deh! Kamu bisa dayung perahu kano sambil nikmatin tenangnya air danau Jatiluhur. Satu perahu bisa buat berdua atau bertiga, asik buat quality time.</p>
         `,
-        coverImage: "/img/experiences/canoeing/cover-canoeing.jpg",
+        coverImage: "/img/experiences/cover-canoeing.jpg",
         included: [
           "Sewa perahu kano (kapasitas 3 orang)",
           "Dayung & pelampung",
@@ -239,7 +237,7 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
           <p>Buat para mancing mania, danau Jatiluhur itu surga! Kamu bisa lempar umpan dari pinggir danau di area CampX. Siapa tau dapet ikan jumbo. Jangan lupa bawa peralatanmu sendiri, ya!</p>
         `,
-        coverImage: "/img/experiences/mancing/cover-mancing.jpg",
+        coverImage: "/img/experiences/cover-mancing.jpg",
         included: ["Spot memancing di area CampX"],
         excluded: [
           "Alat pancing dan umpan",
@@ -264,7 +262,7 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
           <p>Cara terbaik menikmati kemegahan Waduk Jatiluhur adalah dengan berkeliling naik perahu. Ajak teman-teman atau keluargamu buat <strong>boat trip</strong> singkat. Kamu bakal liat pemandangan perbukitan dan keramba apung dari dekat. Jangan lupa siapin kamera!</p>
         `,
-        coverImage: "/img/experiences/boat/cover-boat.jpg",
+        coverImage: "/img/experiences/cover-boat.jpg",
         included: [
           "Sewa perahu (kapasitas 10-15 orang)",
           "Driver perahu",
@@ -282,71 +280,55 @@ export const useExperienceStore = defineStore("experiences", {
         ],
       },
 
-      // {
-      //   title: "One Day Outing Rombongan",
-      //   slug: "day-trip-group-package",
-      //   status: "Available",
-      //   categories: ["Paket Grup"],
-      //   shortDescription:
-      //     "Butuh tempat buat acara seharian bareng tim? Paket ini paling pas. Fun, hemat, dan lengkap.",
-      //   description: `
-      //     <p>Kumpulin tim kamu (minimal 20 orang) dan seru-seruan seharian di CampX! Paket ini udah termasuk tiket masuk dan akses ke berbagai fasilitas. Mau ditambah <i>fun games</i> atau makan siang? Bisa banget, tinggal <i>request</i> aja!</p>
-      //   `,
-      //   coverImage:
-      //     "/img/experiences/day-trip-group-package/cover-day-trip-group-package.jpg",
-      //   included: [
-      //     "Tiket masuk CampX",
-      //     "Akses ke fasilitas umum",
-      //     "Free flow air mineral",
-      //   ],
-      //   excluded: [
-      //     "Makan & Snack",
-      //     "Aktivitas tambahan berbayar",
-      //     "Fasilitator",
-      //   ],
-      //   pricing: [
-      //     {
-      //       label: "Minimal 20 orang",
-      //       value: 150000,
-      //       unit: "orang",
-      //     },
-      //   ],
-      // },
-
-      // {
-      //   title: "Camping Rombongan (2D1N)",
-      //   slug: "camping-group-package",
-      //   status: "Available",
-      //   categories: ["Paket Grup"],
-      //   shortDescription:
-      //     "Bikin momen kebersamaan tim lebih dapet dengan nginep bareng di tenda. Bonding time!",
-      //   description: `
-      //     <p>Ngerasain serunya <strong>camping</strong> bareng puluhan temen kantor atau komunitas? <i>Why not!</i> Kami sediain semua kebutuhan <i>camping</i>-mu, dari tenda sampe fasilitasnya. Dijamin jadi pengalaman yang bikin tim makin solid.</p>
-      //   `,
-      //   coverImage:
-      //     "/img/experiences/camping-group-package/cover-camping-group-package.jpg",
-      //   included: [
-      //     "Tiket masuk CampX",
-      //     "Tenda & perlengkapan tidur",
-      //     "Api unggun",
-      //     "Akses fasilitas lengkap",
-      //   ],
-      //   excluded: [
-      //     "Makan & Snack",
-      //     "Aktivitas tambahan berbayar",
-      //     "Fasilitator",
-      //   ],
-      //   pricing: [
-      //     {
-      //       label: "Minimal 20 orang",
-      //       value: 190000,
-      //       unit: "orang",
-      //     },
-      //   ],
-      // },
+      {
+        title: "Jetski Experience: Pacu Adrenalin di Atas Air!",
+        slug: "jetski-experience",
+        status: "Available",
+        categories: ["Activity"],
+        shortDescription:
+          "Rasakan sensasi kecepatan di atas danau Jatiluhur. Siap basah-basahan dan seru-seruan bareng teman?",
+        description: `
+          <p>Pacu adrenalinmu dengan mencoba <strong>Jetski Experience</strong> di Danau Jatiluhur! Gak perlu pengalaman, karena kapten kami yang profesional akan ngajarin kamu cara mengendarainya dari nol.</p>
+          <p>Satu jetski bisa buat boncengan berdua atau bahkan bertiga sama si kecil. Dijamin seru, aman, dan pastinya dapet dokumentasi keren dari drone yang akan kami kirimkan gratis!</p>
+        `,
+        coverImage: "/img/experiences/cover-jetski.jpg",
+        included: [
+          "1 unit Jetski",
+          "Pelampung (Life Jacket)",
+          "Panduan dari kapten profesional",
+          "Dokumentasi gratis (foto & video drone)",
+          "Akses fasilitas bilas, toilet, & musholla",
+        ],
+        excluded: [
+          "Tiket masuk CampX (jika tidak mengambil paket menginap/day trip)",
+        ],
+        pricing: [
+          {
+            label: "Durasi 7 Menit",
+            value: 300000,
+            unit: "jetski",
+          },
+          {
+            label: "Durasi 15 Menit",
+            value: 600000,
+            unit: "jetski",
+          },
+          {
+            label: "Durasi 30 Menit",
+            value: 1000000,
+            unit: "jetski",
+          },
+          {
+            label: "Durasi 1 Jam",
+            value: 1700000,
+            unit: "jetski",
+          },
+        ],
+        pricingNotes: ["Kapasitas: 2 orang dewasa + 1 anak kecil per jetski."],
+      },
 
       {
-        title: "Team Building: Taklukkan Tebing Boyer (Day Trip)",
+        title: "Paket Outing: Boyer Hill Summit Challenge - Day Trip",
         slug: "boyer-hill-summit-challenge-day-trip",
         status: "Available",
         categories: ["Paket Grup", "Team Building"],
@@ -355,8 +337,7 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
           <p>Siap bikin tim kamu makin kompak? Ajak mereka buat naklukin <strong>Tebing Boyer</strong>! Perjalanan seru naik perahu, <i>hiking</i> dengan pemandangan aduhai, ditutup sama sesi <i>fun games</i> yang dipandu fasilitator profesional. Pulang-pulang dijamin makin solid!</p>
         `,
-        coverImage:
-          "/img/experiences/boyer-hill-day-trip/cover-boyer-hill-day-trip.jpg",
+        coverImage: "/img/experiences/cover-boyer-hill-day-trip.jpg",
         included: [
           "Perjalanan dengan perahu ke & dari titik hiking",
           "Trekking ke Tebing Boyer",
@@ -392,7 +373,7 @@ export const useExperienceStore = defineStore("experiences", {
       },
 
       {
-        title: "Team Building: Boyer Challenge & Camping (2D1N)",
+        title: "Paket Outing: Boyer Hill Summit Challenge - Camping (2D1N)",
         slug: "boyer-hill-summit-challenge-camping",
         status: "Available",
         categories: ["Paket Grup", "Team Building"],
@@ -401,8 +382,7 @@ export const useExperienceStore = defineStore("experiences", {
         description: `
           <p>Gak cukup seharian? Ambil paket <strong>2D1N</strong>! Setelah seharian berpetualang naklukin Tebing Boyer, malemnya kita lanjut <i>chill</i> di depan api unggun. Paginya, masih ada sesi <i>fun games</i> lagi. Kebersamaannya dapet banget!</p>
         `,
-        coverImage:
-          "/img/experiences/boyer-hill-camping/cover-boyer-hill-camping.jpg",
+        coverImage: "/img/experiences/cover-boyer-hill-camping.jpg",
         included: [
           "Semua fasilitas dari paket Day Trip Boyer Hill",
           "Menginap di tenda (kapasitas 3 orang)",
