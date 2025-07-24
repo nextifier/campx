@@ -7,6 +7,11 @@ export const useDialogStore = defineStore("dialogs", {
         data: {},
       },
       {
+        name: "share-page-mobile",
+        isOpen: false,
+        data: {},
+      },
+      {
         name: "shorts",
         isOpen: false,
         data: {},

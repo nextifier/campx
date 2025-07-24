@@ -75,5 +75,6 @@ const copyToClipboard = (text) => {
 
 const closeDialog = () => {
   dialogs.updateDialog("share-page", false, {});
+  dialogs.updateDialog("share-page-mobile", false, {});
 };
 </script>

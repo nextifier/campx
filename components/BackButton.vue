@@ -2,9 +2,9 @@
   <button
     type="button"
     @click="goBack"
-    class="flex items-center gap-x-1.5 rounded-xl px-3 py-2 text-sm tracking-tight transition hover:bg-muted active:scale-95"
+    class="hover:bg-muted flex items-center gap-x-1.5 rounded-xl px-3 py-2 text-sm tracking-tight transition active:scale-95"
   >
-    <IconArrowLeft class="h-4" />
+    <Icon name="lucide:arrow-left" class="size-4 shrink-0" />
     <span>Back</span>
   </button>
 </template>

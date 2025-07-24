@@ -9,7 +9,7 @@ const props = defineProps<ToasterProps>();
     class="toaster group tracking-tight"
     v-bind="props"
     :style="{
-      '--normal-bg': 'var(--foreground)',
+      '--normal-bg': 'var(--primary)',
       '--normal-text': 'var(--background)',
       '--normal-border': 'transparent',
     }"

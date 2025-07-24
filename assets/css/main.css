@@ -437,12 +437,12 @@
     cursor: pointer;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  html {
+    @apply scroll-pt-[var(--navbar-height-mobile)] lg:scroll-pt-[var(--navbar-height-desktop)];
   }
 
-  section {
-    @apply scroll-mt-[var(--navbar-height-mobile)] lg:scroll-mt-[var(--navbar-height-desktop)];
+  body {
+    @apply bg-background text-foreground;
   }
 
   *::selection {
