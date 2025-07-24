@@ -18,7 +18,9 @@
           <div
             class="xl:min-h-screen-offset flex flex-col items-start md:py-10 xl:justify-end"
           >
-            <span class="section-subtitle">Camping. Glamping. Outing</span>
+            <span class="section-subtitle"
+              >Pengalaman Camping & Outing Kekinian di Tepi Danau.</span
+            >
 
             <h1
               class="text-primary mt-2 text-[clamp(3rem,3.5vw,6rem)] !leading-[1.2] font-semibold tracking-[-0.06em] text-balance"
@@ -35,13 +37,6 @@
             </p>
 
             <div class="mt-6 flex w-full flex-wrap gap-2 md:gap-3">
-              <!-- <nuxt-link
-                to="/#experiences"
-                class="bg-primary text-primary-foreground hover:bg-primary/80 flex items-center justify-center rounded-xl px-4 py-3 font-semibold tracking-tight transition active:scale-95"
-                v-ripple
-                >Mulai Petualanganmu</nuxt-link
-              > -->
-
               <nuxt-link
                 to="/#experiences"
                 class="bg-primary text-primary-foreground hover:bg-primary/80 flex items-center justify-center rounded-xl px-4 py-3 font-semibold tracking-tight transition active:scale-95"

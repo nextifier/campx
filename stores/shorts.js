@@ -77,7 +77,7 @@ export const useShortStore = defineStore("shorts", {
       },
       {
         url: "https://youtube.com/shorts/pj-5y-4Z9Tc?feature=share",
-        caption: "Glamping di Cabin X: Staycation Level Up!",
+        caption: "Camping di Cabin X: Staycation Level Up!",
         thumb: "",
       },
     ];

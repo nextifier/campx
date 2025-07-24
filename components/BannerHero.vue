@@ -152,7 +152,7 @@ onUnmounted(() => {
 
 const items = [
   {
-    subHeadline: "BARU! Glamping di Cabin X",
+    subHeadline: "BARU! Camping di Cabin X",
     content: `
       <p>Nikmatin nyamannya staycation dengan vibe alam yang maksimal. Kabin baru kami udah siap kamu booking. Kapan lagi coba?</p>
     `,

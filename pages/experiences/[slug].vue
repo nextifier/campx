@@ -96,6 +96,8 @@
                       experience.status.toLocaleLowerCase() == 'coming soon',
                     'bg-red-500':
                       experience.status.toLocaleLowerCase() == 'sold out',
+                    'bg-red-500':
+                      experience.status.toLocaleLowerCase() == 'unavailable',
                   }"
                 ></span>
                 <span
@@ -107,6 +109,8 @@
                       experience.status.toLocaleLowerCase() == 'coming soon',
                     'bg-red-500':
                       experience.status.toLocaleLowerCase() == 'sold out',
+                    'bg-red-500':
+                      experience.status.toLocaleLowerCase() == 'unavailable',
                   }"
                 ></span>
               </span>

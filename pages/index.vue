@@ -7,7 +7,7 @@
     <Cta />
     <TextFit
       tag="span"
-      text="Camping. Glamping. Outing."
+      text="CampX Holiday Park"
       :animated="true"
       text-classes="text-accent text-center font-extrabold tracking-tighter italic text-accent text-center font-extrabold tracking-tighter italic"
     />
@@ -20,7 +20,7 @@ const route = useRoute();
 const config = useRuntimeConfig();
 const title = `CampX Holiday Park Jatiluhur`;
 const description =
-  "Lepas penat & hirup segarnya alam di CampX Jatiluhur! 🏕️ Tempat camping, glamping, & outing kekinian di tepi danau. Cek semua paket serunya di sini!";
+  "Lepas penat & hirup segarnya alam di CampX Jatiluhur! 🏕️ Tempat camping dan outing kekinian di tepi danau. Cek semua paket serunya di sini!";
 
 defineOptions({
   name: "index",

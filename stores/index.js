@@ -3,11 +3,12 @@ export const useRootStore = defineStore("root", {
     appName: "CampX Holiday Park Jatiluhur",
     darkModeEnabled: false,
     email: "hello@campx.id",
+    emailOuting: "ary@campx.id",
     whatsapp: "6281398885402",
+    whatsappOuting: "6281311778390",
     whatsappText: `Hai, CampX!`,
     website: "campx.id",
     instagram: "campx.id",
-    // facebook: "campx.id",
     tiktok: "campx.id",
     youtube: "campx-jatiluhur",
     socialProof: [

@@ -52,13 +52,13 @@ const store = useRootStore();
 const links = [
   {
     label: "WhatsApp",
-    to: `https://api.whatsapp.com/send?phone=${store.whatsapp}&text=${store.whatsappText}`,
+    to: `https://api.whatsapp.com/send?phone=${store.whatsappOuting}&text=${store.whatsappText}`,
     openInNewTab: true,
     iconName: "hugeicons:whatsapp",
   },
   {
     label: "Email",
-    to: `mailto:${store.email}`,
+    to: `mailto:${store.emailOuting}`,
     iconName: "hugeicons:mail-02",
   },
 ];

@@ -50,7 +50,7 @@ export const useExperienceStore = defineStore("experiences", {
           out: "12:00",
         },
         included: [
-          "Kavling/lahan camping 5x5m²",
+          "Kavling/lahan camping 5m²",
           "Akses listrik & air bersih di kavling",
           "Akses WiFi",
           "Gratis main Stand-Up Paddle Board, Sepeda & Mancing",
@@ -96,9 +96,13 @@ export const useExperienceStore = defineStore("experiences", {
           out: "12:00",
         },
         included: [
-          "Semua fasilitas dari paket DIY Camping",
-          "Tenda dome kapasitas 2-3 orang (sudah terpasang)",
-          "Alas tenda",
+          "Kavling/lahan camping 5m²",
+          "Akses listrik & air bersih di kavling",
+          "Akses WiFi",
+          "Gratis main Stand-Up Paddle Board, Sepeda & Mancing",
+          "Akses ke fasilitas umum (toilet, musholla, dll)",
+          "Tenda kapasitas 2-4 orang (sudah terpasang)",
+          "Kasur untuk 2 orang",
           "Sleeping bag",
           "Lampu tenda",
         ],
@@ -106,12 +110,12 @@ export const useExperienceStore = defineStore("experiences", {
         pricing: [
           {
             label: "Weekday (Senin-Kamis)",
-            value: 197500,
+            value: 232500,
             unit: "orang/malam",
           },
           {
             label: "Weekend (Jumat-Minggu)",
-            value: 247500,
+            value: 282500,
             unit: "orang/malam",
           },
         ],
@@ -122,14 +126,14 @@ export const useExperienceStore = defineStore("experiences", {
       },
 
       {
-        title: "Glamping di Cabin X: Staycation Level Up!",
+        title: "Camping di Cabin X: Camping Level Up!",
         slug: "cabin",
         status: "Available",
         categories: ["Camping", "Cabin", "Paket Personal"],
         shortDescription:
           "Ngerasain camping dengan nyaman? Cabin is the answer! Tidur enak, bangun-bangun langsung liat view danau.",
         description: `
-          <p>Bosen sama tenda? Waktunya <i>upgrade</i> ke <strong>Cabin X</strong>! Nikmatin sensasi <i>glamping</i> premium dengan kenyamanan ekstra, tapi tetep deket sama alam. Pintu dibuka, eh, langsung disapa pemandangan Waduk Jatiluhur yang <i>spectacular</i>. Cocok buat <i>romantic getaway</i> atau <i>chill</i> bareng <i>bestie</i>.</p>
+          <p>Bosen sama tenda? Waktunya <i>upgrade</i> ke <strong>Cabin X</strong>! Nikmatin indahnya nginep di alam tanpa perlu repot bawa dan pasang tenda. Pintu dibuka, eh, langsung disapa pemandangan Waduk Jatiluhur yang <i>spectacular</i>. Cocok buat <i>romantic getaway</i> atau <i>chill</i> bareng <i>bestie</i>.</p>
         `,
         coverImage: "/img/experiences/cabin/cover-cabin.jpg",
         checkInOut: {
@@ -138,24 +142,24 @@ export const useExperienceStore = defineStore("experiences", {
         },
         included: [
           "Cabin eksklusif dengan view danau",
-          "Kasur empuk untuk 2 orang",
+          "Luas kabin 7m²",
+          "Kasur untuk 2 orang",
           "Akses listrik & air bersih di kavling",
           "Akses WiFi",
           "Gratis main Stand-Up Paddle Board, Sepeda & Mancing",
+          "Kamar mandi sharing / outdoor",
           "Akses ke fasilitas umum (toilet, musholla, dll)",
         ],
         excluded: [],
         pricing: [
           {
             label: "Weekday (Senin-Kamis)",
-            // value: 200000,
-            value: "TBA",
+            value: 175000,
             unit: "orang/malam",
           },
           {
             label: "Weekend (Jumat-Minggu)",
-            // value: 250000,
-            value: "TBA",
+            value: 225000,
             unit: "orang/malam",
           },
         ],
@@ -201,7 +205,7 @@ export const useExperienceStore = defineStore("experiences", {
       {
         title: "Canoeing Seru di Jatiluhur",
         slug: "canoeing-experience",
-        status: "Available",
+        status: "Unavailable",
         categories: ["Activity"],
         shortDescription:
           "Dayung santai bareng temen atau pasangan sambil keliling danau. Perfect for chilling!",
@@ -278,68 +282,68 @@ export const useExperienceStore = defineStore("experiences", {
         ],
       },
 
-      {
-        title: "One Day Outing Rombongan",
-        slug: "day-trip-group-package",
-        status: "Available",
-        categories: ["Paket Grup"],
-        shortDescription:
-          "Butuh tempat buat acara seharian bareng tim? Paket ini paling pas. Fun, hemat, dan lengkap.",
-        description: `
-          <p>Kumpulin tim kamu (minimal 20 orang) dan seru-seruan seharian di CampX! Paket ini udah termasuk tiket masuk dan akses ke berbagai fasilitas. Mau ditambah <i>fun games</i> atau makan siang? Bisa banget, tinggal <i>request</i> aja!</p>
-        `,
-        coverImage:
-          "/img/experiences/day-trip-group-package/cover-day-trip-group-package.jpg",
-        included: [
-          "Tiket masuk CampX",
-          "Akses ke fasilitas umum",
-          "Free flow air mineral",
-        ],
-        excluded: [
-          "Makan & Snack",
-          "Aktivitas tambahan berbayar",
-          "Fasilitator",
-        ],
-        pricing: [
-          {
-            label: "Minimal 20 orang",
-            value: 150000,
-            unit: "orang",
-          },
-        ],
-      },
+      // {
+      //   title: "One Day Outing Rombongan",
+      //   slug: "day-trip-group-package",
+      //   status: "Available",
+      //   categories: ["Paket Grup"],
+      //   shortDescription:
+      //     "Butuh tempat buat acara seharian bareng tim? Paket ini paling pas. Fun, hemat, dan lengkap.",
+      //   description: `
+      //     <p>Kumpulin tim kamu (minimal 20 orang) dan seru-seruan seharian di CampX! Paket ini udah termasuk tiket masuk dan akses ke berbagai fasilitas. Mau ditambah <i>fun games</i> atau makan siang? Bisa banget, tinggal <i>request</i> aja!</p>
+      //   `,
+      //   coverImage:
+      //     "/img/experiences/day-trip-group-package/cover-day-trip-group-package.jpg",
+      //   included: [
+      //     "Tiket masuk CampX",
+      //     "Akses ke fasilitas umum",
+      //     "Free flow air mineral",
+      //   ],
+      //   excluded: [
+      //     "Makan & Snack",
+      //     "Aktivitas tambahan berbayar",
+      //     "Fasilitator",
+      //   ],
+      //   pricing: [
+      //     {
+      //       label: "Minimal 20 orang",
+      //       value: 150000,
+      //       unit: "orang",
+      //     },
+      //   ],
+      // },
 
-      {
-        title: "Camping Rombongan (2D1N)",
-        slug: "camping-group-package",
-        status: "Available",
-        categories: ["Paket Grup"],
-        shortDescription:
-          "Bikin momen kebersamaan tim lebih dapet dengan nginep bareng di tenda. Bonding time!",
-        description: `
-          <p>Ngerasain serunya <strong>camping</strong> bareng puluhan temen kantor atau komunitas? <i>Why not!</i> Kami sediain semua kebutuhan <i>camping</i>-mu, dari tenda sampe fasilitasnya. Dijamin jadi pengalaman yang bikin tim makin solid.</p>
-        `,
-        coverImage:
-          "/img/experiences/camping-group-package/cover-camping-group-package.jpg",
-        included: [
-          "Tiket masuk CampX",
-          "Tenda & perlengkapan tidur",
-          "Api unggun",
-          "Akses fasilitas lengkap",
-        ],
-        excluded: [
-          "Makan & Snack",
-          "Aktivitas tambahan berbayar",
-          "Fasilitator",
-        ],
-        pricing: [
-          {
-            label: "Minimal 20 orang",
-            value: 190000,
-            unit: "orang",
-          },
-        ],
-      },
+      // {
+      //   title: "Camping Rombongan (2D1N)",
+      //   slug: "camping-group-package",
+      //   status: "Available",
+      //   categories: ["Paket Grup"],
+      //   shortDescription:
+      //     "Bikin momen kebersamaan tim lebih dapet dengan nginep bareng di tenda. Bonding time!",
+      //   description: `
+      //     <p>Ngerasain serunya <strong>camping</strong> bareng puluhan temen kantor atau komunitas? <i>Why not!</i> Kami sediain semua kebutuhan <i>camping</i>-mu, dari tenda sampe fasilitasnya. Dijamin jadi pengalaman yang bikin tim makin solid.</p>
+      //   `,
+      //   coverImage:
+      //     "/img/experiences/camping-group-package/cover-camping-group-package.jpg",
+      //   included: [
+      //     "Tiket masuk CampX",
+      //     "Tenda & perlengkapan tidur",
+      //     "Api unggun",
+      //     "Akses fasilitas lengkap",
+      //   ],
+      //   excluded: [
+      //     "Makan & Snack",
+      //     "Aktivitas tambahan berbayar",
+      //     "Fasilitator",
+      //   ],
+      //   pricing: [
+      //     {
+      //       label: "Minimal 20 orang",
+      //       value: 190000,
+      //       unit: "orang",
+      //     },
+      //   ],
+      // },
 
       {
         title: "Team Building: Taklukkan Tebing Boyer (Day Trip)",
