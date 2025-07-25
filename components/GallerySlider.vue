@@ -56,7 +56,7 @@
       <button
         @click="scrollPrev"
         :disabled="!canScrollPrev"
-        class="absolute top-1/2 left-0 z-20 flex aspect-square h-8 -translate-x-full -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white text-black transition group-hover:translate-x-2 active:scale-95"
+        class="absolute top-1/2 left-0 z-20 hidden aspect-square h-8 -translate-x-full -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white text-black transition group-hover:translate-x-2 active:scale-95 lg:flex"
         aria-label="previous"
       >
         <Icon name="lucide:chevron-left" class="size-3.5" />
@@ -65,7 +65,7 @@
       <button
         @click="scrollNext"
         :disabled="!canScrollNext"
-        class="absolute top-1/2 right-0 z-20 flex aspect-square h-8 translate-x-full -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white text-black transition group-hover:-translate-x-2 active:scale-95"
+        class="absolute top-1/2 right-0 z-20 hidden aspect-square h-8 translate-x-full -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white text-black transition group-hover:-translate-x-2 active:scale-95 lg:flex"
         aria-label="next"
       >
         <Icon name="lucide:chevron-right" class="size-3.5" />
