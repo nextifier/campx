@@ -9,6 +9,7 @@
       dragFree: false,
     }"
     :plugins="[$wheelGesturesPlugin()]"
+    @init-api="setApi"
   >
     <CarouselContent class="relative z-10 -ml-0 *:select-none">
       <CarouselItem
@@ -35,14 +36,21 @@
     </CarouselContent>
 
     <div v-if="allPhotos?.length > 1">
-      <div class="absolute bottom-4 left-1/2 z-20 -translate-x-1/2">
-        <div class="flex items-center justify-center gap-1.5">
-          <CarouselDotButtons
-            class="size-1.5 rounded-full"
-            activeClass="bg-white"
-            inactiveClass="bg-white/50"
-          />
-        </div>
+      <!-- <div
+        class="absolute bottom-4 -translate-y-6 lg:translate-y-0 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-1.5"
+      >
+        <CarouselDotButtons
+          class="size-1.5 rounded-full"
+          activeClass="bg-white"
+          inactiveClass="bg-white/50"
+        />
+      </div> -->
+
+      <div
+        v-if="current && totalCount"
+        class="text-primary bg-background/70 pointer-events-none absolute right-4 bottom-4 z-20 flex -translate-y-6 items-center justify-center rounded-md px-2 py-1 text-center text-xs font-medium tracking-tight backdrop-blur-sm select-none lg:translate-y-0"
+      >
+        {{ current }} / {{ totalCount }}
       </div>
 
       <button
@@ -51,7 +59,7 @@
         class="absolute top-1/2 left-0 z-20 flex aspect-square h-8 -translate-x-full -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white text-black transition group-hover:translate-x-2 active:scale-95"
         aria-label="previous"
       >
-        <Icon name="lucide:arrow-left" class="size-3.5" />
+        <Icon name="lucide:chevron-left" class="size-3.5" />
       </button>
 
       <button
@@ -60,13 +68,34 @@
         class="absolute top-1/2 right-0 z-20 flex aspect-square h-8 translate-x-full -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white text-black transition group-hover:-translate-x-2 active:scale-95"
         aria-label="next"
       >
-        <Icon name="lucide:arrow-right" class="size-3.5" />
+        <Icon name="lucide:chevron-right" class="size-3.5" />
       </button>
     </div>
   </Carousel>
 </template>
 
 <script setup>
+import { watchOnce } from "@vueuse/core";
+
+const api = ref(null);
+const totalCount = ref(0);
+const current = ref(0);
+
+function setApi(val) {
+  api.value = val;
+}
+
+watchOnce(api, (api) => {
+  if (!api) return;
+
+  totalCount.value = api.scrollSnapList().length;
+  current.value = api.selectedScrollSnap() + 1;
+
+  api.on("select", () => {
+    current.value = api.selectedScrollSnap() + 1;
+  });
+});
+
 const props = defineProps({
   experience: Object,
 });

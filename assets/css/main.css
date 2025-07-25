@@ -438,7 +438,7 @@
   }
 
   html {
-    @apply scroll-pt-[var(--navbar-height-mobile)] lg:scroll-pt-[var(--navbar-height-desktop)];
+    @apply scroll-pt-[var(--navbar-height-mobile)] [scrollbar-gutter:stable] lg:scroll-pt-[var(--navbar-height-desktop)];
   }
 
   body {

@@ -7,13 +7,13 @@
       </div>
 
       <div
-        class="grid grid-cols-1 items-start gap-x-8 gap-y-6 lg:mt-6 lg:grid-cols-12"
+        class="relative grid grid-cols-1 items-start gap-x-8 gap-y-6 lg:mt-6 lg:grid-cols-12"
       >
-        <div class="relative lg:col-span-4">
+        <div class="relative z-10 lg:col-span-4">
           <div class="absolute top-4 left-4 z-20 lg:hidden">
             <button
               @click="router.push('/')"
-              class="bg-background/50 text-primary flex size-10 items-center justify-center rounded-full border border-white/10 shadow-lg backdrop-blur-sm transition active:scale-95"
+              class="bg-background/70 text-primary flex size-10 items-center justify-center rounded-full border border-white/10 shadow-lg backdrop-blur-sm transition active:scale-95"
               v-ripple
             >
               <Icon name="lucide:arrow-left" class="size-4" />
@@ -24,7 +24,7 @@
             <DialogShareMobile :pageTitle="title">
               <template #trigger="{ openDialog }">
                 <button
-                  class="bg-background/50 text-primary flex size-10 items-center justify-center rounded-full border border-white/10 shadow-lg backdrop-blur-sm transition active:scale-95"
+                  class="bg-background/70 text-primary flex size-10 items-center justify-center rounded-full border border-white/10 shadow-lg backdrop-blur-sm transition active:scale-95"
                   @click="openDialog"
                   v-ripple
                 >
@@ -41,7 +41,7 @@
         </div>
 
         <div
-          class="flex flex-col items-start px-4 sm:px-0 lg:col-span-5 lg:pt-2"
+          class="bg-background relative z-20 -mt-12 flex flex-col items-start rounded-t-3xl px-4 pt-6 sm:px-0 lg:col-span-5 lg:mt-0 lg:rounded-t-none lg:pt-2"
         >
           <StatusIndicator :status="experience.status" />
 
@@ -274,9 +274,9 @@
               </p>
 
               <a
-                href="/files/Price List Sewa Peralatan CampX.pdf"
+                href="/files/pricelist-sewa-peralatan-campx.pdf"
                 target="_blank"
-                class="bg-muted hover:bg-border text-primary flex items-center justify-center gap-x-2 rounded-lg px-4 py-2 tracking-tight"
+                class="bg-muted hover:bg-border text-primary flex items-center justify-center gap-x-2 rounded-lg px-4 py-2 font-semibold tracking-tight"
               >
                 <Icon name="hugeicons:tag-01" class="size-4 shrink-0" />
                 <span>Price List Sewa Peralatan</span>
@@ -287,9 +287,9 @@
               <p class="tracking-tight">Butuh denah lokasi? Download aja ya!</p>
 
               <a
-                href="/files/Denah CampX.pdf"
+                href="/files/denah-campx.pdf"
                 target="_blank"
-                class="bg-muted hover:bg-border text-primary flex items-center justify-center gap-x-2 rounded-lg px-4 py-2 tracking-tight"
+                class="bg-muted hover:bg-border text-primary flex items-center justify-center gap-x-2 rounded-lg px-4 py-2 font-semibold tracking-tight"
               >
                 <Icon name="hugeicons:maps" class="size-4 shrink-0" />
                 <span>Denah CampX</span>
@@ -317,9 +317,8 @@ const { format } = useCurrencyFormat();
 
 const experiences = useExperienceStore();
 const experience = experiences.getItemBySlug(route.params.slug);
-
 const otherExperiences = computed(() => {
-  return experiences.list.filter((item) => item.slug !== route.params.slug);
+  return experiences.getOtherExperiencesBySlug(route.params.slug);
 });
 
 if (!experience) {

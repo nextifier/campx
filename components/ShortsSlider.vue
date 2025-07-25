@@ -66,27 +66,36 @@
       </CarouselItem>
     </CarouselContent>
 
-    <div
-      v-if="canScrollPrev || canScrollNext"
-      class="container mt-6 flex justify-end gap-2"
-    >
-      <button
-        @click="scrollPrev"
-        :disabled="!canScrollPrev"
-        class="bg-muted hover:bg-border text-primary flex size-8 items-center justify-center rounded-md transition active:scale-95"
-        aria-label="previous"
+    <div class="mt-6 h-8">
+      <div
+        v-if="canScrollPrev || canScrollNext"
+        class="container flex h-full justify-end gap-2"
       >
-        <Icon name="lucide:arrow-left" class="size-4" />
-      </button>
+        <button
+          @click="scrollPrev"
+          :disabled="!canScrollPrev"
+          class="bg-muted hover:bg-border text-primary flex aspect-square h-full items-center justify-center rounded-md transition active:scale-95"
+          aria-label="previous"
+        >
+          <Icon name="lucide:arrow-left" class="size-4" />
+        </button>
 
-      <button
-        @click="scrollNext"
-        :disabled="!canScrollNext"
-        class="bg-muted hover:bg-border text-primary flex size-8 items-center justify-center rounded-md transition active:scale-95"
-        aria-label="next"
+        <button
+          @click="scrollNext"
+          :disabled="!canScrollNext"
+          class="bg-muted hover:bg-border text-primary flex aspect-square h-full items-center justify-center rounded-md transition active:scale-95"
+          aria-label="next"
+        >
+          <Icon name="lucide:arrow-right" class="size-4" />
+        </button>
+
+        <!-- <nuxt-link
+        to="/experiences"
+        class="text-primary hover:bg-primary hover:text-primary-foreground flex h-full items-center justify-center rounded-md border px-4 text-sm font-semibold tracking-tight transition active:scale-95"
       >
-        <Icon name="lucide:arrow-right" class="size-4" />
-      </button>
+        <span>View all</span>
+      </nuxt-link> -->
+      </div>
     </div>
   </Carousel>
 </template>

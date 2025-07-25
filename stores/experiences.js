@@ -462,5 +462,35 @@ export const useExperienceStore = defineStore("experiences", {
         return item.categories && item.categories.includes(category);
       });
     },
+
+    getOtherExperiencesBySlug: (state) => {
+      return (slugToExclude) => {
+        const currentExperience = state.list.find(
+          (item) => item.slug === slugToExclude,
+        );
+        if (!currentExperience) {
+          return state.list.filter((item) => item.slug !== slugToExclude);
+        }
+
+        const currentCategories = currentExperience.categories;
+        const relatedExperiences = [];
+        const otherUnrelatedExperiences = [];
+
+        state.list.forEach((item) => {
+          if (item.slug === slugToExclude) return;
+
+          const isRelated = item.categories.some((cat) =>
+            currentCategories.includes(cat),
+          );
+          if (isRelated) {
+            relatedExperiences.push(item);
+          } else {
+            otherUnrelatedExperiences.push(item);
+          }
+        });
+
+        return [...relatedExperiences, ...otherUnrelatedExperiences];
+      };
+    },
   },
 });
