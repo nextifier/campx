@@ -2,7 +2,7 @@
   <div v-if="experience" class="pb-14 lg:pt-4 lg:pb-20">
     <div class="sm:container">
       <div class="hidden items-center justify-between px-4 sm:px-0 lg:flex">
-        <BackButton destination="/" />
+        <BackButton />
         <DialogShare :pageTitle="title" />
       </div>
 
@@ -11,27 +11,11 @@
       >
         <div class="relative z-10 lg:col-span-4">
           <div class="absolute top-4 left-4 z-20 lg:hidden">
-            <button
-              @click="router.push('/')"
-              class="bg-background/70 text-primary flex size-10 items-center justify-center rounded-full border border-white/10 shadow-lg backdrop-blur-sm transition active:scale-95"
-              v-ripple
-            >
-              <Icon name="lucide:arrow-left" class="size-4" />
-            </button>
+            <BackButton :isSemiTransparent="true" />
           </div>
 
           <div class="absolute top-4 right-4 z-20 lg:hidden">
-            <DialogShareMobile :pageTitle="title">
-              <template #trigger="{ openDialog }">
-                <button
-                  class="bg-background/70 text-primary flex size-10 items-center justify-center rounded-full border border-white/10 shadow-lg backdrop-blur-sm transition active:scale-95"
-                  @click="openDialog"
-                  v-ripple
-                >
-                  <Icon name="lucide:share" class="size-4" />
-                </button>
-              </template>
-            </DialogShareMobile>
+            <DialogShare :isSemiTransparent="true" :pageTitle="title" />
           </div>
 
           <GallerySlider

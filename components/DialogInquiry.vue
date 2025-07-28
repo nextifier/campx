@@ -1,6 +1,6 @@
 <template>
   <DialogResponsive
-    dialogName="inquiry"
+    v-model:open="isDialogOpen"
     :isResponsive="false"
     :overflowContent="true"
     :drawerCloseButton="false"
@@ -48,6 +48,20 @@
 
 <script setup>
 const store = useRootStore();
+
+const uiStore = useUiStore();
+const isDialogOpen = computed({
+  get() {
+    return uiStore.isInquiryDialogOpen;
+  },
+  set(value) {
+    if (value) {
+      uiStore.openInquiryDialog();
+    } else {
+      uiStore.closeInquiryDialog();
+    }
+  },
+});
 
 const links = [
   {

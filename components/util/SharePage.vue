@@ -63,7 +63,7 @@ const socialNetworks = [
 ];
 
 const store = useRootStore();
-const dialogs = useDialogStore();
+const dialogControls = inject("dialogControls", null);
 
 import { toast } from "vue-sonner";
 
@@ -74,7 +74,6 @@ const copyToClipboard = (text) => {
 };
 
 const closeDialog = () => {
-  dialogs.updateDialog("share-page", false, {});
-  dialogs.updateDialog("share-page-mobile", false, {});
+  dialogControls?.close();
 };
 </script>

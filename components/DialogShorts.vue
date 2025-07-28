@@ -15,8 +15,8 @@
           class="border-border size-full overflow-hidden rounded-xl border backdrop-blur-xl sm:rounded-2xl"
         >
           <iframe
-            v-if="dialogData.src"
-            :src="`${dialogData.src}?autoplay=1`"
+            v-if="videoSrc"
+            :src="`${videoSrc}?autoplay=1`"
             class="size-full border-0 bg-white/10 object-cover"
             title="YouTube video player"
             frameborder="0"
@@ -48,27 +48,18 @@ import {
   DialogTitle,
 } from "reka-ui";
 
-const props = defineProps({
-  dialogName: {
-    type: String,
-    required: true,
-  },
-});
-
-const dialogs = useDialogStore();
+const uiStore = useUiStore();
 
 const isOpen = computed({
   get() {
-    const dialog = dialogs.list.find((d) => d.name === props.dialogName);
-    return dialog ? dialog.isOpen : false;
+    return uiStore.isShortsDialogOpen;
   },
-  set(val) {
-    dialogs.updateDialog(props.dialogName, val);
+  set(value) {
+    if (!value) {
+      uiStore.closeShortsDialog();
+    }
   },
 });
 
-const dialogData = computed(() => {
-  const dialog = dialogs.list.find((d) => d.name === props.dialogName);
-  return dialog ? dialog.data : {};
-});
+const videoSrc = computed(() => uiStore.shortsVideoSrc);
 </script>

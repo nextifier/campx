@@ -50,8 +50,7 @@
               >
 
               <button
-                @click="dialogs.updateDialog('inquiry', true)"
-                to="/contact"
+                @click="openInquiryDialog"
                 class="hover:bg-primary/5 dark:hover:bg-primary/8 text-primary border-primary/8 flex items-center justify-center rounded-xl px-4 py-3 font-semibold tracking-tight transition active:scale-95"
                 v-ripple
               >
@@ -170,7 +169,11 @@
 
 <script setup>
 const store = useRootStore();
-const dialogs = useDialogStore();
+
+const uiStore = useUiStore();
+const openInquiryDialog = () => {
+  uiStore.openInquiryDialog();
+};
 
 const videoRef = ref(null);
 const isPlaying = ref(true);

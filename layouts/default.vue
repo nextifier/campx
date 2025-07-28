@@ -16,7 +16,7 @@
     <Footer v-if="![].includes(route.name)" />
 
     <DialogInquiry />
-    <DialogShorts dialogName="shorts" />
+    <DialogShorts />
   </div>
 </template>
 

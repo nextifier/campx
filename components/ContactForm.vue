@@ -125,7 +125,7 @@
 
         <nuxt-link
           to="/"
-          @click="dialogs.updateDialog('inquiry', false)"
+          @click="closeInquiryDialog"
           class="bg-primary text-primary-foreground mt-8 rounded-xl px-4 py-3 text-sm font-semibold tracking-tight"
           v-ripple
         >
@@ -137,8 +137,6 @@
 </template>
 
 <script setup>
-const dialogs = useDialogStore();
-
 const { gtag } = useGtag();
 
 const props = defineProps({
@@ -152,6 +150,11 @@ const props = defineProps({
   messagePlaceholder: String,
   buttonLabel: String,
 });
+
+const uiStore = useUiStore();
+const closeInquiryDialog = () => {
+  uiStore.closeInquiryDialog();
+};
 
 const isMessageSent = ref(false);
 const loading = ref(false);

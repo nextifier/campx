@@ -168,7 +168,6 @@
 
 <script setup>
 const store = useRootStore();
-const dialogs = useDialogStore();
 
 const banners = [
   {

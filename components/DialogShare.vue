@@ -1,52 +1,49 @@
 <template>
-  <DialogResponsive
-    dialogName="share-page"
-    :dialogData="{ pageTitle, pageUrl }"
-  >
-    <!-- Trigger Slot -->
-    <template #trigger="{ openDialog }">
-      <!-- Use the parent-provided trigger slot if available -->
-      <slot name="trigger" :openDialog="openDialog">
-        <!-- Default trigger button -->
-        <button
-          type="button"
-          class="hover:bg-muted flex items-center gap-x-1.5 rounded-xl px-3 py-2 text-sm tracking-tight transition active:scale-95"
-          @click="openDialog"
-        >
-          <IconShare class="h-4" />
-          <span>Share</span>
-        </button>
-      </slot>
+  <DialogResponsive>
+    <template #trigger="{ open }">
+      <button
+        type="button"
+        @click="open({ title: pageTitle })"
+        class="text-primary lg:hover:bg-muted flex items-center justify-center gap-x-1 rounded-full border p-3 transition active:scale-95 lg:border-0"
+        :class="
+          isSemiTransparent
+            ? 'bg-background/70 border border-white/10 shadow-lg backdrop-blur-sm'
+            : 'bg-background border-border'
+        "
+        v-ripple
+      >
+        <Icon name="lucide:share" class="size-4 shrink-0" />
+        <span class="hidden text-sm tracking-tight lg:block">Share</span>
+      </button>
     </template>
 
-    <!-- Default Content -->
     <template #default="{ data }">
       <div class="px-4 pb-6 md:p-8">
         <div
-          class="text-center text-lg font-semibold tracking-tight text-black sm:text-xl dark:text-white"
+          class="text-primary text-center text-lg font-semibold tracking-tight sm:text-xl"
         >
           Share this page
         </div>
-        <UtilSharePage
-          :title="data.pageTitle || ''"
-          :url="data.pageUrl || `${config.public.siteUrl}${route.fullPath}`"
-          class="mt-4"
-        />
+        <UtilSharePage :title="data.title || ''" :url="fullUrl" class="mt-4" />
       </div>
     </template>
   </DialogResponsive>
 </template>
 
 <script setup>
-const route = useRoute();
-const config = useRuntimeConfig();
-
 const props = defineProps({
   pageTitle: {
     type: String,
+    required: true,
   },
-  pageUrl: {
-    type: String,
+  isSemiTransparent: {
+    type: Boolean,
+    default: false,
   },
 });
+
+const config = useRuntimeConfig();
+const route = useRoute();
+
+const fullUrl = computed(() => `${config.public.siteUrl}${route.fullPath}`);
 </script>

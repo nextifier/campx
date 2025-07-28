@@ -20,9 +20,9 @@
         <button
           class="group flex w-full flex-col gap-y-2 text-left transition active:scale-95"
           @click="
-            dialogs.updateDialog('shorts', true, {
-              src: `https://www.youtube.com/embed/${short.videoId}`,
-            })
+            uiStore.openShortsDialog(
+              `https://www.youtube.com/embed/${short.videoId}`,
+            )
           "
         >
           <div
@@ -88,19 +88,12 @@
         >
           <Icon name="lucide:arrow-right" class="size-4" />
         </button>
-
-        <!-- <nuxt-link
-        to="/experiences"
-        class="text-primary hover:bg-primary hover:text-primary-foreground flex h-full items-center justify-center rounded-md border px-4 text-sm font-semibold tracking-tight transition active:scale-95"
-      >
-        <span>View all</span>
-      </nuxt-link> -->
       </div>
     </div>
   </Carousel>
 </template>
 
 <script setup>
-const dialogs = useDialogStore();
+const uiStore = useUiStore();
 const shorts = useShortStore().list;
 </script>

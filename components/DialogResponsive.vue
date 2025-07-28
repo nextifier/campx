@@ -1,6 +1,7 @@
 <template>
   <div>
-    <slot name="trigger" :openDialog="openDialog" />
+    <slot name="trigger" :open="open" />
+
     <DialogRoot
       v-if="isDesktop && isOpen && isResponsive"
       v-model:open="isOpen"
@@ -13,17 +14,13 @@
           class="bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-1/2 left-1/2 z-50 flex max-h-[calc(100%-4rem)] w-full -translate-x-1/2 -translate-y-1/2 flex-col overflow-hidden rounded-2xl border shadow-lg duration-200"
           :style="{ maxWidth: dialogMaxWidth }"
         >
-          <DialogTitle class="hidden"></DialogTitle>
-          <DialogDescription class="hidden"></DialogDescription>
-
-          <slot name="sticky-header"></slot>
-
+          <DialogTitle class="hidden" />
+          <DialogDescription class="hidden" />
+          <slot name="sticky-header" />
           <ScrollArea class="flex flex-col" :scrollHideDelay="0">
             <slot :data="dialogData" />
           </ScrollArea>
-
-          <slot name="sticky-footer"></slot>
-
+          <slot name="sticky-footer" />
           <DialogClose
             class="data-[state=open]:bg-muted data-[state=open]:text-muted-foreground hover:bg-muted absolute top-3 right-3 flex size-8 items-center justify-center rounded-full focus:outline-hidden disabled:pointer-events-none"
           >
@@ -43,12 +40,9 @@
           <div
             class="bg-border mx-auto mt-2 mb-7 h-1.5 w-[100px] shrink-0 rounded-full"
           />
-
-          <DrawerTitle class="hidden"></DrawerTitle>
-          <DrawerDescription class="hidden"></DrawerDescription>
-
-          <slot name="sticky-header"></slot>
-
+          <DrawerTitle class="hidden" />
+          <DrawerDescription class="hidden" />
+          <slot name="sticky-header" />
           <div
             ref="drawerContentBody"
             class="pointer-events-auto"
@@ -60,9 +54,7 @@
           >
             <slot :data="dialogData" />
           </div>
-
-          <slot name="sticky-footer"></slot>
-
+          <slot name="sticky-footer" />
           <DrawerClose
             v-if="drawerCloseButton || isDesktop"
             class="group data-[state=open]:bg-muted data-[state=open]:text-muted-foreground hover:bg-muted absolute top-1.5 right-3 flex size-8 items-center justify-center rounded-full focus:outline-hidden disabled:pointer-events-none"
@@ -79,8 +71,7 @@
 </template>
 
 <script setup>
-import { useMediaQuery } from "@vueuse/core";
-const isDesktop = useMediaQuery("(min-width: 768px)");
+import { useMediaQuery, useVModel } from "@vueuse/core";
 
 import {
   DialogClose,
@@ -90,9 +81,7 @@ import {
   DialogPortal,
   DialogRoot,
   DialogTitle,
-  DialogTrigger,
 } from "reka-ui";
-
 import {
   DrawerRoot,
   DrawerContent,
@@ -100,18 +89,13 @@ import {
   DrawerOverlay,
   DrawerTitle,
   DrawerDescription,
-  DrawerTrigger,
   DrawerClose,
 } from "vaul-vue";
 
 const props = defineProps({
-  dialogName: {
-    type: String,
-    required: true,
-  },
-  dialogData: {
-    type: Object,
-    default: () => ({}),
+  open: {
+    type: Boolean,
+    default: undefined,
   },
   isResponsive: {
     type: Boolean,
@@ -131,21 +115,27 @@ const props = defineProps({
   },
 });
 
-const dialogs = useDialogStore();
+const emit = defineEmits(["update:open"]);
 
-const isOpen = computed({
-  get() {
-    const dialog = dialogs.list.find((d) => d.name === props.dialogName);
-    return dialog ? dialog.isOpen : false;
-  },
-  set(val) {
-    dialogs.updateDialog(props.dialogName, val);
-  },
-});
+const isDesktop = useMediaQuery("(min-width: 768px)");
 
-const openDialog = () => {
-  dialogs.updateDialog(props.dialogName, true, props.dialogData);
+// const isOpen = ref(false);
+const isOpen = useVModel(props, "open", emit, { passive: true });
+const dialogData = ref({});
+
+const open = (data = {}) => {
+  dialogData.value = data;
+  isOpen.value = true;
 };
+
+const close = () => {
+  isOpen.value = false;
+};
+
+provide("dialogControls", {
+  open,
+  close,
+});
 
 const drawerContentBody = ref(null);
 const drawerContentBodyYPosition = ref(0);
