@@ -108,7 +108,10 @@
     --border: var(--color-gray-200);
     --input: var(--color-gray-100);
     --ring: var(--color-black);
+    --info: var(--color-blue-600);
+    --warn: var(--color-yellow-400);
     --destructive: var(--color-red-600);
+    --success: var(--color-green-500);
 
     --primary: var(--color-black);
     --primary-foreground: var(--color-white);
@@ -147,7 +150,10 @@
     --border: var(--color-gray-800);
     --input: var(--color-gray-900);
     --ring: var(--color-white);
-    --destructive: var(--color-red-400);
+    --info: var(--color-blue-500);
+    --warn: var(--color-yellow-400);
+    --destructive: var(--color-red-500);
+    --success: var(--color-green-500);
 
     --primary: var(--color-white);
     --primary-foreground: var(--color-black);
@@ -185,7 +191,10 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-info: var(--info);
+  --color-warn: var(--warn);
   --color-destructive: var(--destructive);
+  --color-success: var(--success);
 
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
@@ -446,10 +455,6 @@
 
   html {
     @apply scroll-pt-navbar;
-  }
-
-  body {
-    @apply bg-background text-body;
   }
 
   *::selection {

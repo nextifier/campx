@@ -1,5 +1,5 @@
 <template>
-  <ConfigProvider :use-id="useIdFunction">
+  <Body class="bg-background text-body">
     <div class="font-sans text-sm antialiased sm:text-base">
       <NuxtLoadingIndicator color="#4eb362" />
       <NuxtLayout>
@@ -7,13 +7,10 @@
       </NuxtLayout>
       <Toaster class="pointer-events-auto" />
     </div>
-  </ConfigProvider>
+  </Body>
 </template>
 
 <script setup>
-import { ConfigProvider } from "reka-ui";
-const useIdFunction = () => useId();
-
 import "vue-sonner/style.css";
 
 const store = useRootStore();

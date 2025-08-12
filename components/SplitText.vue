@@ -178,8 +178,46 @@ const cleanup = () => {
   isInitialized.value = false;
 };
 
+const waitForFontAndInitialize = async () => {
+  if (typeof window === "undefined") return;
+
+  await nextTick();
+  const el = textRef.value;
+  if (!el) return;
+
+  try {
+    await document.fonts.ready;
+
+    const computedStyle = window.getComputedStyle(el);
+    const fontFamily = computedStyle.fontFamily
+      .split(",")[0]
+      .trim()
+      .replace(/"/g, "");
+
+    const genericFonts = [
+      "ui-sans-serif",
+      "system-ui",
+      "sans-serif",
+      "apple color emoji",
+      "segoe ui emoji",
+      "segoe ui symbol",
+      "noto color emoji",
+    ];
+    if (fontFamily && !genericFonts.includes(fontFamily.toLowerCase())) {
+      await document.fonts.load(`1rem "${fontFamily}"`);
+    }
+  } catch (error) {
+    console.warn(
+      `Could not preload font for SplitText. Initializing animation anyway.`,
+      error,
+    );
+  } finally {
+    initializeAnimation();
+  }
+};
+
 onMounted(() => {
-  initializeAnimation();
+  waitForFontAndInitialize();
 });
 
 onUnmounted(() => {
@@ -191,7 +229,7 @@ watch(
   () => {
     cleanup();
     nextTick(() => {
-      initializeAnimation();
+      waitForFontAndInitialize();
     });
   },
 );

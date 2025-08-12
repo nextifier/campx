@@ -10,10 +10,10 @@
       :aria-label="copied ? 'Copied' : 'Copy to clipboard'"
       :disabled="copied"
       v-ripple
-      class="border-border bg-background text-muted-foreground flex w-full max-w-md justify-between rounded-lg border disabled:opacity-100"
+      class="border-border bg-muted text-muted-foreground flex w-full max-w-md justify-between rounded-lg border disabled:opacity-100"
     >
       <div
-        class="scroll-fade-x no-scrollbar flex shrink items-center justify-start overflow-x-auto px-3 py-1 text-left text-sm tracking-tight"
+        class="scroll-fade-x no-scrollbar flex shrink items-center justify-start overflow-hidden px-3 py-1 text-left text-sm tracking-tight"
         v-tippy="url"
       >
         <span class="text-nowrap">{{ url }}</span>

@@ -1,6 +1,5 @@
 <template>
   <Carousel
-    v-if="items?.length"
     @init-api="setApi"
     v-slot="{ scrollPrev, scrollNext, canScrollPrev, canScrollNext }"
     class="focusable relative overflow-hidden"
@@ -11,7 +10,7 @@
     }"
     :plugins="[
       Autoplay({
-        delay: 6000,
+        delay: 4000,
         // stopOnInteraction: false,
         // stopOnMouseEnter: true,
       }),
@@ -24,7 +23,9 @@
         :key="index"
         class="basis-full pl-2"
       >
-        <div
+        <nuxt-link
+          :to="item.cta?.link ?? ''"
+          :target="item.cta.link.startsWith('http') ? '_blank' : ''"
           class="text-primary border-primary/10 flex h-full items-center rounded-2xl border bg-white/3 backdrop-blur-lg"
         >
           <div
@@ -57,17 +58,15 @@
               class="text-primary/80 mt-1 line-clamp-4 !leading-[1.4] font-medium tracking-tight"
             />
 
-            <nuxt-link
+            <button
               v-if="item.cta"
-              :to="item.cta.link"
-              :target="item.cta.openInNewTab ? '_blank' : ''"
               class="text-primary mt-1 flex items-center gap-1 rounded-md font-semibold tracking-tighter transition hover:underline"
             >
               <span>{{ item.cta.label }}</span>
               <Icon name="lucide:arrow-right" class="size-3.5" />
-            </nuxt-link>
+            </button>
           </div>
-        </div>
+        </nuxt-link>
       </CarouselItem>
     </CarouselContent>
 
@@ -150,86 +149,5 @@ onUnmounted(() => {
   }
 });
 
-const items = [
-  {
-    subHeadline: "BARU! Camping di Cabin X",
-    content: `
-      <p>Nikmatin nyamannya staycation dengan vibe alam yang maksimal. Kabin baru kami udah siap kamu booking. Kapan lagi coba?</p>
-    `,
-    img: {
-      src: "/img/banners/banner-cabin.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: {
-      label: "Cek Detail Kabin",
-      link: "/experiences/cabin",
-      openInNewTab: false,
-    },
-  },
-  {
-    subHeadline: "Outing Kantor Anti Mainstream",
-    content: `
-      <p>Bosen sama outing yang gitu-gitu aja? Ajak tim kamu ke CampX! Fasilitas lengkap, aktivitas seru, dijamin bikin tim makin solid.</p>
-    `,
-    img: {
-      src: "/img/banners/banner-outing.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: {
-      label: "Tanya Paket Grup",
-      link: "/contact",
-      openInNewTab: false,
-    },
-  },
-  {
-    subHeadline: "Udah Tau Belum?",
-    content: `
-      <p>CampX berada di tepi Waduk Jatiluhur, lho! Yang ternyata adalah waduk terbesar se-Indonesia. Pemandangannya? Juara!</p>
-    `,
-    img: {
-      src: "/img/banners/banner-waduk.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: {
-      label: "Lihat Lokasi di Peta",
-      link: "https://maps.app.goo.gl/1uhAWnpqFdcH6Au66",
-      openInNewTab: true,
-    },
-  },
-  {
-    subHeadline: "Taklukkan Danau dengan SUP!",
-    content: `
-      <p>Udah pernah coba Stand-Up Paddle Board? Tamu yang nginap di CampX bisa main gratis, lho. Uji keseimbanganmu sambil nikmatin view terbaik!</p>
-    `,
-    img: {
-      src: "/img/banners/banner-sup.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: {
-      label: "Cobain Stand-Up Paddle",
-      link: "/experiences/stand-up-paddle",
-      openInNewTab: false,
-    },
-  },
-  {
-    subHeadline: "Share Momen Kerenmu!",
-    content: `
-      <p>Jangan lupa tag @campx.id di Instagram & TikTok saat kamu posting keseruanmu! Pasti di-repost sama mimin. 😉</p>
-    `,
-    img: {
-      src: "/img/banners/banner-socmed.jpg",
-      w: 400,
-      h: 500,
-    },
-    cta: {
-      label: "Follow Instagram CampX",
-      link: "https://instagram.com/campx.id",
-      openInNewTab: true,
-    },
-  },
-];
+const items = useBannerStore().bannerHero;
 </script>
