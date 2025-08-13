@@ -86,7 +86,7 @@ export const useExperienceStore = defineStore("experiences", {
         shortDescription:
           "Niat camping tapi mager bawa barang? Tenang, semua udah kita siapin & pasangin. Kamu tinggal dateng!",
         description: `
-          <p>Stop wacana camping gara-gara gak punya tenda! Di paket ini, semua perlengkapan dari tenda, <i>sleeping bag</i>, sampe lampu udah kita <strong>set up</strong>-in cantik di kavling pilihanmu. Kamu tinggal bawa baju ganti sama <i>good vibes</i> aja. <i>Simple as that!</i></p>
+          <p>Stop wacana camping gara-gara gak punya tenda! Di paket ini, semua perlengkapan dari tenda, matras lipat, sampe lampu udah kita <strong>set up</strong>-in cantik di kavling pilihanmu. Kamu tinggal bawa baju ganti sama <i>good vibes</i> aja. <i>Simple as that!</i></p>
         `,
         coverImage: "/img/experiences/cover-camping-tent-included.jpg",
         checkInOut: {
@@ -100,8 +100,7 @@ export const useExperienceStore = defineStore("experiences", {
           "Gratis main Stand-Up Paddle Board, Sepeda & Mancing",
           "Akses ke fasilitas umum (toilet, musholla, dll)",
           "Tenda kapasitas 2-4 orang (sudah terpasang)",
-          "Kasur untuk 2 orang",
-          "Sleeping bag",
+          "Matras lipat untuk 2 orang",
           "Lampu tenda",
         ],
         excluded: ["Peralatan masak & makan pribadi"],
@@ -141,7 +140,7 @@ export const useExperienceStore = defineStore("experiences", {
         included: [
           "Kabin eksklusif dengan view danau",
           "Luas kabin 7m²",
-          "Kasur untuk 2 orang",
+          "Matras lipat untuk 2 orang",
           "Akses listrik & air bersih di kavling",
           "Akses WiFi",
           "Gratis main Stand-Up Paddle Board, Sepeda & Mancing",
