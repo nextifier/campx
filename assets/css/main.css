@@ -275,38 +275,6 @@
   @apply scroll-pt-[var(--navbar-height-mobile)] lg:scroll-pt-[var(--navbar-height-desktop)];
 }
 
-@utility format-html {
-  @apply prose dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tighter sm:prose-lg prose-h1:font-extrabold max-w-xl tracking-tight break-words;
-
-  & h1 {
-    @apply text-4xl sm:text-5xl;
-  }
-
-  & h2 {
-    @apply text-3xl sm:text-4xl;
-  }
-
-  & h3 {
-    @apply text-xl sm:text-2xl;
-  }
-
-  & h4 {
-    @apply text-lg sm:text-xl;
-  }
-
-  & p {
-    @apply leading-7 tracking-tight not-first:mt-6;
-  }
-
-  & blockquote {
-    @apply mt-6 border-l-2 pl-6 italic;
-  }
-
-  & code {
-    @apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
-  }
-}
-
 @utility keyboard-symbol {
   @apply bg-muted text-primary ring-border hidden rounded-md p-1 px-2 py-0.5 text-xs ring-1 ring-inset pointer-fine:inline;
 }
@@ -532,6 +500,56 @@
   }
 }
 
+@utility format-html {
+  @apply prose dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tighter sm:prose-lg prose-h1:font-extrabold prose-figcaption:capitalize prose-figcaption:text-xs max-w-xl tracking-tight break-words;
+
+  & *:not(h1, h2, h3, h4, h5, h6, a) {
+    @apply !bg-inherit !text-inherit;
+  }
+
+  & table {
+    @apply !block !w-full !border-collapse !overflow-x-auto !whitespace-nowrap;
+  }
+
+  & th,
+  & td {
+    @apply !border-border !px-2 !py-4;
+
+    & p,
+    & span {
+      @apply !my-0 !align-middle !leading-normal !text-nowrap;
+    }
+  }
+
+  & h1 {
+    @apply text-4xl sm:text-5xl;
+  }
+
+  & h2 {
+    @apply text-3xl sm:text-4xl;
+  }
+
+  & h3 {
+    @apply text-xl sm:text-2xl;
+  }
+
+  & h4 {
+    @apply text-lg sm:text-xl;
+  }
+
+  & p {
+    @apply leading-7 tracking-tight not-first:mt-6;
+  }
+
+  & blockquote {
+    @apply mt-6 border-l-2 pl-6 italic;
+  }
+
+  & code {
+    @apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+  }
+}
+
 @property --left-fade {
   syntax: "<length>";
   inherits: false;
@@ -544,7 +562,19 @@
   initial-value: 0;
 }
 
-@keyframes scrollfade {
+@property --top-fade {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --bottom-fade {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@keyframes scrollFadeX {
   0% {
     --left-fade: 0;
   }
@@ -561,16 +591,45 @@
   }
 }
 
-.scroll-fade-x {
+@keyframes scrollFadeY {
+  0% {
+    --top-fade: 0;
+  }
+  10%,
+  100% {
+    --top-fade: 3rem;
+  }
+  0%,
+  90% {
+    --bottom-fade: 3rem;
+  }
+  100% {
+    --bottom-fade: 0;
+  }
+}
+
+@utility scroll-fade-x {
   mask: linear-gradient(
     to right,
     #0000,
     #ffff var(--left-fade) calc(100% - var(--right-fade)),
     #0000
   );
-  animation: scrollfade;
-  animation-timeline: --scrollfade;
-  scroll-timeline: --scrollfade x;
+  animation: scrollFadeX;
+  animation-timeline: --scrollFadeX;
+  scroll-timeline: --scrollFadeX x;
+}
+
+@utility scroll-fade-y {
+  mask: linear-gradient(
+    to bottom,
+    #0000,
+    #ffff var(--top-fade) calc(100% - var(--bottom-fade)),
+    #0000
+  );
+  animation: scrollFadeY;
+  animation-timeline: --scrollFadeY;
+  scroll-timeline: --scrollFadeY y;
 }
 
 .gallery-container .my-gallery {

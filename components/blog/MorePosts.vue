@@ -2,13 +2,13 @@
   <div v-if="morePosts?.length">
     <div class="container">
       <h5
-        class="text-3xl font-semibold tracking-tighter text-black dark:text-white sm:text-4xl"
+        class="text-primary text-3xl font-semibold tracking-tighter sm:text-4xl"
       >
         You might also like
       </h5>
     </div>
 
-    <LazyBlogPostSlider :posts="morePosts" class="mt-6" />
+    <LazyBlogPostSlider :posts="morePosts" class="mt-4 lg:mt-6" />
   </div>
 </template>
 

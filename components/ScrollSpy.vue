@@ -1,6 +1,6 @@
 <template>
   <nav v-if="headings.length > 0" class="space-y-2">
-    <h3 v-if="showLabel" class="text-primary font-semibold tracking-tight">
+    <h3 v-if="showLabel" class="text-primary font-semibold tracking-tighter">
       On this page
     </h3>
     <ul class="tracking-tight">
@@ -57,7 +57,17 @@ const emit = defineEmits(["headings-found"]);
 onMounted(async () => {
   await nextTick();
 
-  const contentElement = document.querySelector(props.contentSelector);
+  let selector = props.contentSelector;
+
+  // Cek apakah selector adalah ID yang diawali dengan angka.
+  // Regex \d mengecek adanya digit.
+  if (selector.startsWith("#") && /\d/.test(selector.charAt(1))) {
+    // Ubah selector menjadi format attribute selector yang valid.
+    // Contoh: '#5-slug' menjadi '[id="5-slug"]'
+    selector = `[id="${selector.substring(1)}"]`;
+  }
+
+  const contentElement = document.querySelector(selector); // Gunakan selector yang sudah divalidasi
   if (!contentElement) {
     console.warn(
       `[ScrollSpy] Elemen konten dengan selector "${props.contentSelector}" tidak ditemukan.`,
