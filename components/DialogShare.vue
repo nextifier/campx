@@ -4,7 +4,7 @@
       <button
         type="button"
         @click="open({ title: pageTitle })"
-        class="text-primary lg:hover:bg-muted flex items-center justify-center gap-x-1 rounded-full border p-3 transition active:scale-95 lg:border-0"
+        class="text-primary lg:hover:bg-muted flex items-center justify-center gap-x-1 rounded-full border p-3 transition active:scale-98 lg:border-0"
         :class="
           isSemiTransparent
             ? 'bg-background/70 border border-white/10 shadow-lg backdrop-blur-sm'
@@ -24,7 +24,7 @@
         >
           Share this page
         </div>
-        <UtilSharePage :title="data.title || ''" :url="fullUrl" class="mt-4" />
+        <SharePage :title="data.title || ''" :url="fullUrl" class="mt-4" />
       </div>
     </template>
   </DialogResponsive>
@@ -45,5 +45,5 @@ const props = defineProps({
 const config = useRuntimeConfig();
 const route = useRoute();
 
-const fullUrl = computed(() => `${config.public.siteUrl}${route.fullPath}`);
+const fullUrl = computed(() => `${useAppConfig().app.url}${route.fullPath}`);
 </script>

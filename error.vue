@@ -11,12 +11,12 @@
 
       <h1
         v-if="error.statusMessage"
-        class="text-4xl font-bold tracking-tighter text-primary"
+        class="text-primary text-4xl font-bold tracking-tighter"
       >
         {{ error.statusMessage }}
       </h1>
 
-      <p v-if="error.message" class="text-pretty">
+      <p v-if="error.message" class="mx-auto mt-1 max-w-2xl text-balance">
         {{
           error.statusCode === 404
             ? "We couldn’t find the page you’re looking for. It might have moved, been renamed, or maybe it never existed in the first place."
@@ -26,13 +26,13 @@
 
       <pre
         v-if="error.stack && error.statusCode === 500"
-        class="mt-3 w-full max-w-xl overflow-auto rounded-2xl border px-4 py-6 text-left text-xs leading-normal! text-muted-foreground"
+        class="text-muted-foreground mt-3 w-full max-w-xl overflow-auto rounded-2xl border px-4 py-6 text-left text-xs leading-normal!"
         >{{ error.stack }}</pre
       >
 
       <button
         @click="handleError"
-        class="mt-4 flex items-center gap-x-1 rounded-xl bg-primary px-4 py-3 font-medium tracking-tight text-primary-foreground transition hover:bg-primary/80 active:scale-95"
+        class="bg-primary text-primary-foreground hover:bg-primary/80 mt-4 flex items-center gap-x-1 rounded-xl px-4 py-3 font-medium tracking-tight transition active:scale-98"
       >
         <Icon name="lucide:arrow-left" class="size-4 shrink-0" />
         <span>Back to home</span>

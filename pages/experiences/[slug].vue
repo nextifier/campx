@@ -2,7 +2,7 @@
   <div v-if="experience" class="pb-14 lg:pt-4 lg:pb-20">
     <div class="sm:container">
       <div class="hidden items-center justify-between px-4 sm:px-0 lg:flex">
-        <BackButton />
+        <BackButton destination="/" />
         <DialogShare :pageTitle="title" />
       </div>
 
@@ -11,7 +11,7 @@
       >
         <div class="relative z-10 lg:col-span-4">
           <div class="absolute top-4 left-4 z-20 lg:hidden">
-            <BackButton :isSemiTransparent="true" />
+            <BackButton destination="/" :isSemiTransparent="true" />
           </div>
 
           <div class="absolute top-4 right-4 z-20 lg:hidden">
@@ -225,7 +225,7 @@
               <div class="mt-2 flex flex-col items-start">
                 <nuxt-link
                   v-if="experience.status.toLocaleLowerCase() === 'available'"
-                  :to="`https://api.whatsapp.com/send?phone=${store.whatsapp}&text=Hai, CampX! Saya mau reservasi untuk paket ${experience.title}`"
+                  :to="`https://api.whatsapp.com/send?phone=${useAppConfig().contact.whatsapp}&text=Hai, CampX! Saya mau reservasi untuk paket ${experience.title}`"
                   target="_blank"
                   class="bg-primary text-primary-foreground items-cente hover:bg-primary/80 flex items-center justify-center gap-2 rounded-xl px-6 py-4 font-semibold tracking-tight transition active:scale-95"
                 >
@@ -294,7 +294,6 @@
 
 <script setup>
 const route = useRoute();
-const store = useRootStore();
 const config = useRuntimeConfig();
 const { $dayjs } = useNuxtApp();
 const { format } = useCurrencyFormat();
@@ -316,23 +315,10 @@ const title = experience?.title ?? "";
 const description =
   experience?.shortDescription ?? experience?.description ?? "";
 
-useSeoMeta({
-  title: title,
-  ogTitle: title,
-  description: description,
-  ogDescription: description,
-  ogUrl: config.public.siteUrl + route.fullPath,
-  twitterCard: "summary_large_image",
-  ogType: "website",
-});
-
-defineOgImageComponent("Page", {
-  headline: store.appName,
+usePageMeta("", {
   title: title,
   description: description,
 });
-
-const router = useRouter();
 
 const hideScrollbar = () => {
   document.querySelector("html").classList.add("no-scrollbar");

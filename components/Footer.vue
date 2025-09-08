@@ -79,8 +79,8 @@
       >
         <span
           ><span class="hidden sm:inline">Copyright</span> ©
-          {{ new Date().getFullYear() }} {{ store.appName }}. All rights
-          reserved.</span
+          {{ new Date().getFullYear() }} {{ useAppConfig().app.name }}. All
+          rights reserved.</span
         >
       </div>
     </div>
@@ -94,78 +94,4 @@ const props = defineProps({
     default: true,
   },
 });
-
-const store = useRootStore();
-
-// const footerLinks = ref([
-//   {
-//     category: "Discover",
-//     links: [
-//       {
-//         label: "Brands",
-//         to: "/brands",
-//       },
-//       {
-//         label: "Rundown",
-//         to: "/rundown",
-//       },
-//       {
-//         label: "Programs",
-//         to: "/programs",
-//       },
-//       {
-//         label: "Ticket",
-//         to: "/ticket",
-//       },
-//     ],
-//   },
-//   {
-//     category: "For Businesses",
-//     links: [
-//       {
-//         label: "Exhibitor Registration",
-//         to: "/book-space",
-//       },
-//       {
-//         label: "Sponsorship Registration",
-//         to: `https://api.whatsapp.com/send?phone=${store.whatsapp}&text=Halo, ${store.appName}! Saya mau tanya-tanya tentang sponsorship.`,
-//         openInNewTab: true,
-//       },
-//       {
-//         label: "Media Partner Registration",
-//         to: `https://api.whatsapp.com/send?phone=${store.whatsappMarketing}&text=Halo, ${store.appName}! Saya mau tanya-tanya tentang partnership.`,
-//         openInNewTab: true,
-//       },
-//       {
-//         label: "Contact",
-//         to: "/contact",
-//       },
-//     ],
-//   },
-//   {
-//     category: "Resources",
-//     links: [
-//       // {
-//       //   label: "Gallery",
-//       //   to: "/gallery",
-//       // },
-//       {
-//         label: "FAQ",
-//         to: "/faq",
-//       },
-//       {
-//         label: "Ticket Policy",
-//         to: "/ticket-policy",
-//       },
-//       {
-//         label: "Event Policy",
-//         to: "/event-policy",
-//       },
-//       {
-//         label: "Links",
-//         to: "/links",
-//       },
-//     ],
-//   },
-// ]);
 </script>

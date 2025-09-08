@@ -1,6 +1,6 @@
 <template>
   <div
-    class="border-primary/25 text-primary dark:text-accent dark:border-accent/25 dark:bg-accent/8 dark:hover:bg-accent/16 hover:bg-primary/5 relative inline-flex h-8 items-center justify-start overflow-hidden rounded-full border px-3 py-1 font-semibold tracking-tighter transition active:scale-95"
+    class="relative inline-flex h-8 items-center justify-start overflow-hidden rounded-full px-3 py-1 font-semibold tracking-tighter transition active:scale-95"
   >
     <Transition
       enter-active-class="transition-all duration-500 ease-out"
@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-const items = useBannerStore().announcements;
+const items = useContentStore().components.hero.announcements;
 
 const currentIndex = ref(0);
 let intervalId = null;

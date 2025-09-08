@@ -1,23 +1,25 @@
 <template>
-  <div id="front-layout" class="relative flex min-h-screen flex-col">
-    <Header />
-    <main class="flex-auto">
-      <slot />
-    </main>
+  <SidebarProvider>
+    <SidebarInset>
+      <Header />
+      <main class="flex-auto">
+        <slot />
+      </main>
 
-    <FAB
-      v-if="
-        !['experiences', 'experiences-slug', 'promo', 'promo-slug'].includes(
-          route.name,
-        )
-      "
-    />
+      <FAB
+        v-if="
+          !['experiences', 'experiences-slug', 'promo', 'promo-slug'].includes(
+            route.name,
+          )
+        "
+      />
 
-    <Footer v-if="![].includes(route.name)" />
+      <Footer v-if="![].includes(route.name)" />
 
-    <DialogInquiry />
-    <DialogShorts />
-  </div>
+      <DialogInquiry />
+      <DialogShorts />
+    </SidebarInset>
+  </SidebarProvider>
 </template>
 
 <script setup>

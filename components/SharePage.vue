@@ -45,20 +45,20 @@
     </button>
     <div class="flex justify-center gap-x-3">
       <ClientOnly>
-        <UtilShareNetwork
+        <ShareNetwork
           v-for="social in socialNetworks"
           :key="social.slug"
           :network="social.slug"
           :url="url"
           :title="title"
           @click="closeDialog"
-          class="hover:bg-opacity-80 flex aspect-square size-12 cursor-pointer items-center justify-center rounded-full border border-white/15 text-white transition active:scale-95"
+          class="hover:bg-opacity-80 flex aspect-square size-12 cursor-pointer items-center justify-center rounded-full border border-white/15 text-white transition active:scale-98"
           :style="`background: ${social.color}`"
           v-ripple
           v-tippy="`Share to ${social.name}`"
         >
           <Icon :name="social.iconName" class="size-6" />
-        </UtilShareNetwork>
+        </ShareNetwork>
       </ClientOnly>
     </div>
   </div>
@@ -102,7 +102,6 @@ const socialNetworks = [
   },
 ];
 
-const store = useRootStore();
 const dialogControls = inject("dialogControls", null);
 
 const closeDialog = () => {

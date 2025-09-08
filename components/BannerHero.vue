@@ -25,7 +25,7 @@
       >
         <nuxt-link
           :to="item.cta?.link ?? ''"
-          :target="item.cta.link.startsWith('http') ? '_blank' : ''"
+          :target="item.cta?.link.startsWith('http') ? '_blank' : ''"
           class="text-primary border-primary/10 flex h-full items-center rounded-2xl border bg-white/3 backdrop-blur-lg"
         >
           <div
@@ -106,8 +106,6 @@
 <script setup>
 import Autoplay from "embla-carousel-autoplay";
 
-const store = useRootStore();
-
 const emblaApi = ref(null);
 const isPlaying = ref(false);
 
@@ -149,5 +147,5 @@ onUnmounted(() => {
   }
 });
 
-const items = useBannerStore().bannerHero;
+const items = useContentStore().components.hero.bannerHero;
 </script>

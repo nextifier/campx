@@ -5,7 +5,7 @@
       class="inline-flex items-center gap-x-1 text-sm font-semibold sm:text-base"
     >
       <span v-if="textBeforeCountdown">{{ textBeforeCountdown }}</span>
-      <span v-if="timeParts.days" class="ml-1">
+      <span v-if="timeParts.days">
         <NumberFlow :value="timeParts.days" /> Day<span
           v-if="timeParts.days > 1"
           >s
@@ -34,15 +34,14 @@
         </span>
       </div>
     </span>
-    <span v-if="variant.toLocaleLowerCase() === 'no-style'" class="inline">
+    <span v-else-if="variant.toLocaleLowerCase() === 'no-style'" class="inline">
       <span v-if="textBeforeCountdown">{{ textBeforeCountdown }}</span>
       <span v-if="timeParts.days">
         <NumberFlow :value="timeParts.days" /> day<span
           v-if="timeParts.days > 1"
           >s</span
-        >
-      </span>
-      &nbsp;<span>
+        > </span
+      >&nbsp;<span>
         <span v-show="timeParts.hours < 10">0</span
         ><NumberFlow :value="timeParts.hours" />
       </span>
@@ -57,6 +56,54 @@
         ><NumberFlow :value="timeParts.seconds" />
       </span>
     </span>
+
+    <div v-else-if="variant.toLocaleLowerCase() === 'text-with-shadow'">
+      <div class="grid grid-cols-4 gap-2 sm:gap-4">
+        <div class="flex w-full flex-col items-center gap-y-1 text-center">
+          <NumberFlow
+            :value="timeParts.days"
+            class="text-primary dark:text-shadow-accent/80 text-2xl !leading-none font-extrabold tracking-tighter italic tabular-nums dark:text-shadow-[0px_0px_8px_var(--tw-text-shadow-color)]"
+          />
+          <span
+            class="text-primary/70 text-sm !leading-none tracking-tight italic"
+            >Day<span v-if="timeParts.days > 1">s</span></span
+          >
+        </div>
+
+        <div class="flex w-full flex-col items-center gap-y-1 text-center">
+          <NumberFlow
+            :value="timeParts.hours"
+            class="text-primary dark:text-shadow-accent/80 text-2xl !leading-none font-extrabold tracking-tighter italic tabular-nums dark:text-shadow-[0px_0px_8px_var(--tw-text-shadow-color)]"
+          />
+          <span
+            class="text-primary/70 text-sm !leading-none tracking-tight italic"
+            >Hour<span v-if="timeParts.hours > 1">s</span></span
+          >
+        </div>
+
+        <div class="flex w-full flex-col items-center gap-y-1 text-center">
+          <NumberFlow
+            :value="timeParts.minutes"
+            class="text-primary dark:text-shadow-accent/80 text-2xl !leading-none font-extrabold tracking-tighter italic tabular-nums dark:text-shadow-[0px_0px_8px_var(--tw-text-shadow-color)]"
+          />
+          <span
+            class="text-primary/70 text-sm !leading-none tracking-tight italic"
+            >Min<span v-if="timeParts.minutes > 1">s</span></span
+          >
+        </div>
+
+        <div class="flex w-full flex-col items-center gap-y-1 text-center">
+          <NumberFlow
+            :value="timeParts.seconds"
+            class="text-primary dark:text-shadow-accent/80 text-2xl !leading-none font-extrabold tracking-tighter italic tabular-nums dark:text-shadow-[0px_0px_8px_var(--tw-text-shadow-color)]"
+          />
+          <span
+            class="text-primary/70 text-sm !leading-none tracking-tight italic"
+            >Sec</span
+          >
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

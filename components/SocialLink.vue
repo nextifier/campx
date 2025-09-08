@@ -1,12 +1,12 @@
 <template>
   <nuxt-link
-    :to="props.to"
-    :target="openInNewTab ? '_blank' : ''"
-    class="text-primary hover:bg-muted relative flex size-9 items-center justify-center rounded-xl transition active:scale-95"
-    :aria-label="props.label"
-    v-tippy="props.label"
+    :to="to"
+    :target="to.startsWith('http') ? '_blank' : ''"
+    class="text-primary hover:bg-muted relative flex size-9 items-center justify-center rounded-xl transition active:scale-98"
+    :aria-label="label"
+    v-tippy="label"
   >
-    <Icon :name="props.iconName" :class="iconClasses" />
+    <Icon :name="iconName" :class="iconClasses" />
   </nuxt-link>
 </template>
 

@@ -14,61 +14,85 @@ const props = defineProps({
   },
   brandName: {
     type: String,
-    default: "CampX",
+    default: "",
   },
   website: {
     type: String,
-    default: "campx.id",
+    default: "",
   },
 });
+
+const isDarkMode = ref(useAppConfig().settings.ogImage.isDarkMode);
 </script>
 
 <template>
-  <div class="relative flex h-full w-full flex-col bg-white text-black">
+  <div
+    class="relative flex h-full w-full flex-col px-[100px] py-[100px]"
+    :class="isDarkMode ? 'bg-black text-white' : 'bg-white text-black'"
+  >
     <div
-      class="mx-auto flex h-full w-[1080px] flex-col items-start justify-center pt-6 text-left"
-    >
-      <div class="flex flex-row items-center gap-x-3">
-        <div
-          class="flex size-24 items-center justify-center rounded-full border border-gray-300 bg-white"
+      class="absolute inset-y-0 left-[100px] border-l-2 border-dashed"
+      :class="isDarkMode ? 'bg-white/15' : 'bg-black/10'"
+    ></div>
+
+    <div
+      class="absolute inset-y-0 right-[100px] border-r-2 border-dashed"
+      :class="isDarkMode ? 'bg-white/15' : 'bg-black/10'"
+    ></div>
+
+    <div
+      class="absolute inset-x-0 top-[100px] border-t-2 border-dashed"
+      :class="isDarkMode ? 'bg-white/15' : 'bg-black/10'"
+    ></div>
+
+    <div
+      class="absolute inset-x-0 bottom-[100px] border-b-2 border-dashed"
+      :class="isDarkMode ? 'bg-white/15' : 'bg-black/10'"
+    ></div>
+
+    <div class="flex h-full flex-col text-left">
+      <h1
+        v-if="title"
+        class="mt-2 text-[80px] leading-none font-semibold tracking-tighter"
+      >
+        <span v-if="title.length > 40">{{ title.slice(0, 40) }}...</span>
+        <span v-else>{{ title }}</span>
+      </h1>
+      <p
+        v-if="description"
+        class="mt-2 text-[28px] leading-[1.6] tracking-tight text-balance"
+      >
+        <span v-if="description.length > 160"
+          >{{ description.slice(0, 160) }}...</span
         >
-          <svg
+        <span v-else>{{ description }}</span>
+      </p>
+
+      <div class="mt-auto flex flex-row items-center gap-x-5">
+        <div
+          class="flex size-24 items-center justify-center overflow-hidden rounded-full border"
+          :class="isDarkMode ? 'border-white/15' : 'border-black/10'"
+        >
+          <img
+            src="/icons/icon-192x192.png"
             class="size-full object-contain"
-            viewBox="0 0 512 512"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect width="512" height="512" fill="white" />
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M377.732 435.65C341.795 459.991 299.395 473 256 473C212.605 473 170.205 459.991 134.268 435.65L256 279.348L377.732 435.65ZM256 39C297.431 38.9726 338.003 50.8215 372.915 73.1446C407.827 95.4677 435.617 127.331 452.997 164.963C470.377 202.595 476.619 244.422 470.986 285.493C465.352 326.564 448.078 365.161 421.207 396.716L256 184.731L90.7927 396.716C63.9222 365.161 46.648 326.564 41.0143 285.493C35.3806 244.422 41.6231 202.595 59.0032 164.963C76.3833 127.331 104.173 95.4677 139.085 73.1446C173.997 50.8215 214.569 38.9726 256 39Z"
-              fill="#2E9849"
-            />
-          </svg>
+            alt=""
+            width="192"
+            height="192"
+          />
         </div>
 
-        <div class="flex flex-col items-start gap-y-1">
+        <div class="flex flex-col items-start gap-y-2">
           <span
-            v-if="props.brandName"
+            v-if="useAppConfig().app.name"
             class="text-3xl font-semibold tracking-tighter"
-            >{{ props.brandName }}</span
+            >{{ useAppConfig().app.name }}</span
           >
-          <span v-if="props.website" class="text-2xl tracking-tight">{{
-            props.website
+          <span v-if="useAppConfig().app.url" class="text-2xl tracking-tight">{{
+            useAppConfig().app.url
           }}</span>
         </div>
       </div>
-
-      <h1
-        v-if="title"
-        class="mt-8 flex items-center text-7xl font-semibold tracking-tighter"
-      >
-        <span>{{ title }}</span>
-      </h1>
-      <p v-if="description" class="mt-2 text-3xl tracking-tight">
-        {{ description }}
-      </p>
     </div>
   </div>
 </template>

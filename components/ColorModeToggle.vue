@@ -1,15 +1,12 @@
 <template>
   <SwitchRoot
-    v-model:model-value="enabled"
-    @update:model-value="toggleColorMode()"
-    class="text-primary hover:bg-muted relative flex size-9 rounded-xl"
-    aria-label="Enable Dark Mode"
+    v-model:model-value="isDarkMode"
+    class="text-primary hover:bg-muted relative flex size-8 rounded-lg"
+    aria-label="Toggle Dark Mode"
   >
     <SwitchThumb class="absolute inset-0 flex items-center justify-center">
       <ClientOnly>
-        <template v-slot:default>
-          <!-- <IconSun v-if="colorMode.preference === 'light'" class="size-4" /> -->
-          <!-- <IconMoon v-else class="size-4" /> -->
+        <template #default>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -18,9 +15,9 @@
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="ease-out-swift size-4.5 transition duration-500"
+            class="size-4.5 transition duration-500 ease-out"
             :class="{
-              'rotate-180': colorMode.preference === 'dark',
+              'rotate-180': isDarkMode,
             }"
           >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -31,7 +28,7 @@
             <path d="M12 19.6l8.85 -8.85"></path>
           </svg>
         </template>
-        <template v-slot:placeholder>
+        <template #placeholder>
           <div
             class="size-4 animate-[spin_1s_linear_infinite] rounded-full border border-current border-r-transparent"
           ></div>
@@ -44,31 +41,23 @@
 <script setup>
 import { SwitchRoot, SwitchThumb } from "reka-ui";
 
-const store = useRootStore();
 const colorMode = useColorMode();
+const nuxtApp = useNuxtApp();
 
-const { darkModeEnabled: enabled } = toRefs(useRootStore());
-
-onMounted(() => {
-  enabled.value = colorMode.preference === "dark" ? true : false;
+const isDarkMode = computed({
+  get: () => colorMode.value === "dark",
+  set: (value) => {
+    colorMode.preference = value ? "dark" : "light";
+    nextTick(() => {
+      nuxtApp.$updateMetaThemeColor();
+    });
+  },
 });
 
-const toggleColorMode = async () => {
-  colorMode.preference === "dark"
-    ? (colorMode.preference = "light")
-    : (colorMode.preference = "dark");
-
-  await Promise.resolve();
-
-  useNuxtApp().$updateMetaThemeColor();
-};
-
 defineShortcuts({
-  // Shortcut for toggle dark mode
   meta_d: {
-    handler: async () => {
-      toggleColorMode();
-      store.darkModeEnabled = !store.darkModeEnabled;
+    handler: () => {
+      isDarkMode.value = !isDarkMode.value;
     },
   },
 });

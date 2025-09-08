@@ -1,38 +1,24 @@
 <template>
-  <Body class="bg-background text-body">
-    <div class="font-sans text-sm antialiased sm:text-base">
-      <NuxtLoadingIndicator color="#4eb362" />
+  <Html>
+    <Body
+      class="bg-background text-body font-sans text-sm antialiased sm:text-base"
+    >
+      <NuxtLoadingIndicator :color="false" class="bg-accent" />
       <NuxtLayout>
-        <NuxtPage :keepalive="{ include: 'index' }" />
+        <NuxtPage
+          :keepalive="{
+            include: ['index'],
+          }"
+        />
       </NuxtLayout>
       <Toaster class="pointer-events-auto" />
-    </div>
-  </Body>
+    </Body>
+  </Html>
 </template>
 
 <script setup>
 import "vue-sonner/style.css";
-
-const store = useRootStore();
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: `${store.appName}`,
-  url: `https://${store.website}`,
-  alternateName: `${store.appName}`,
-};
-
-useHead({
-  titleTemplate: "%s · %siteName",
-
-  script: [
-    {
-      type: "application/ld+json",
-      innerHTML: JSON.stringify(structuredData),
-    },
-  ],
-});
+const route = useRoute();
 
 onMounted(() => {
   useNuxtApp().$updateMetaThemeColor();

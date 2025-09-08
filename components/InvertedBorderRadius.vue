@@ -1,6 +1,6 @@
 <template>
   <div
-    class="inverted-border-radius absolute isolate flex bg-[var(--ibr-background)] *:relative *:z-50 *:flex *:items-center *:justify-center *:gap-x-1 *:rounded-full *:transition before:absolute before:z-0 before:size-[var(--ibr-size)] before:rounded-full before:bg-transparent after:absolute after:z-0 after:size-[var(--ibr-size)] after:rounded-full after:bg-transparent *:active:scale-95"
+    class="inverted-border-radius absolute isolate flex bg-[var(--ibr-background)] *:relative *:z-50 *:flex *:items-center *:justify-center *:gap-x-1 *:rounded-full *:transition before:absolute before:z-0 before:size-[var(--ibr-size)] before:rounded-full before:bg-transparent after:absolute after:z-0 after:size-[var(--ibr-size)] after:rounded-full after:bg-transparent *:active:scale-98"
     :class="{
       'top-0 left-0 rounded-br-[var(--ibr-radius)] pr-[var(--ibr-padding)] pb-[var(--ibr-padding)] before:top-0 before:right-0 before:translate-x-full before:shadow-[calc(-1*var(--ibr-shadow-offset))_calc(-1*var(--ibr-shadow-offset))_0_var(--ibr-background)] after:bottom-0 after:left-0 after:translate-y-full after:shadow-[calc(-1*var(--ibr-shadow-offset))_calc(-1*var(--ibr-shadow-offset))_0_var(--ibr-background)]':
         position === 'top-left',

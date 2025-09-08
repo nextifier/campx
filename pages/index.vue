@@ -16,34 +16,9 @@
 </template>
 
 <script setup>
-const store = new useRootStore();
-const route = useRoute();
-const config = useRuntimeConfig();
-const title = `CampX Holiday Park Jatiluhur`;
-const description =
-  "Lepas penat & hirup segarnya alam di CampX Jatiluhur! 🏕️ Tempat camping dan outing kekinian di tepi danau. Cek semua paket serunya di sini!";
+usePageMeta("home");
 
 defineOptions({
   name: "index",
-});
-
-useSeoMeta({
-  titleTemplate: "%s",
-  title: title,
-  ogTitle: title,
-  description: description,
-  ogDescription: description,
-  ogUrl: config.public.siteUrl + route.fullPath,
-  twitterCard: "summary_large_image",
-});
-
-// defineOgImageComponent("Page", {
-//   headline: store.appName,
-//   title: title,
-//   description: description,
-// });
-
-defineOgImage({
-  url: "/og/og-home.jpg",
 });
 </script>

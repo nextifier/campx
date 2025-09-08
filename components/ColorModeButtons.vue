@@ -4,11 +4,10 @@
       v-for="mode in colorModeList"
       :key="mode.value"
       class="flex flex-col items-center gap-y-1 rounded-xl p-1 text-center transition sm:px-2 lg:rounded-2xl"
-      :class="[mode.value === colorMode.value ? '' : '']"
-      @click.prevent="setDarkMode(mode.value === 'light' ? false : true)"
+      @click="setColorMode(mode.value)"
     >
       <div
-        class="border-border aspect-64/54 w-full overflow-hidden rounded-xl border transition active:scale-95 lg:rounded-2xl"
+        class="border-border aspect-64/54 w-full overflow-hidden rounded-xl border transition active:scale-98 lg:rounded-2xl"
       >
         <component :is="mode.component" class="h-full w-full object-cover" />
       </div>
@@ -50,11 +49,10 @@
 <script setup>
 import { ColorModeThumbnailLight, ColorModeThumbnailDark } from "#components";
 
-const store = useRootStore();
-const { darkModeEnabled: enabled } = toRefs(useRootStore());
 const colorMode = useColorMode();
+const nuxtApp = useNuxtApp();
 
-const colorModeList = [
+const colorModeList = shallowRef([
   {
     component: ColorModeThumbnailLight,
     value: "light",
@@ -65,17 +63,12 @@ const colorModeList = [
     value: "dark",
     label: "Dark",
   },
-];
+]);
 
-const setDarkMode = async (darkModeState) => {
-  if (darkModeState) {
-    enabled.value = true;
-    colorMode.preference = "dark";
-  } else {
-    enabled.value = false;
-    colorMode.preference = "light";
-  }
-  await Promise.resolve();
-  useNuxtApp().$updateMetaThemeColor();
+const setColorMode = (mode) => {
+  // Langsung atur preferensi dari useColorMode
+  colorMode.preference = mode;
+  // Panggil fungsi update meta setelah preferensi diubah
+  nuxtApp.$updateMetaThemeColor();
 };
 </script>

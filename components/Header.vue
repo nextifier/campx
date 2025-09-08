@@ -1,6 +1,6 @@
 <template>
   <header
-    class="flex h-(--navbar-height-mobile) items-center justify-center text-sm transition-all lg:h-(--navbar-height-desktop)"
+    class="flex h-(--navbar-height-mobile) items-center justify-center text-sm lg:h-(--navbar-height-desktop)"
     :class="{
       'sticky inset-x-0 top-0 z-50': ![].includes(route.name),
       'hidden lg:flex': ['experiences-slug'].includes(route.name),
@@ -13,37 +13,18 @@
       <nuxt-link
         to="/"
         aria-label="Home"
-        @click="$scrollToTopIfCurrentPageIs('index')"
+        @click="$scrollToTopIfCurrentPageIs('/')"
         v-ripple
       >
-        <Logo class="h-7" />
+        <Logo class="text-primary h-7" />
       </nuxt-link>
 
       <div class="ml-auto flex h-full items-center gap-x-6">
-        <!-- <HeaderNav
+        <HeaderNav
           class="hidden xl:absolute xl:left-1/2 xl:flex xl:-translate-x-1/2"
-        /> -->
+        />
 
         <div class="flex h-full shrink-0 items-center gap-x-2">
-          <!-- <nuxt-link
-            to="/contact"
-            class="border-border text-primary hover:bg-muted hidden items-center justify-center gap-x-2 rounded-xl border px-3 py-2 font-semibold tracking-tight transition select-none active:scale-95 sm:flex"
-            @click="$scrollToTopIfCurrentPageIs('contact')"
-            v-ripple
-          >
-            <span>Contact</span>
-          </nuxt-link> -->
-
-          <!-- <nuxt-link
-            to="/"
-            class="hover:bg-primary/80 bg-primary text-primary-foreground hidden items-center justify-center rounded-xl px-3 py-2 font-semibold tracking-tight transition select-none active:scale-95 sm:flex"
-            @click="$scrollToTopIfCurrentPageIs('ticket')"
-            v-ripple
-            >Reservasi Camping</nuxt-link
-          > -->
-
-          <!-- <SocialMedia /> -->
-
           <Tippy>
             <ColorModeToggle />
             <template #content>
@@ -54,15 +35,46 @@
             </template>
           </Tippy>
 
-          <!-- <Tippy>
-            <HeaderMenu />
+          <!-- <Tippy v-if="['news-slug'].includes(route.name)">
+            <button
+              data-sidebar="trigger"
+              data-slot="sidebar-trigger"
+              class="text-primary hover:bg-muted flex size-8 items-center justify-center rounded-lg"
+              @click="toggleSidebar"
+            >
+              <Icon
+                name="lucide:panel-left"
+                class="text-primary size-4 rotate-180"
+              />
+            </button>
+            <template #content>
+              <span class="inline-flex items-center gap-x-1.5 tracking-tight">
+                <span>Toggle Sidebar</span>
+                <kbd class="keyboard-symbol">{{ metaSymbol }} B</kbd>
+              </span>
+            </template>
+          </Tippy>
+
+          <Tippy v-else>
+            <HeaderMenu v-model:open="isMenuOpen" />
             <template #content>
               <span class="inline-flex items-center gap-x-1.5 tracking-tight">
                 <span>Open Menu</span>
                 <kbd class="keyboard-symbol">{{ metaSymbol }} M</kbd>
               </span>
             </template>
-          </Tippy> -->
+          </Tippy>
+
+          <button
+            v-if="['winner'].includes(route.name)"
+            @click="toggleFullScreen"
+            type="button"
+            v-tippy="'Toggle Fullscreen'"
+            aria-label="Toggle Fullscreen"
+            class="text-primary hover:bg-muted flex size-8 items-center justify-center rounded-lg"
+          >
+            <Icon name="lucide:fullscreen" class="text-primary size-4" />
+          </button> -->
         </div>
       </div>
     </nav>
@@ -70,27 +82,13 @@
 </template>
 
 <script setup>
-const store = useRootStore();
+import { useSidebar } from "@/components/ui/sidebar/utils";
+const { toggleSidebar } = useSidebar();
+
 const route = useRoute();
 const { metaSymbol } = useShortcuts();
 
-// Check if HeaderMenu dialog is opened or not
 const isMenuOpen = ref(false);
-let observer = null;
-const observeMenuState = () => {
-  const target = document.body; // Observe the body for changes
-  if (!target) return;
-
-  observer = new MutationObserver(() => {
-    const menu = document.querySelector("#header-menu");
-    isMenuOpen.value = !!(menu && menu.getAttribute("data-state") === "open");
-  });
-
-  observer.observe(target, {
-    childList: true, // Observe changes in child elements
-    subtree: true, // Monitor all descendants
-  });
-};
 
 function toggleFullScreen() {
   const elem = document.documentElement; // Target the entire document
@@ -107,12 +105,4 @@ function toggleFullScreen() {
     }
   }
 }
-
-onMounted(() => {
-  observeMenuState();
-});
-
-onBeforeUnmount(() => {
-  if (observer) observer.disconnect();
-});
 </script>

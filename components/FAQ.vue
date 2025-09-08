@@ -1,6 +1,6 @@
 <template>
   <div class="container flex flex-col items-center lg:max-w-(--breakpoint-sm)">
-    <h1 class="section-title text-center">Mungkin Kamu Nanya Ini?</h1>
+    <h1 class="section-title text-center font-semibold">{{ content.title }}</h1>
 
     <div v-if="faq?.list?.length" class="mt-6 flex w-full flex-col gap-y-3">
       <Accordion type="single" collapsible>
@@ -20,20 +20,19 @@
     </div>
 
     <div v-else class="mt-3 text-center text-base tracking-tight sm:text-lg">
-      We are gathering commonly asked questions. Please come back later 😉
+      {{ content.emptyStateDescription }}
     </div>
 
     <div class="mt-10 lg:mt-16">
       <h6
-        class="text-primary text-center text-3xl !leading-[1.3] font-semibold tracking-tighter sm:text-5xl"
+        class="text-center text-3xl font-semibold tracking-tight text-balance text-black sm:text-4xl dark:text-white"
       >
-        Punya pertanyaan lain? Hubungi kami aja!
+        {{ content.contactTitle }}
       </h6>
       <div class="mt-4 flex items-center justify-center lg:mt-6">
         <nuxt-link
           to="/contact"
-          class="bg-primary text-primary-foreground hover:bg-primary/80 flex items-center justify-center rounded-xl px-4 py-3 font-semibold tracking-tight transition active:scale-95"
-          v-ripple
+          class="bg-muted text-primary hover:bg-primary hover:text-primary-foreground flex items-center gap-1.5 rounded-full p-4 font-semibold tracking-tighter transition duration-200 active:scale-98"
         >
           <span>Contact us</span>
         </nuxt-link>
@@ -43,5 +42,6 @@
 </template>
 
 <script setup>
+const content = useContentStore().components.faq;
 const faq = new useFAQStore();
 </script>

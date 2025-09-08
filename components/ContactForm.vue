@@ -1,11 +1,13 @@
 <template>
   <div>
     <div v-if="!isMessageSent">
-      <h1 class="section-title">
+      <h1
+        class="text-primary text-3xl leading-[1.25] font-semibold tracking-tighter text-balance sm:text-5xl sm:leading-[1.25]"
+      >
         {{ props.title ?? "Contact us" }}
       </h1>
 
-      <p v-if="props.description" class="mt-3 tracking-[-0.04em] sm:mt-3">
+      <p v-if="props.description" class="mt-2 tracking-tight sm:mt-3">
         {{ props.description }}
       </p>
 
@@ -75,25 +77,35 @@
           />
         </div>
         <div v-if="!props.message" class="input-group">
-          <label>{{ props.messageLabel ?? "Message" }}</label>
+          <label>Message</label>
           <textarea
             v-model="form.message"
             name="message"
             id="message"
             class="autogrow"
-            :placeholder="props.messagePlaceholder ?? 'Leave a message..'"
+            placeholder="Leave a message.."
             required
           ></textarea>
         </div>
 
-        <!-- <p class="text-muted-foreground text-sm tracking-tight">
+        <p
+          v-if="props.title == 'Exhibitor Registration'"
+          class="text-muted-foreground text-sm tracking-tight"
+        >
+          Do not worry. By submitting this form, you are not automatically
+          registered as an exhibitor. We need your contact information so our
+          sales team can provide you with further details about available
+          booths, pricing, and more.
+        </p>
+
+        <p v-else class="text-muted-foreground text-sm tracking-tight">
           Please ensure you put the correct and active email address and phone
           number. Our team will reach you soon.
-        </p> -->
+        </p>
 
         <button
           type="submit"
-          class="bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center gap-2 justify-self-start rounded-xl px-4 py-3 text-sm font-semibold tracking-tight transition active:scale-95"
+          class="bg-primary text-primary-foreground hover:bg-primary/90 flex items-center justify-center gap-2 justify-self-start rounded-xl px-4 py-3 text-sm font-semibold tracking-tight transition active:scale-98"
           :disabled="loading"
           v-ripple
         >
@@ -104,7 +116,9 @@
     </div>
 
     <div v-else>
-      <div class="flex flex-col items-center justify-center text-center">
+      <div
+        class="min-h-screen-offset -mt-16 flex flex-col items-center justify-center text-center"
+      >
         <div
           class="bg-muted flex size-16 items-center justify-center rounded-full"
         >
@@ -125,9 +139,9 @@
 
         <nuxt-link
           to="/"
-          @click="closeInquiryDialog"
-          class="bg-primary text-primary-foreground mt-8 rounded-xl px-4 py-3 text-sm font-semibold tracking-tight"
+          class="bg-primary text-primary-foreground mt-8 rounded-xl px-6 py-4 font-semibold tracking-tight"
           v-ripple
+          @click="closeInquiryDialog"
         >
           Okay. Send me back to home
         </nuxt-link>
@@ -137,6 +151,8 @@
 </template>
 
 <script setup>
+import { toast } from "vue-sonner";
+
 const { gtag } = useGtag();
 
 const props = defineProps({
@@ -146,8 +162,6 @@ const props = defineProps({
   showJobTitleField: Boolean,
   showProductsField: Boolean,
   message: String,
-  messageLabel: String,
-  messagePlaceholder: String,
   buttonLabel: String,
 });
 
@@ -167,24 +181,6 @@ const form = reactive({
   phone: "",
   message: "",
 });
-
-const to = ref(
-  process.env.NODE_ENV === "production"
-    ? ["hello@campx.id"]
-    : ["antonius@panoramamedia.co.id"],
-);
-const cc = ref(
-  process.env.NODE_ENV === "production"
-    ? [
-        "ary@campx.id",
-        "tepe@campx.id",
-        "yusnianti@campx.id",
-        "yolanda@campx.id",
-      ]
-    : [],
-);
-
-const bcc = ref(["activerow@gmail.com"]);
 
 const sendMessage = async () => {
   loading.value = true;
@@ -212,10 +208,10 @@ const sendMessage = async () => {
       email: form.email,
       phone: cleanedPhone, // Use cleaned phone number
       message: props.message ?? form.message,
-      client: "CampX",
-      to: to.value,
-      cc: cc.value,
-      bcc: bcc.value,
+      client: useAppConfig().app.shortName,
+      to: useAppConfig().emailRecipients.to,
+      cc: useAppConfig().emailRecipients.cc,
+      bcc: useAppConfig().emailRecipients.bcc,
     },
     onResponse({ response }) {
       const errors = response._data.errors;

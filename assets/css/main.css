@@ -98,6 +98,9 @@
 
   --navbar-height-mobile: 3.5rem;
   --navbar-height-desktop: 3.5rem;
+  --sidebar-width: 18rem;
+  --sidebar-width-mobile: 18rem;
+  --sidebar-width-icon: 3rem;
 }
 
 @layer base {
@@ -122,7 +125,7 @@
     --muted: var(--color-gray-100);
     --muted-foreground: var(--color-gray-600);
 
-    --accent: var(--color-kv-green-600);
+    --accent: var(--color-green-600);
     --accent-foreground: var(--color-white);
 
     --card: var(--color-white);
@@ -164,7 +167,7 @@
     --muted: var(--color-gray-900);
     --muted-foreground: var(--color-gray-400);
 
-    --accent: var(--color-kv-green-600);
+    --accent: var(--color-green-500);
     --accent-foreground: var(--color-white);
 
     --card: var(--color-gray-950);
@@ -255,8 +258,7 @@
 }
 
 @utility container {
-  margin-inline: auto;
-  padding-inline: 1rem;
+  @apply mx-auto px-4;
 }
 
 @utility no-scrollbar {
@@ -373,7 +375,7 @@
 }
 
 @utility bg-pattern-diagonal {
-  @apply bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-primary)]/10;
+  @apply bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-primary)]/5 dark:[--pattern-fg:var(--color-primary)]/10;
 }
 
 @utility gradient-insta {
@@ -421,12 +423,12 @@
     cursor: pointer;
   }
 
-  html {
-    @apply scroll-pt-navbar;
-  }
-
   *::selection {
     @apply bg-accent text-accent-foreground;
+  }
+
+  section {
+    @apply scroll-mt-navbar;
   }
 
   a,
@@ -501,7 +503,7 @@
 }
 
 @utility format-html {
-  @apply prose dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tighter sm:prose-lg prose-h1:font-extrabold prose-figcaption:capitalize prose-figcaption:text-xs max-w-xl tracking-tight break-words;
+  @apply prose dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tighter sm:prose-lg prose-h1:font-extrabold prose-figcaption:capitalize prose-figcaption:text-center prose-figcaption:text-xs prose-img:w-full max-w-2xl tracking-[-0.015em] break-words;
 
   & *:not(h1, h2, h3, h4, h5, h6, a) {
     @apply !bg-inherit !text-inherit;
@@ -538,7 +540,7 @@
   }
 
   & p {
-    @apply leading-7 tracking-tight not-first:mt-6;
+    @apply !leading-[1.6] not-first:mt-6;
   }
 
   & blockquote {
@@ -632,6 +634,10 @@
   scroll-timeline: --scrollFadeY y;
 }
 
+@utility squircle {
+  @apply !rounded-full [corner-shape:squircle];
+}
+
 .gallery-container .my-gallery {
   @apply 3xl:grid-cols-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3;
 
@@ -649,23 +655,27 @@ img.pswp__img {
 }
 
 .section-title {
-  @apply text-primary text-4xl !leading-[1.25] font-semibold tracking-[-0.06em] text-balance sm:text-5xl xl:text-6xl;
+  @apply text-primary text-[2.5rem] !leading-[1.25] font-semibold tracking-[-0.06em] text-balance sm:text-6xl;
+}
+
+.section-title-large {
+  @apply text-primary text-[clamp(2.5rem,12vw,6rem)] !leading-[1.1] font-extrabold tracking-tighter text-balance;
 }
 
 .section-subtitle {
-  @apply bg-linear-to-r from-green-600 to-green-600 bg-clip-text font-semibold tracking-tighter text-balance text-transparent;
+  @apply font-semibold tracking-tighter text-balance text-green-600 dark:text-green-400;
 }
 
 .section-description {
   @apply text-body max-w-xl text-base !leading-relaxed tracking-tight text-pretty sm:text-lg;
 }
 
-.gradient-accent {
-  @apply from-kv-green-500 to-kv-green-600;
+@utility gradient-accent {
+  @apply from-green-500 to-green-600;
 }
 
-.gradient-gold {
-  background:
+@utility gradient-gold {
+  background-image:
     linear-gradient(0deg, #c1a875, #c1a875),
     linear-gradient(to right, rgba(255, 255, 255, 0) 52.79%, #ffffff 95.95%),
     linear-gradient(

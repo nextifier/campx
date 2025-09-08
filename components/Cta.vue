@@ -1,12 +1,10 @@
 <template>
   <section id="cta">
-    <div class="sm:container">
+    <div class="container">
       <div
         class="flex flex-col gap-x-6 gap-y-16 lg:flex-row lg:justify-between xl:gap-x-10"
       >
-        <div
-          class="flex flex-col items-center gap-y-4 px-4 sm:px-0 lg:items-start"
-        >
+        <div class="flex flex-col items-center gap-y-4 lg:items-start">
           <div class="relative isolate w-full">
             <NuxtImg
               src="/img/review-img.png"
@@ -24,11 +22,12 @@
 
             <div class="xs:p-4 absolute inset-x-0 bottom-0 z-30 flex">
               <div
-                v-if="store.socialProof?.length"
+                v-if="useContentStore().components.socialProof?.length"
                 class="xs:w-auto bg-background/50 border-border xs:p-3 grid w-full grid-cols-2 gap-x-3 rounded-3xl border p-2 backdrop-blur-xl"
               >
                 <NuxtLink
-                  v-for="(item, index) in store.socialProof"
+                  v-for="(item, index) in useContentStore().components
+                    .socialProof"
                   :key="index"
                   :to="item.link"
                   target="_blank"
@@ -84,11 +83,12 @@
             </p>
 
             <div
-              v-if="store.socialProof?.length"
+              v-if="useContentStore().components.socialProof?.length"
               class="xs:w-auto mt-4 flex w-full items-center gap-2 lg:mt-6"
             >
               <NuxtLink
-                v-for="(item, index) in store.socialProof"
+                v-for="(item, index) in useContentStore().components
+                  .socialProof"
                 :key="index"
                 :to="item.link"
                 target="_blank"
@@ -102,17 +102,18 @@
         </div>
 
         <div
-          class="no-scrollbar flex justify-center-safe gap-x-4 gap-y-12 overflow-auto px-4 pb-4 lg:max-w-[240px] lg:translate-y-[7%] lg:flex-col lg:justify-start lg:overflow-visible lg:p-0"
+          v-if="content.banners?.length"
+          class="grid shrink-0 grid-cols-1 gap-y-8 lg:mt-[10%]"
         >
           <div
-            v-for="(banner, index) in banners"
+            v-for="(banner, index) in content.banners"
             :key="index"
-            class="flex w-[240px] shrink-0 flex-col items-start gap-2 lg:w-full"
+            class="flex items-start gap-x-2.5 gap-y-4 lg:max-w-[240px] lg:flex-col"
           >
             <nuxt-link
               :to="banner.cta.link"
-              :target="banner.cta.openInNewTab ? '_blank' : ''"
-              class="lg:shadow-wrapper aspect-4/5 w-full rounded-xl transition duration-500 sm:rounded-2xl lg:hover:rotate-6"
+              :target="banner.cta.link.startsWith('http') ? '_blank' : ''"
+              class="lg:shadow-wrapper aspect-4/5 min-w-24 rounded-xl transition duration-500 sm:rounded-2xl lg:w-full lg:hover:rotate-6"
             >
               <NuxtImg
                 v-if="banner.image"
@@ -127,38 +128,40 @@
               />
             </nuxt-link>
 
-            <span
-              v-if="banner.subtitle"
-              class="mt-2 text-sm font-semibold tracking-tighter text-[var(--accent-color-light)] dark:text-[var(--accent-color-dark)]"
-              :style="{
-                '--accent-color-light': banner.accentColor.light,
-                '--accent-color-dark': banner.accentColor.dark,
-              }"
-            >
-              {{ banner.subtitle }}
-            </span>
+            <div class="flex flex-col items-start gap-y-1.5">
+              <span
+                v-if="banner.subtitle"
+                class="text-sm font-semibold tracking-tighter text-[var(--accent-color-light)] dark:text-[var(--accent-color-dark)]"
+                :style="{
+                  '--accent-color-light': banner.accentColor.light,
+                  '--accent-color-dark': banner.accentColor.dark,
+                }"
+              >
+                {{ banner.subtitle }}
+              </span>
 
-            <h6
-              v-if="banner.title"
-              class="text-primary text-base !leading-[1.3] font-semibold tracking-tighter sm:text-lg"
-            >
-              {{ banner.title }}
-            </h6>
+              <h6
+                v-if="banner.title"
+                class="text-primary text-base !leading-[1.3] font-semibold tracking-tighter text-balance sm:text-lg"
+              >
+                {{ banner.title }}
+              </h6>
 
-            <p v-if="banner.description" class="text-sm tracking-tight">
-              {{ banner.description }}
-            </p>
+              <p v-if="banner.description" class="text-sm tracking-tight">
+                {{ banner.description }}
+              </p>
 
-            <nuxt-link
-              v-if="banner.cta"
-              :to="banner.cta.link"
-              :target="banner.cta.openInNewTab ? '_blank' : ''"
-              class="bg-border/60 text-primary hover:bg-border/80 mt-1 flex items-center justify-center gap-x-1 rounded-lg py-2 pr-2 pl-3 text-sm font-semibold tracking-tight transition active:scale-95"
-              v-ripple
-            >
-              <span>{{ banner.cta.label }}</span>
-              <Icon name="lucide:arrow-up-right" class="size-4" />
-            </nuxt-link>
+              <nuxt-link
+                v-if="banner.cta"
+                :to="banner.cta.link"
+                :target="banner.cta.link.startsWith('http') ? '_blank' : ''"
+                class="bg-border/60 text-primary hover:bg-border/80 mt-1 flex items-center justify-center gap-x-1 rounded-lg py-2 pr-2 pl-3 text-sm font-semibold tracking-tight transition active:scale-95"
+                v-ripple
+              >
+                <span class="line-clamp-1">{{ banner.cta.label }}</span>
+                <Icon name="lucide:arrow-up-right" class="size-4 shrink-0" />
+              </nuxt-link>
+            </div>
           </div>
         </div>
       </div>
@@ -167,40 +170,5 @@
 </template>
 
 <script setup>
-const store = useRootStore();
-
-const banners = [
-  {
-    image: "/img/banners/panorama-events-poster.jpg",
-    subtitle: "Panorama Events",
-    title: "Outing Impian, Tanpa Ribet.",
-    description:
-      "Mau outing tapi pusing ngurusinnya? Serahin aja ke ahlinya! Panorama Events siap atur semua kebutuhan acaramu dari A-Z. Kamu & tim tinggal nikmatin keseruannya.",
-    accentColor: {
-      light: "#ea580c",
-      dark: "#f97316",
-    },
-    cta: {
-      label: "Konsultasi Outing Gratis",
-      link: "https://panoramaevents.id",
-      openInNewTab: true,
-    },
-  },
-  {
-    image: "/img/banners/indooutingexpo-2025-poster.jpg",
-    subtitle: "Indonesia Outing Expo 2025",
-    title: "Berburu Promo & Gear Impianmu.",
-    description:
-      "Siap-siap! Pameran outing terbesar se-Indonesia akan hadir di JICC Senayan, 14-16 Nov 2025. Dapatkan diskon gila-gilaan untuk alat camping & paket liburan. Jangan lupa mampir ke booth CampX ya!",
-    accentColor: {
-      light: "#0891b2",
-      dark: "#06b6d4",
-    },
-    cta: {
-      label: "Info Lengkap Expo",
-      link: "https://indooutingexpo.co.id",
-      openInNewTab: true,
-    },
-  },
-];
+const content = useContentStore().components.cta;
 </script>

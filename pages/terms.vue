@@ -284,18 +284,13 @@
 </template>
 
 <script setup>
-const store = useRootStore();
+usePageMeta("terms");
 
-useHead({
-  title: `Terms of Service`,
-});
-
-const name = "CampX";
-const website = "https://campx.id";
-const companyName = "CampX";
-const address =
-  "Panorama Media Building, Jl. Tanjung Selor No.17A, RT.11/RW.6, Cideng, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10150";
-const email = "hellod@campx.id";
-const contactPageLink = "https://campx.id/contact";
-const lastUpdate = "Jul 8, 2025";
+const name = useAppConfig().app.name;
+const website = useAppConfig().app.url;
+const companyName = useAppConfig().app.company.name;
+const address = useAppConfig().app.company.address;
+const email = useAppConfig().contact.email;
+const contactPageLink = `${useAppConfig().app.url}/contact`;
+const lastUpdate = useAppConfig().settings.terms.lastUpdate;
 </script>

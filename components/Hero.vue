@@ -12,7 +12,7 @@
 
     <div class="container-wider min-h-screen-offset relative z-20">
       <div
-        class="min-h-screen-offset grid grid-cols-1 gap-x-6 gap-y-6 pt-6 md:grid-cols-2 md:items-center md:pt-0 xl:grid-cols-3"
+        class="min-h-screen-offset grid grid-cols-1 gap-x-6 gap-y-6 pt-12 md:grid-cols-2 md:items-center md:pt-0 xl:grid-cols-3"
       >
         <div class="3xl:gap-y-24 order-first h-full">
           <div
@@ -23,7 +23,7 @@
             >
 
             <h1
-              class="text-primary 0 mt-2 text-[clamp(3rem,3.5vw,6rem)] !leading-[1.2] font-semibold tracking-[-0.06em] text-balance"
+              class="text-primary 0 mt-2 text-[clamp(2.5rem,3.5vw,6rem)] !leading-[1.2] font-semibold tracking-[-0.06em] text-balance"
             >
               <SplitText
                 class="pb-1"
@@ -59,11 +59,12 @@
             </div>
 
             <div
-              v-if="store.socialProof?.length"
+              v-if="useContentStore().components.socialProof?.length"
               class="xs:w-auto mt-6 grid w-full grid-cols-2 gap-x-3"
             >
               <NuxtLink
-                v-for="(item, index) in store.socialProof"
+                v-for="(item, index) in useContentStore().components
+                  .socialProof"
                 :key="index"
                 :to="item.link"
                 target="_blank"
@@ -168,8 +169,6 @@
 </template>
 
 <script setup>
-const store = useRootStore();
-
 const uiStore = useUiStore();
 const openInquiryDialog = () => {
   uiStore.openInquiryDialog();

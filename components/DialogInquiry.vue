@@ -6,7 +6,7 @@
     :drawerCloseButton="false"
   >
     <template #default="{ data }">
-      <div class="container mx-auto max-w-2xl pt-4 pb-8 lg:pb-16">
+      <div class="container max-w-lg pb-16">
         <div class="grid grid-cols-1 gap-10">
           <ContactForm
             title="Tanya-tanya Dulu Aja."
@@ -47,8 +47,6 @@
 </template>
 
 <script setup>
-const store = useRootStore();
-
 const uiStore = useUiStore();
 const isDialogOpen = computed({
   get() {
@@ -66,13 +64,13 @@ const isDialogOpen = computed({
 const links = [
   {
     label: "WhatsApp",
-    to: `https://api.whatsapp.com/send?phone=${store.whatsappOuting}&text=${store.whatsappText}`,
+    to: `https://api.whatsapp.com/send?phone=${useAppConfig().contact.whatsappOuting}&text=Hai, ${useAppConfig().app.shortName}`,
     openInNewTab: true,
     iconName: "hugeicons:whatsapp",
   },
   {
     label: "Email",
-    to: `mailto:${store.emailOuting}`,
+    to: `mailto:${useAppConfig().contact.emailOuting}`,
     iconName: "hugeicons:mail-02",
   },
 ];

@@ -17,6 +17,7 @@
 
 <script setup>
 const router = useRouter();
+const route = useRoute();
 
 const props = defineProps({
   destination: {
@@ -28,11 +29,34 @@ const props = defineProps({
   },
 });
 
-const goBack = () => {
+// Buat computed property untuk menentukan tujuan fallback secara dinamis.
+const fallbackDestination = computed(() => {
+  // Prioritas 1: Gunakan prop 'destination' jika disediakan secara manual.
   if (props.destination) {
-    router.push(props.destination);
-  } else {
+    return props.destination;
+  }
+
+  // Prioritas 2: Jika tidak, hitung path induk dari URL saat ini.
+  // Contoh: '/news/some-article' menjadi '/news'
+  const pathSegments = route.path.split("/").filter((p) => p); // Pecah path dan hapus string kosong
+
+  // Jika path hanya memiliki satu segmen (misal: '/news') atau kurang, kembali ke halaman utama.
+  if (pathSegments.length <= 1) {
+    return "/";
+  }
+
+  pathSegments.pop(); // Hapus segmen terakhir
+  return "/" + pathSegments.join("/"); // Gabungkan kembali
+});
+
+const goBack = () => {
+  // Cek apakah ada histori navigasi di dalam sesi browser saat ini.
+  if (window?.history?.length > 2) {
+    // Jika ada, kembali ke halaman sebelumnya
     router.back();
+  } else {
+    // Jika tidak ada, arahkan ke tujuan fallback yang sudah kita tentukan.
+    router.push(fallbackDestination.value);
   }
 };
 </script>
