@@ -1,30 +1,36 @@
-import { asSitemapUrl, defineSitemapEventHandler } from "#imports";
+import { defineSitemapEventHandler } from "#imports";
+
+interface BlogPost {
+  slug: string;
+  updated_at: string;
+}
+
+interface BlogResponse {
+  data: BlogPost[];
+}
 
 export default defineSitemapEventHandler(async () => {
-  const posts = await $fetch<ReturnType<typeof asSitemapUrl>>(
-    `${useAppConfig().app.blogApiUrl}/posts/?key=${useAppConfig().app.blogApiKey}&filter=authors.slug:[${useAppConfig().app.blogUsername}]%2Bvisibility:public&order=published_at+desc&limit=all`,
-  ).then((res) => {
-    return res.posts.map((post) => {
-      return {
-        loc: `/news/${post.slug}`,
-        lastmod: post.updated_at,
-      };
-    });
-  });
+  const config = useRuntimeConfig();
 
-  // const brands = await $fetch<ReturnType<typeof asSitemapUrl>>(
-  //   `${useAppConfig().app.apiUrl}/api/exhibitors?filter[is_published]=1`,
-  // ).then((res) => {
-  //   return res.map((brand) => {
-  //     return {
-  //       loc: `/brands/${brand.slug}`,
-  //       lastmod: brand.updated_at,
-  //     };
-  //   });
-  // });
+  const response = await $fetch<BlogResponse>(
+    `${config.public.apiUrl}/api/public/blog/posts`,
+    {
+      headers: {
+        "X-API-Key": config.pmOneApiKey,
+        Accept: "application/json",
+      },
+      query: {
+        per_page: 1000,
+        sort: "-published_at",
+        author: config.public.blogUsernames,
+      },
+    },
+  );
 
-  return [
-    ...posts,
-    // ...brands
-  ];
+  const posts = response.data.map((post) => ({
+    loc: `/news/${post.slug}`,
+    lastmod: post.updated_at,
+  }));
+
+  return [...posts];
 });

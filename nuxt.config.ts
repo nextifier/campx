@@ -6,6 +6,24 @@ export default defineNuxtConfig({
     componentInspector: false,
   },
 
+  runtimeConfig: {
+    pmOneApiKey:
+      process.env.NUXT_PM_ONE_API_KEY ||
+      "pk_ejeXbZqQtYxpsW1El8glWyEJ2lSG20avAf1LxFVo",
+
+    public: {
+      siteUrl:
+        process.env.NODE_ENV === "production"
+          ? "https://campx.id"
+          : "http://localhost:3000",
+      apiUrl:
+        process.env.NODE_ENV === "production"
+          ? "https://api.pmone.id"
+          : "http://localhost:8000",
+      blogUsernames: "campx.blog",
+    },
+  },
+
   nitro: {
     prerender: {
       crawlLinks: true,
@@ -13,20 +31,13 @@ export default defineNuxtConfig({
     },
   },
 
-  runtimeConfig: {
-    public: {
-      siteUrl:
-        process.env.NODE_ENV === "production"
-          ? "https://campx.id"
-          : "http://localhost:3000",
-    },
-  },
-
   app: {
     head: {
       title: "CampX Holiday Park Jatiluhur",
+      meta: [{ name: "google", content: "notranslate" }],
       htmlAttrs: {
         lang: "en",
+        translate: "no",
       },
       link: [
         {
@@ -62,9 +73,9 @@ export default defineNuxtConfig({
     provider: "local",
     families: [
       {
-        name: "PlusJakartaSans",
-        src: "/fonts/PlusJakartaSans-VariableFont.woff2",
-        weight: "200 800",
+        name: "MinusOne",
+        src: "/fonts/MinusOne-VF.woff2",
+        weight: "100 1000",
         display: "swap",
       },
     ],
@@ -86,7 +97,7 @@ export default defineNuxtConfig({
      * Directory that the component lives in.
      * @default "./components/ui"
      */
-    componentDir: "./components/ui",
+    componentDir: "./app/components/ui",
   },
 
   colorMode: {
@@ -113,6 +124,11 @@ export default defineNuxtConfig({
       process.env.NODE_ENV === "production"
         ? "https://campx.id"
         : "http://localhost:3000",
+  },
+
+  sitemap: {
+    sources: ["/api/sitemap-urls"],
+    urls: ["/", "/contact"],
   },
 
   ogImage: {
