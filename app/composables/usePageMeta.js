@@ -14,7 +14,7 @@ export const usePageMeta = (pageKey, overrides = {}) => {
     ogTitle: title,
     description: description,
     ogDescription: description,
-    ogUrl: useAppConfig().app.url + route.fullPath,
+    ogUrl: useAppConfig().app.url + route.path,
     twitterCard: "summary_large_image",
   });
 
@@ -39,6 +39,12 @@ export const usePageMeta = (pageKey, overrides = {}) => {
   };
 
   useHead({
+    link: [
+      {
+        rel: "canonical",
+        href: useAppConfig().app.url + route.path,
+      },
+    ],
     script: [
       {
         type: "application/ld+json",
