@@ -102,19 +102,34 @@
           >
             <video
               ref="videoRef"
-              autoplay
               loop
               muted
               playsinline
-              poster="/video/hero-video-poster.jpg"
+              preload="none"
+              :poster="videoPoster"
               class="size-full object-cover"
+              :class="{ 'opacity-0': !isVideoLoaded }"
+              @loadeddata="onVideoLoaded"
             >
-              <source src="/video/hero-video.mp4" type="video/mp4" />
+              <source
+                v-if="shouldLoadVideo"
+                src="/video/hero-video.mp4"
+                type="video/mp4"
+              />
             </video>
 
+            <!-- Poster image shown while video is loading -->
+            <img
+              v-if="!isVideoLoaded"
+              :src="videoPoster"
+              alt=""
+              class="absolute inset-0 size-full object-cover"
+            />
+
             <div
+              v-if="isVideoLoaded"
               class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity pointer-fine:group-hover:opacity-100"
-              :class="{ '!opacity-100': !isPlaying }"
+              :class="{ 'opacity-100!': !isPlaying }"
             >
               <div
                 class="flex size-16 items-center justify-center rounded-full bg-white/30 text-white outline -outline-offset-6 outline-white transition hover:bg-white/60 active:scale-95"
@@ -172,10 +187,17 @@ const openInquiryDialog = () => {
 };
 
 const videoRef = ref(null);
-const isPlaying = ref(true);
+const isPlaying = ref(false);
 const isManuallyPaused = ref(false);
+const shouldLoadVideo = ref(false);
+const isVideoLoaded = ref(false);
+const videoPoster = "/video/hero-video-poster.jpg";
 
 let observer = null;
+
+const onVideoLoaded = () => {
+  isVideoLoaded.value = true;
+};
 
 const togglePlayPause = () => {
   const video = videoRef.value;
@@ -195,7 +217,7 @@ const togglePlayPause = () => {
 onMounted(() => {
   const options = {
     root: null,
-    rootMargin: "0px",
+    rootMargin: "50px", // Start loading slightly before entering viewport
     threshold: 0.1,
   };
 
@@ -205,8 +227,24 @@ onMounted(() => {
       if (!video) return;
 
       if (entry.isIntersecting) {
-        if (!isManuallyPaused.value) {
-          video.play().catch((e) => console.error("Video play failed:", e));
+        // Lazy load: set source when video enters viewport
+        if (!shouldLoadVideo.value) {
+          shouldLoadVideo.value = true;
+          // Wait for source to be added, then load and play
+          nextTick(() => {
+            video.load();
+            if (!isManuallyPaused.value) {
+              video.play().catch((e) => {
+                // Autoplay might be blocked, that's okay
+                console.debug("Video autoplay prevented:", e.message);
+              });
+              isPlaying.value = true;
+            }
+          });
+        } else if (!isManuallyPaused.value) {
+          video
+            .play()
+            .catch((e) => console.debug("Video play prevented:", e.message));
           isPlaying.value = true;
         }
       } else {
