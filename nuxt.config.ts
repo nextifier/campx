@@ -127,7 +127,6 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    sources: ["/api/sitemap-urls"],
     urls: ["/", "/contact"],
   },
 
