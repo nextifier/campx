@@ -18,6 +18,8 @@
           <div
             class="xl:min-h-screen-offset flex flex-col items-start md:py-10 xl:justify-end"
           >
+            <!-- <Announcement /> -->
+
             <span class="section-subtitle"
               >Pengalaman Camping & Outing Kekinian di Tepi Danau.</span
             >

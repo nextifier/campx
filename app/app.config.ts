@@ -27,9 +27,9 @@ const settings = {
 
 const contact = {
   email: "hello@campx.id",
-  emailOuting: "ary@campx.id",
+  emailOuting: "hello@campx.id",
   whatsapp: "6281398885402",
-  whatsappOuting: "6281311778390",
+  whatsappOuting: "6281398885402",
   // whatsappMarketing: "628118805638",
 };
 

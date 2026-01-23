@@ -222,33 +222,6 @@ export const useExperienceStore = defineStore("experiences", {
       },
 
       {
-        title: "Canoeing Seru di Jatiluhur",
-        slug: "canoeing-experience",
-        status: "Maintenance",
-        categories: ["Activity"],
-        shortDescription:
-          "Dayung santai bareng temen atau pasangan sambil keliling danau. Perfect for chilling!",
-        description: `
-          <p>Mau aktivitas air yang lebih santai? Cobain <strong>canoeing</strong>, deh! Kamu bisa dayung perahu kano sambil nikmatin tenangnya air danau Jatiluhur. Satu perahu bisa buat berdua atau bertiga, asik buat quality time.</p>
-        `,
-        coverImage: "/img/experiences/cover-canoeing.jpg",
-        included: [
-          "Sewa perahu kano (kapasitas 3 orang)",
-          "Dayung & pelampung",
-        ],
-        excluded: [
-          "Tiket masuk (jika tidak mengambil paket menginap/day trip)",
-        ],
-        pricing: [
-          {
-            label: "Sewa perahu per jam",
-            value: 250000,
-            unit: "perahu",
-          },
-        ],
-      },
-
-      {
         title: "Mancing Mania, Mantap!",
         slug: "strike-the-lake",
         status: "Available",
@@ -346,6 +319,82 @@ export const useExperienceStore = defineStore("experiences", {
           },
         ],
         pricingNotes: ["Kapasitas: 2 orang dewasa + 1 anak kecil per jetski."],
+      },
+
+      {
+        title: "Jetcar Experience: Mobil Sport di Atas Air!",
+        slug: "jetcar-experience",
+        status: "Available",
+        categories: ["Activity"],
+        shortDescription:
+          "Bukan jetski biasa! Kendarai mobil sport keren yang bisa meluncur di atas danau. Sensasi unik yang wajib dicoba!",
+        description: `
+          <p>Pernah kebayang nyetir <strong>mobil sport</strong> di atas air? Sekarang bukan mimpi lagi! <strong>Jetcar Experience</strong> hadir buat kamu yang pengen sensasi beda dari jetski biasa.</p>
+          <p>Bentuknya persis kayak mobil sport kece, tapi bisa meluncur kencang di atas Danau Jatiluhur. Bisa dinaiki sampai <strong>4 orang</strong> sekaligus, cocok buat seru-seruan bareng squad atau keluarga. Dijamin jadi <i>highlight</i> liburanmu yang bakal bikin temen-temen iri!</p>
+          <p>Tenang, semua sudah include pelampung dan dokumentasi drone yang keren. Tinggal gas, pose, dan pulang bawa konten viral!</p>
+        `,
+        coverImage: "/img/experiences/cover-jetcar.jpg",
+        included: [
+          "1 unit Jetcar (bentuk mobil sport)",
+          "Pelampung (Life Jacket) untuk semua penumpang",
+          "Dokumentasi gratis (foto & video drone)",
+          "Akses fasilitas bilas, toilet, & musholla",
+        ],
+        excluded: [
+          "Tiket masuk CampX (jika tidak mengambil paket menginap/day trip)",
+        ],
+        pricing: [
+          {
+            label: "Durasi 7 Menit",
+            value: 350000,
+            unit: "jetcar",
+          },
+          {
+            label: "Durasi 15 Menit",
+            value: 600000,
+            unit: "jetcar",
+          },
+          {
+            label: "Durasi 30 Menit",
+            value: 1200000,
+            unit: "jetcar",
+          },
+          {
+            label: "Durasi 1 Jam",
+            value: 2200000,
+            unit: "jetcar",
+          },
+        ],
+        pricingNotes: [
+          "Kapasitas: maksimal 4 orang dengan total berat di bawah 200 KG.",
+        ],
+      },
+
+      {
+        title: "Canoeing Seru di Jatiluhur",
+        slug: "canoeing-experience",
+        status: "Maintenance",
+        categories: ["Activity"],
+        shortDescription:
+          "Dayung santai bareng temen atau pasangan sambil keliling danau. Perfect for chilling!",
+        description: `
+          <p>Mau aktivitas air yang lebih santai? Cobain <strong>canoeing</strong>, deh! Kamu bisa dayung perahu kano sambil nikmatin tenangnya air danau Jatiluhur. Satu perahu bisa buat berdua atau bertiga, asik buat quality time.</p>
+        `,
+        coverImage: "/img/experiences/cover-canoeing.jpg",
+        included: [
+          "Sewa perahu kano (kapasitas 3 orang)",
+          "Dayung & pelampung",
+        ],
+        excluded: [
+          "Tiket masuk (jika tidak mengambil paket menginap/day trip)",
+        ],
+        pricing: [
+          {
+            label: "Sewa perahu per jam",
+            value: 250000,
+            unit: "perahu",
+          },
+        ],
       },
 
       {

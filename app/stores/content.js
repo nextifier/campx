@@ -23,7 +23,29 @@ export const useContentStore = defineStore("content", {
 
     components: {
       hero: {
+        // announcements: [
+        //   {
+        //     text: `...`,
+        //     link: "/jetcar-experience",
+        //   },
+        // ],
+
         bannerHero: [
+          {
+            subHeadline: "BARU! Jetcar Experience",
+            content: `
+      <p>Bukan jetski biasa! Rasakan sensasi nyetir mobil sport keren yang meluncur di atas Danau Jatiluhur. Muat sampai 4 orang, udah include dokumentasi drone!</p>
+    `,
+            img: {
+              src: "/img/experiences/cover-jetcar.jpg",
+              w: 400,
+              h: 500,
+            },
+            cta: {
+              label: "Cobain Jetcar Sekarang",
+              link: "/experiences/jetcar-experience",
+            },
+          },
           {
             subHeadline: "BARU! Camping di Cabin X",
             content: `
