@@ -12,7 +12,7 @@
             title="Tanya-tanya Dulu Aja."
             description="Mau tau soal paket outing atau mau custom acara sendiri? Tinggalin kontakmu, tim kami siap jawab semua pertanyaanmu."
             submitLabel="Submit"
-            :subject="`Outing Inquiry - ${useAppConfig().app.shortName}`"
+            subject="Outing Inquiry"
           />
 
           <div class="flex flex-col items-start">
